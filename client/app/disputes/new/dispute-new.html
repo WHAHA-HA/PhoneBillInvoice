@@ -1,0 +1,119 @@
+<div class="modal-header small-padding-up-bottom">
+    <h4 class="modal-title">New Dispute</h4>
+</div>
+<div class="modal-body" style="padding-bottom:0;">
+    <div class="panel no-b-mar">
+        <div class="panel-body no-padding">
+            <form name="DisputeForm" >
+                <div class="col-lg-8 col-md-8">
+                    <div class="row dispute-header-fields-row">                        
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Filed By</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" value="{{$me.first_name}} {{$me.last_name}}" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Vendor</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" value="{{invoice.sp_name}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row dispute-header-fields-row">
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Dispute Withheld</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" 
+                                       value="{{dispute_withheld > 0 ? (dispute_withheld < chargesGrid.data.length ? 'Partially Witheld' : 'Full Witheld') : 'Not Witheld'}}" readonly>
+                            </div>
+                        </div>    
+
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Filed Date</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" value="{{dispute.created_at| lcmaDate}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row dispute-header-fields-row">
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Resolution Date</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" value="{{resolution_date| lcmaDate}}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <label class="col-sm-5 custom-control-label">Status</label>
+                            <div class="col-xs-5">
+                                <input type="text" class="form-control text-left" value="{{dispute.status_obj.value}}" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel dispute-panel dispute-summary-panel">
+                            <div class="row dispute-row dispute-summary-panel">
+                                <div class="col-lg-1 "></div>
+                                <div class="col-lg-10 dispute-summary-content">
+                                    <div class="row dispute-row">
+                                        <div class="form-group">
+                                            <label class="col-sm-8 custom-control-label dispute-label dispute-summary-label-padding">Billed Charges</label>
+                                            <div class="col-sm-4 custom-control-label text-right">
+                                                {{billed_charges| currency}}
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <div class="row dispute-row">
+                                        <div class="form-group">
+                                            <label class="col-sm-8 custom-control-label dispute-label dispute-summary-label-padding">Calculated Charges</label>
+                                            <div class="col-sm-4  text-right dispute-under">
+                                                {{calculated_charges| currency}}
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <div class="row dispute-row">
+                                        <div class="form-group">
+                                            <label class="col-sm-8 custom-control-label dispute-label dispute-summary-label-padding">Dispute Amount</label>
+                                            <div class="col-sm-4 text-right">
+                                                {{billed_charges - calculated_charges| currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row dispute-row">
+                                        <div class="form-group">
+                                            <label class="col-sm-8 custom-control-label dispute-label dispute-summary-label-padding">Dispute Awarded</label>
+                                            <div class="col-sm-4 text-right dispute-under">
+                                                {{dispute_value_awarded| currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row dispute-row">
+                                        <div class="form-group">
+                                            <label class="col-sm-8 custom-control-label dispute-label dispute-summary-label-padding">Payback Amount</label>
+                                            <div class="col-sm-4 text-right">
+                                                {{payback_amount| currency}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </form>
+        </div>
+        <div class="form-group">
+            <div class="grid" ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid="chargesGrid"
+                 style="height: 190px; margin-bottom: 0"></div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create(DisputeForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

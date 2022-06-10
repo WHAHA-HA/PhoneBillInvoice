@@ -1,0 +1,100 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Create New Project</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+    <form name="ProjectForm" class="form-horizontal form-cozy">
+      <div class="panel panel-alternate">
+        <div class="panel-body">
+          <lcma-form-layout columns="2">
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Project ID</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="project_id" ng-model="project.project_id" type="text"
+                       class="form-control">
+                <div ng-messages="ProjectForm.project_id.$error" ng-show="ProjectForm.project_id.$touched" role="alert">
+                  <div ng-message="required">You didn't enter Project ID.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Project Name</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="name" ng-model="project.name" type="text"
+                       class="form-control">
+                <div ng-messages="ProjectForm.name.$error" ng-show="ProjectForm.name.$touched" role="alert">
+                  <div ng-message="required">You didn't enter Project Name.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Owner</lcma-form-label>
+              <lcma-control-container>
+                <lcma-employee-picker ng-model="project.owner_id"></lcma-employee-picker>
+                <div ng-messages="ProjectForm.owner_id.$error" ng-show="ProjectForm.owner_id.$touched" role="alert">
+                  <div ng-message="required">You didn't enter Project Owner.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Status</lcma-form-label>
+              <lcma-control-container>
+                <lcma-dictionary-picker type-key="project-status" name="status" ng-model="project.status_id"
+                  ></lcma-dictionary-picker>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Description</lcma-form-label>
+              <lcma-control-container>
+            <textarea class="form-control"
+                      ng-model="project.description"
+                      name="description"
+                      ng-required="true"></textarea>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Start Date</lcma-form-label>
+              <lcma-control-container>
+                <input lcma-calendar-position
+                       uib-datepicker-popup="MM/dd/yyyy"
+                       ng-model="project.start_date"
+                       name="start_date"
+                       init-date="{{project.start_date}}"
+                       class="form-control input-sm"
+                       is-open="start_date_ui.opened"
+                       ng-click="start_date_ui.opened=true"
+                  />
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>End Date</lcma-form-label>
+              <lcma-control-container>
+                <input lcma-calendar-position
+                       uib-datepicker-popup="MM/dd/yyyy"
+                       ng-model="project.end_date"
+                       name="end_date"
+                       init-date="{{project.end_date}}"
+                       class="form-control input-sm"
+                       is-open="end_date_ui.opened"
+                       ng-click="end_date_ui.opened=true"
+                  />
+              </lcma-control-container>
+            </lcma-form-group>
+
+          </lcma-form-layout>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="create(ProjectForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div>
+    <div class="row" style="margin-top: 15px;">
+        <button class="btn btn-default" ng-click="addDocument()" style="margin-left: 10px;">
+            <i class="fa fa-plus"></i>
+        </button>
+        <a class="btn btn-default pull-right" style="margin-right: 10px;" 
+           ng-disabled="documentGridApi.selection.getSelectedRows().length == 0" ng-click="removeEntityDocument()" title="Delete Selected">
+            <i class="fa fa-trash"></i></a>
+    </div>
+    <div class="row">
+        <div class="grid app-data-grid  mar-all" ui-grid="documentsGrid" ui-grid-selection lcma-no-data-message></div>
+    </div>
+</div>

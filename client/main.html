@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <base href="/">
+  <title>LCMA</title>
+  <script>window.$appVersion = '<%= version %>';</script>
+  <meta name="version" content="<%= version %>">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+  </style>
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(client) app/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="vendor/angular-bootstrap-colorpicker/css/colorpicker.css" />
+  <link rel="stylesheet" href="vendor/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css" />
+  <link rel="stylesheet" href="vendor/angular-ui-grid/ui-grid.css" />
+  <link rel="stylesheet" href="vendor/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="vendor/ng-img-crop/compile/minified/ng-img-crop.css" />
+  <link rel="stylesheet" href="vendor/ui-select/dist/select.css" />
+  <link rel="stylesheet" href="vendor/nya-bootstrap-select/dist/css/nya-bs-select.css" />
+  <link rel="stylesheet" href="vendor/angular-wizard/dist/angular-wizard.min.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,client}) app/app.css -->
+  <link rel="stylesheet" href="assets/css/font-awesome.css">
+<!--  <link rel="stylesheet" href="vendor/ag-grid/dist/ag-grid.css">-->
+
+  <link rel="stylesheet" href="app/app.css">
+  <!-- injector:css -->
+  <link rel="stylesheet" href="components/account/account.css">
+  <link rel="stylesheet" href="components/customer/customer.css">
+  <link rel="stylesheet" href="components/gl-segment-value/gl-segment-value.css">
+  <link rel="stylesheet" href="components/site/site-detail.css">
+  <link rel="stylesheet" href="components/toggle-switch/toggle-switch.css">
+  <link rel="stylesheet" href="components/vendor/vendor.css">
+  <!-- endinjector -->
+  <!-- endbuild -->
+
+  <!--<script type="text/Javascript" src="http://52.70.220.130:8080/Logi/rdTemplate/rdEmbedApi/rdEmbed.js"></script>-->
+
+  <!-- build:js({client,node_modules}) app/vendor.js -->
+  <!-- bower:js -->
+  <script src="vendor/jquery/dist/jquery.js"></script>
+  <script src="vendor/angular/angular.js"></script>
+  <script src="vendor/angular-resource/angular-resource.js"></script>
+  <script src="vendor/angular-cookies/angular-cookies.js"></script>
+  <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+  <script src="vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+  <script src="vendor/lodash/lodash.js"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="vendor/angular-animate/angular-animate.js"></script>
+  <script src="vendor/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="vendor/js-data/dist/js-data.js"></script>
+  <script src="vendor/js-data-http/dist/js-data-http.js"></script>
+  <script src="vendor/js-data-angular/dist/js-data-angular.js"></script>
+  <script src="vendor/angular-messages/angular-messages.js"></script>
+  <script src="vendor/angular-ui-grid/ui-grid.js"></script>
+  <script src="vendor/moment/moment.js"></script>
+  <script src="vendor/ng-file-upload/ng-file-upload.js"></script>
+  <script src="vendor/angular-loading-bar/build/loading-bar.js"></script>
+  <script src="vendor/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+  <script src="vendor/ng-img-crop/compile/minified/ng-img-crop.js"></script>
+  <script src="vendor/ui-select/dist/select.js"></script>
+  <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="vendor/angular-custom-select/dist/angular-custom-select.min.js"></script>
+  <script src="vendor/nya-bootstrap-select/dist/js/nya-bs-select.js"></script>
+  <script src="vendor/angular-wizard/dist/angular-wizard.min.js"></script>
+  <script src="vendor/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
+  <script src="vendor/angular-scroll/angular-scroll.js"></script>
+  <script src="vendor/angular-input-modified/dist/angular-input-modified.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- injector:version -->
+  <!-- endinjector -->
+
+  <!-- build:js({.tmp,client}) app/app.js -->
+
+  <script src="app/app.js"></script>
+  <!-- injector:js -->
+  <script src="app/accounts/accounts.js"></script>
+  <script src="app/accounts/common/account-status.mdl.js"></script>
+  <script src="app/accounts/common/account.mdl.js"></script>
+  <script src="app/accounts/edit/account-edit.ctrl.js"></script>
+  <script src="app/accounts/list/account-list.ctrl.js"></script>
+  <script src="app/accounts/new/account-new.ctrl.js"></script>
+  <script src="app/accounts/show/account-show.ctrl.js"></script>
+  <script src="app/audit_rate/audit_rate.js"></script>
+  <script src="app/audit_rate/common/audit_rate.mdl.js"></script>
+  <script src="app/audit_rate/edit/audit_rate-edit.ctrl.js"></script>
+  <script src="app/audit_rate/list/audit_rate-list.ctrl.js"></script>
+  <script src="app/audit_rate/new/audit_rate-new.ctrl.js"></script>
+  <script src="app/audits/audits.js"></script>
+  <script src="app/audits/common/audit.mdl.js"></script>
+  <script src="app/audits/edit/audit-edit.ctrl.js"></script>
+  <script src="app/audits/list/audit-list.js"></script>
+  <script src="app/audits/new/audit-new.ctrl.js"></script>
+  <script src="app/auth/auth.js"></script>
+  <script src="app/auth/common/auth-service.js"></script>
+  <script src="app/auth/common/auth.mdl.js"></script>
+  <script src="app/auth/forgot/forgot.ctrl.js"></script>
+  <script src="app/auth/login/login.ctrl.js"></script>
+  <script src="app/auth/reset/reset.ctrl.js"></script>
+  <script src="app/buildings/building.js"></script>
+  <script src="app/buildings/common/building.mdl.js"></script>
+  <script src="app/buildings/edit/building-edit.ctrl.js"></script>
+  <script src="app/buildings/list/building-list.ctrl.js"></script>
+  <script src="app/buildings/new/building-new.ctrl.js"></script>
+  <script src="app/charge_browser/charge_browser.js"></script>
+  <script src="app/charge_browser/common/chargeBrowser.svc.js"></script>
+  <script src="app/charge_browser/edit/audit_rate-edit.ctrl.js"></script>
+  <script src="app/charge_browser/list/charge_browser-list.ctrl.js"></script>
+  <script src="app/charge_browser/new/audit_rate-new.ctrl.js"></script>
+  <script src="app/contacts/common/contact.mdl.js"></script>
+  <script src="app/contacts/contacts.js"></script>
+  <script src="app/contacts/edit/contact-edit.ctrl.js"></script>
+  <script src="app/contacts/list/contact-list.ctrl.js"></script>
+  <script src="app/contacts/new/contact-new.ctrl.js"></script>
+  <script src="app/content-filters/common/content-filter.mdl.js"></script>
+  <script src="app/content-filters/content-filters.js"></script>
+  <script src="app/content-filters/edit/content-filter-edit.ctrl.js"></script>
+  <script src="app/content-filters/list/content-filter-list.ctrl.js"></script>
+  <script src="app/content-filters/new/content-filter-new.ctrl.js"></script>
+  <script src="app/contracts/common/contract-section.mdl.js"></script>
+  <script src="app/contracts/common/contract-type.mdl.js"></script>
+  <script src="app/contracts/common/contract.mdl.js"></script>
+  <script src="app/contracts/contracts.js"></script>
+  <script src="app/contracts/document-manager/document-manager.ctrl.js"></script>
+  <script src="app/contracts/edit/contract-edit.ctrl.js"></script>
+  <script src="app/contracts/list/contract-list.ctrl.js"></script>
+  <script src="app/contracts/new/contract-new.ctrl.js"></script>
+  <script src="app/contracts/section-edit/section-edit.ctrl.js"></script>
+  <script src="app/contracts/section-new/section-new.ctrl.js"></script>
+  <script src="app/contracts/show/contract-show.ctrl.js"></script>
+  <script src="app/customers/common/customer.mdl.js"></script>
+  <script src="app/customers/customers.js"></script>
+  <script src="app/customers/edit/customer-edit.ctrl.js"></script>
+  <script src="app/customers/list/customer-list.ctrl.js"></script>
+  <script src="app/customers/new/customer-new.ctrl.js"></script>
+  <script src="app/dictionary/common/dictionary-group.mdl.js"></script>
+  <script src="app/dictionary/common/dictionary.mdl.js"></script>
+  <script src="app/dictionary/dictionary.js"></script>
+  <script src="app/dictionary/edit/dictionary-edit.ctrl.js"></script>
+  <script src="app/dictionary/group/dictionary-group.ctrl.js"></script>
+  <script src="app/dictionary/list/dictionary-list.ctrl.js"></script>
+  <script src="app/dictionary/new/dictionary-new.ctrl.js"></script>
+  <script src="app/disputes/common/dispute-category.mdl.js"></script>
+  <script src="app/disputes/common/dispute-status.js"></script>
+  <script src="app/disputes/common/dispute.mdl.js"></script>
+  <script src="app/disputes/disputes.js"></script>
+  <script src="app/disputes/edit/dispute-edit.ctrl.js"></script>
+  <script src="app/disputes/list/dispute-list.ctrl.js"></script>
+  <script src="app/disputes/new/dispute-new.ctrl.js"></script>
+  <script src="app/disputes/show/dispute-show.ctrl.js"></script>
+  <script src="app/documents/common/document.mdl.js"></script>
+  <script src="app/documents/documents.js"></script>
+  <script src="app/employees/common/employee.mdl.js"></script>
+  <script src="app/employees/edit/employee-edit.ctrl.js"></script>
+  <script src="app/employees/employees.js"></script>
+  <script src="app/employees/list/employee-list.ctrl.js"></script>
+  <script src="app/employees/new/employee-new.ctrl.js"></script>
+  <script src="app/equipment_interfaces/common/equipment_interface.mdl.js"></script>
+  <script src="app/equipment_interfaces/equipment_interfacess.js"></script>
+  <script src="app/equipments/common/equipment.mdl.js"></script>
+  <script src="app/equipments/edit/equipment-edit.ctrl.js"></script>
+  <script src="app/equipments/equipments.js"></script>
+  <script src="app/equipments/list/equipment-list.ctrl.js"></script>
+  <script src="app/equipments/new/equipment-new.ctrl.js"></script>
+  <script src="app/errors/errors.js"></script>
+  <script src="app/gl-rule-builder/common/gl-rule-builder.mdl.js"></script>
+  <script src="app/gl-rule-builder/common/gl-rule-field.mdl.js"></script>
+  <script src="app/gl-rule-builder/gl-rule-builder.js"></script>
+  <script src="app/gl-rule-builder/list/gl-rule-builder-list.ctrl.js"></script>
+  <script src="app/gl-rule-builder/new/gl-rule-builder-new.ctrl.js"></script>
+  <script src="app/gl_code/common/gl_code.mdl.js"></script>
+  <script src="app/gl_code/common/gl_code_segments.mdl.js"></script>
+  <script src="app/gl_code/gl_code.js"></script>
+  <script src="app/gl_code/list/gl_code-list.ctrl.js"></script>
+  <script src="app/gl_strings/common/gl_string.mdl.js"></script>
+  <script src="app/gl_strings/edit/gl-string-edit.ctrl.js"></script>
+  <script src="app/gl_strings/gl_strings.js"></script>
+  <script src="app/gl_strings/list/gl_string-list.ctrl.js"></script>
+  <script src="app/gl_strings/new/gl-string-new.ctrl.js"></script>
+  <script src="app/history/common/history.mdl.js"></script>
+  <script src="app/inventories/common/inventory-document.mdl.js"></script>
+  <script src="app/inventories/common/inventory-feature.mdl.js"></script>
+  <script src="app/inventories/common/inventory-gl-string.mdl.js"></script>
+  <script src="app/inventories/common/inventory-plan.mdl.js"></script>
+  <script src="app/inventories/common/inventory-route.mdl.js"></script>
+  <script src="app/inventories/common/inventory-site.mdl.js"></script>
+  <script src="app/inventories/common/inventory-underlying-service.mdl.js"></script>
+  <script src="app/inventories/common/inventory.mdl.js"></script>
+  <script src="app/inventories/document-manager/inventory-document-manager.ctrl.js"></script>
+  <script src="app/inventories/edit/inventory-edit.js"></script>
+  <script src="app/inventories/feature/feature-edit.ctrl.js"></script>
+  <script src="app/inventories/feature/feature-new.ctrl.js"></script>
+  <script src="app/inventories/inventory.js"></script>
+  <script src="app/inventories/list/inventory-list.ctrl.js"></script>
+  <script src="app/inventories/new/inventory-new.js"></script>
+  <script src="app/inventories/plan/plan-edit.ctrl.js"></script>
+  <script src="app/inventories/plan/plan-new.ctrl.js"></script>
+  <script src="app/inventories/route/route-edit.ctrl.js"></script>
+  <script src="app/inventories/route/route-new.ctrl.js"></script>
+  <script src="app/inventories/service/service-new.ctrl.js"></script>
+  <script src="app/invoices/charge/charge.mdl.js"></script>
+  <script src="app/invoices/common/invoice-charge-status.mdl.js"></script>
+  <script src="app/invoices/common/invoice-open-status.mdl.js"></script>
+  <script src="app/invoices/common/invoice-status.mdl.js"></script>
+  <script src="app/invoices/common/invoice.mdl.js"></script>
+  <script src="app/invoices/common/invoice.svc.js"></script>
+  <script src="app/invoices/common/invoice.ui.js"></script>
+  <script src="app/invoices/invoices.js"></script>
+  <script src="app/invoices/list/invoice-list.ctrl.js"></script>
+  <script src="app/invoices/show/invoice-show.ctrl.js"></script>
+  <script src="app/main/main.controller.js"></script>
+  <script src="app/main/main.js"></script>
+  <script src="app/modules/common/module.mdl.js"></script>
+  <script src="app/modules/module.js"></script>
+  <script src="app/note/common/note.mdl.js"></script>
+  <script src="app/note/new/note-new.ctrl.js"></script>
+  <script src="app/order-services/common/order-service-missed-reason.mdl.js"></script>
+  <script src="app/order-services/common/order-service.mdl.js"></script>
+  <script src="app/order-services/date-history/date_history_list.ctrl.js"></script>
+  <script src="app/order-services/edit/order-service-edit.ctrl.js"></script>
+  <script src="app/order-services/order-services.js"></script>
+  <script src="app/orders/common/order-reject-reason.mdl.js"></script>
+  <script src="app/orders/common/order-status.mdl.js"></script>
+  <script src="app/orders/common/order-type.mdl.js"></script>
+  <script src="app/orders/common/order.mdl.js"></script>
+  <script src="app/orders/edit/order-edit.js"></script>
+  <script src="app/orders/list/order-list.ctrl.js"></script>
+  <script src="app/orders/new/order-new.js"></script>
+  <script src="app/orders/orders.js"></script>
+  <script src="app/orders/show/order-show.ctrl.js"></script>
+  <script src="app/performance/common/performance.js"></script>
+  <script src="app/performance/list/performance-list.ctrl.js"></script>
+  <script src="app/performance/performance.js"></script>
+  <script src="app/permissions/common/permission.mdl.js"></script>
+  <script src="app/permissions/edit/permissions-edit.ctrl.js"></script>
+  <script src="app/permissions/list/permissions-list.ctrl.js"></script>
+  <script src="app/permissions/new/permissions-new.ctrl.js"></script>
+  <script src="app/permissions/permissions.js"></script>
+  <script src="app/profile/password.ctrl.js"></script>
+  <script src="app/profile/profile.controller.js"></script>
+  <script src="app/projects/common/project-order.mdl.js"></script>
+  <script src="app/projects/common/project.mdl.js"></script>
+  <script src="app/projects/edit/project-edit.js"></script>
+  <script src="app/projects/list/project-list.ctrl.js"></script>
+  <script src="app/projects/new/project-new.js"></script>
+  <script src="app/projects/new/project-order-new.js"></script>
+  <script src="app/projects/projects.js"></script>
+  <script src="app/recon/common/recon.mdl.js"></script>
+  <script src="app/recon/list/recon-list.ctrl.js"></script>
+  <script src="app/recon/recon.js"></script>
+  <script src="app/reports/common/vendor.mdl.js"></script>
+  <script src="app/reports/my/my.ctrl.js"></script>
+  <script src="app/reports/reports.js"></script>
+  <script src="app/roles/common/role.mdl.js"></script>
+  <script src="app/roles/edit/role-edit.ctrl.js"></script>
+  <script src="app/roles/list/roles-list.ctrl.js"></script>
+  <script src="app/roles/new/role-new.ctrl.js"></script>
+  <script src="app/roles/roles.js"></script>
+  <script src="app/setting/common/setting.mdl.js"></script>
+  <script src="app/setting/list/setting-list.ctrl.js"></script>
+  <script src="app/setting/setting.js"></script>
+  <script src="app/sites/common/site-type.mdl.js"></script>
+  <script src="app/sites/common/site.mdl.js"></script>
+  <script src="app/sites/edit/site-edit.ctrl.js"></script>
+  <script src="app/sites/list/site-list.ctrl.js"></script>
+  <script src="app/sites/new/site-new.ctrl.js"></script>
+  <script src="app/sites/site.js"></script>
+  <script src="app/stat/common/stat.mdl.js"></script>
+  <script src="app/stat/stat.js"></script>
+  <script src="app/theme/common/theme.mdl.js"></script>
+  <script src="app/theme/schema.js"></script>
+  <script src="app/theme/theme.controller.js"></script>
+  <script src="app/tickets/common/ticket.mdl.js"></script>
+  <script src="app/tickets/edit/ticket-edit.ctrl.js"></script>
+  <script src="app/tickets/list/ticket-list.ctrl.js"></script>
+  <script src="app/tickets/new/ticket-new.ctrl.js"></script>
+  <script src="app/tickets/ticket.js"></script>
+  <script src="app/users/common/user-service.js"></script>
+  <script src="app/users/common/user.mdl.js"></script>
+  <script src="app/users/edit/user-edit.ctrl.js"></script>
+  <script src="app/users/list/user-list.ctrl.js"></script>
+  <script src="app/users/new/user-new.ctrl.js"></script>
+  <script src="app/users/users.js"></script>
+  <script src="app/utilization/common/utilization.js"></script>
+  <script src="app/utilization/list/utilization-list.ctrl.js"></script>
+  <script src="app/utilization/utilization.js"></script>
+  <script src="app/vendors/common/vendor.mdl.js"></script>
+  <script src="app/vendors/edit/vendor-edit.ctrl.js"></script>
+  <script src="app/vendors/list/vendor-list.ctrl.js"></script>
+  <script src="app/vendors/new/vendor-new.ctrl.js"></script>
+  <script src="app/vendors/vendors.js"></script>
+  <script src="components/account/account.js"></script>
+  <script src="components/actionbar/actionbar.controller.js"></script>
+  <script src="components/advanced-filter/advanced-filter.js"></script>
+  <script src="components/alert/alert.js"></script>
+  <script src="components/api/api.js"></script>
+  <script src="components/auth-token/auth-token.js"></script>
+  <script src="components/boolean/boolean.js"></script>
+  <script src="components/broadcast/broadcast.js"></script>
+  <script src="components/building/building.js"></script>
+  <script src="components/button/button.js"></script>
+  <script src="components/calendar-position/calendar-position.js"></script>
+  <script src="components/confirmation/confirmation.js"></script>
+  <script src="components/container/container.js"></script>
+  <script src="components/contract/contract.js"></script>
+  <script src="components/customer/customer.js"></script>
+  <script src="components/date-filter/date-filter.js"></script>
+  <script src="components/date/date.js"></script>
+  <script src="components/date/ui-grid-edit-datepicker.js"></script>
+  <script src="components/debounce/debounce.js"></script>
+  <script src="components/dialog/dialog.js"></script>
+  <script src="components/dictionary/dictionary-group.js"></script>
+  <script src="components/dictionary/dictionary.js"></script>
+  <script src="components/digits/digits.js"></script>
+  <script src="components/dispute/dispute.js"></script>
+  <script src="components/document-manager/document-grid.js"></script>
+  <script src="components/document-manager/document-manager.ctrl.js"></script>
+  <script src="components/employee/employee.js"></script>
+  <script src="components/enter/enter.js"></script>
+  <script src="components/flow/flow.js"></script>
+  <script src="components/focus/focus.js"></script>
+  <script src="components/form-layout/form-layout.js"></script>
+  <script src="components/gl-segment-value/gl-segment-value.js"></script>
+  <script src="components/grid-filter/grid-filter.js"></script>
+  <script src="components/grid-settings/grid-settings.js"></script>
+  <script src="components/grid/grid.js"></script>
+  <script src="components/history/history-controllers.ctrls.js"></script>
+  <script src="components/history/history-refresh.mdl.js"></script>
+  <script src="components/history/history.js"></script>
+  <script src="components/history/schema.js"></script>
+  <script src="components/html/safe-html.js"></script>
+  <script src="components/inventory/inventory.js"></script>
+  <script src="components/list-filter/list-filter.js"></script>
+  <script src="components/modal/modal.service.js"></script>
+  <script src="components/module/module.js"></script>
+  <script src="components/navbar/navbar.controller.js"></script>
+  <script src="components/note/note.js"></script>
+  <script src="components/number-filter/number-filter.js"></script>
+  <script src="components/order-service/order-service.js"></script>
+  <script src="components/order/order.js"></script>
+  <script src="components/page/page.js"></script>
+  <script src="components/pager/pager.js"></script>
+  <script src="components/permission/permission.js"></script>
+  <script src="components/project/project.js"></script>
+  <script src="components/quick-filter/quick-filter.js"></script>
+  <script src="components/repeat-while/repeat-while.js"></script>
+  <script src="components/reporting/reporting.js"></script>
+  <script src="components/role/role.js"></script>
+  <script src="components/setting/common-settings.js"></script>
+  <script src="components/setting/grid-settings-service.js"></script>
+  <script src="components/setting/lcma-setting.js"></script>
+  <script src="components/setting/settings-service.js"></script>
+  <script src="components/site/site.js"></script>
+  <script src="components/splitter/splitter.js"></script>
+  <script src="components/string-to-number/string-to-number.js"></script>
+  <script src="components/toggle-switch/toggle-switch.js"></script>
+  <script src="components/topbar/topbar.controller.js"></script>
+  <script src="components/user-popover/user-popover.js"></script>
+  <script src="components/user/user.js"></script>
+  <script src="components/util/util.js"></script>
+  <script src="components/vendor/vendor.js"></script>
+  <script src="components/wrapper/wrapper.js"></script>
+  <!-- endinjector -->
+  <!-- endbuild -->
+
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+
+
+</head>
+<body ng-app="lcma" ng-controller="MasterCtrl" ng-class="$lcmaPage.getBodyClass()" ng-cloak>
+<div ui-view="master" style="position:absolute;top:0;right:0;bottom: 0;left: 0; min-height: 600px;"></div>
+</body>
+</html>

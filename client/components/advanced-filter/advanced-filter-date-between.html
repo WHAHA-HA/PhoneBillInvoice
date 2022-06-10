@@ -1,0 +1,21 @@
+<input type="text" lcma-calendar-position name="start-date-field"
+       uib-datepicker-popup
+       is-open="from.isOpen"
+       class="form-control"
+       ng-required="true"
+       max-date="model.to"
+       ng-model="model.from"
+       name="filter_from"
+       ng-click="from.isOpen=true"
+       ng-change="onModelChange(model)">
+<span> - </span>
+<input type="text" lcma-calendar-position name="end-date-field"
+       uib-datepicker-popup
+       is-open="to.isOpen"
+       ng-required="true"
+       class="form-control"
+       name="filter_to"
+       min-date="model.from"
+       ng-model="model.to"
+       ng-click="to.isOpen=true"
+       ng-change="onModelChange(model)">

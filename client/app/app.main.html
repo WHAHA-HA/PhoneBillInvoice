@@ -1,0 +1,28 @@
+<div class="app-layout">
+  <div class="app-sidebar" rebuild-on="rebuild:me" rebuild-on-resize>
+    <div class="app-sidebar-body" ng-scrollbar>
+      <header>
+        <div class="app-logo"></div>
+        <div class="app-logo-min"></div>
+      </header>
+      <div class="app-nav" ng-include="'components/navbar/navbar.html'"></div>
+    </div>
+    <div class="btn-toggle-nav">
+      <a class="btn pull-right" ng-click="toggleSidebar()">
+        <i ng-if="!$layout.minimized" class="fa fa-chevron-left"></i>
+        <i ng-if="$layout.minimized" class="fa fa-chevron-right"></i>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- Topbar -->
+  <div class="app-topbar" ng-include="'components/topbar/topbar.html'"></div>
+  <!-- Topbar -->
+  <!--  <div class="app-titlebar">
+      <h4 ng-bind-html="$lcmaPage.getTitle()"></h4>
+    </div>-->
+
+  <!-- Add your site or application content here -->
+  <div ui-view="main" class="app-body"></div>
+</div>

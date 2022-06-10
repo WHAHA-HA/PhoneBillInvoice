@@ -1,0 +1,172 @@
+<ng-include src="'app/order-services/forms/order-service-common.html'"></ng-include>
+
+<div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Int Svc ID</label>
+        <div class="col-sm-8">
+            <input name="int_svc_id" ng-model="ctx.inventory.int_svc_id" type="text" class="form-control">
+            <div ng-messages="ServiceForm.int_svc_id.$error" ng-show="ServiceForm.int_svc_id.$touched" role="alert">
+                <div ng-message="required">You didn't enter Internal Service Id</div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">2nd SP ID</label>
+        <div class="col-sm-8">
+            <input name="second_sp_id" ng-model="ctx.inventory.second_sp_id" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Status</label>
+        <div class="col-sm-8">
+            <lcma-dictionary-picker type-key='inventory-status' name="status" ng-model="ctx.inventory.status_id"
+                                    ></lcma-dictionary-picker>
+        </div>
+    </div>
+</div>
+
+<div class="row"> 
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">BAN</label>
+        <div class="col-sm-8">
+            <input name="ban" ng-model="ctx.inventory.ban" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">SP BTN</label>
+        <div class="col-sm-8">
+            <input name="sp_btn" ng-model="ctx.inventory.sp_btn" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Svc Type</label>
+        <div class="col-sm-8">
+            <lcma-dictionary-picker type-key='inventory-svc-type' name="svc_type" ng-model="ctx.inventory.svc_type_id" ></lcma-dictionary-picker>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Technology</label>
+        <div class="col-sm-8">
+            <lcma-dictionary-picker type-key='inventory-technology' name="technology"
+                                    ng-model="ctx.inventory.technology_id"
+                                    ></lcma-dictionary-picker>
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Fac BW</label>
+        <div class="col-sm-8">
+            <input name="fac_bw" ng-model="ctx.inventory.fac_bw" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">IP Shared Trk</label>
+        <div class="col-sm-8">
+            <input name="ip_shared_trk" ng-model="ctx.inventory.ip_shared_trk" type="text" class="form-control">
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Conc Calls</label>
+        <div class="col-sm-8">
+            <input name="conc_calls" ng-model="ctx.inventory.conc_calls" type="number" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Site</label>
+        <div class="col-sm-8">
+            <lcma-site-picker name="site" site-id="ctx.inventory.site_id"></lcma-site-picker>
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Contract ID</label>
+        <div class="col-sm-8">
+            <lcma-contract-picker ng-model="ctx.inventory.contract_id"></lcma-contract-picker>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Term</label>
+    <div class="col-sm-8">
+      <input name="term" ng-model="ctx.inventory.term" type="text" class="form-control">
+    </div>
+  </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Exp Date</label>
+        <div class="col-sm-8">
+            <input
+                uib-datepicker-popup="MM/dd/yyyy"
+                ng-model="ctx.inventory.exp_date"
+                name="exp_date"
+                placeholder="Exp Date"
+                class="form-control input-sm"
+                is-open="ctx.exp_date_ui.opened"
+                ng-click="ctx.exp_date_ui.opened = true"
+                >
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Disc Date</label>
+        <div class="col-sm-8">
+            <input
+                uib-datepicker-popup="MM/dd/yyyy"
+                ng-model="ctx.inventory.disc_date"
+                name="disc_date"
+                placeholder="Disc Date"
+                class="form-control"
+                is-open="ctx.disc_date_ui.opened"
+                ng-click="ctx.disc_date_ui.opened = true"
+                >
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Prim/Failover</label>
+        <div class="col-sm-8">
+            <lcma-dictionary-picker type-key='inventory-prim-failover' name="prim_failover"
+                                    ng-model="ctx.inventory.prim_failover_id"
+                                    ></lcma-dictionary-picker>
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Fail Rel Svc</label>
+        <div class="col-sm-8">
+            <input name="fail_rel_svc" ng-model="ctx.inventory.fail_rel_svc" type="text" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+        <label class="col-sm-4 custom-control-label">Rel Svc</label>
+        <div class="col-sm-8">
+            <input name="rel_svc" ng-model="ctx.inventory.rel_svc" type="text" class="form-control" />
+        </div>
+    </div>
+</div>
+
+
+

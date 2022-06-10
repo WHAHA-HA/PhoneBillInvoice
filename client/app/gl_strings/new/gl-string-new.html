@@ -1,0 +1,58 @@
+<div>
+  <div class="modal-body">
+    <form name="GlStringForm" class="form-horizontal form-cozy">
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">GL String Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="2">
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Date Added</lcma-form-label>
+              <lcma-control-container>
+                <input class="form-control"
+                       uib-datepicker-popup disabled
+                       ng-model="glstring.date_added"
+                       is-open="approve_date.opened"
+                       ng-click="approve_date.opened = true"
+                       name="approve_date">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>GL Code Type</lcma-form-label>
+              <lcma-control-container>
+                <select type="text" class="form-control" ng-model="glstring.gl_code_type">
+                  <option value="Verified" label="Verified"></option>
+                  <option value="Non-verified" label="Non-verified"></option>
+                </select>
+              </lcma-control-container>
+            </lcma-form-group>
+            <lcma-form-group label-size="3">
+              <lcma-form-label>GL Status</lcma-form-label>
+              <lcma-control-container class="text-left">
+                <toggle-switch on-label="Active" off-label="Inactive" ng-model="glstring.status"></toggle-switch>
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+
+          <lcma-form-layout columns="2" ng-if="segments.length > 0">
+            <lcma-form-group label-size="3" ng-repeat="segment in segments">
+              <lcma-form-label>{{segment.value}}</lcma-form-label>
+              <lcma-control-container>
+                <lcma-gl-segment-value-picker ng-model="glstring[segment.custom_key]" required="required"
+                                              segment="{{segment.key}}">
+                </lcma-gl-segment-value-picker>
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create(GlStringForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

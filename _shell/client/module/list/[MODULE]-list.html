@@ -1,0 +1,33 @@
+<div class="app-body-content app-body-with-toolbar">
+  <div class="app-toolbar row">
+    <div class="col-sm-6">
+      <div>
+        <span class="btn-group dropdown" uib-dropdown>
+          <a class="btn btn-default dropdown-toggle" uib-dropdown-toggle>
+            Actions
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" class="uib-dropdown-menu" aria-labelledby="invoice-actions-dropdown">
+
+            <li><a ng-click="ctx.addSite()"><i class="fa fa-user-plus"></i> &nbsp;Add Site</a></li>
+            <li><a ng-click="ctx.exportToCSV()"><i class="fa fa-file-excel-o"></i> &nbsp;Export to CSV</a></li>
+          </ul>
+        </span>
+
+        <a ng-click="ctx.clearFilters()" class="btn btn-default">
+          <i class="icon-filter-clear"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+      <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+      <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+
+    </div>
+
+  </div>
+  <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+  <div class="grid app-data app-data-grid mar-all" ui-grid="ctx.gridOptions" ui-grid-selection ui-grid-exporter ui-grid-pinning ui-grid-resize-columns></div>
+</div>

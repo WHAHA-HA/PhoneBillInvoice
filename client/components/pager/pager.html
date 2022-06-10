@@ -1,0 +1,17 @@
+<div class="btn-group lcma-pager">
+  <a class="btn btn-default" ng-click="pager.prev()" ng-disabled="!pager.canPrev()">
+    <span class="fa fa-arrow-left"></span>
+  </a>
+  <span class="btn btn-default" uib-dropdown>
+    <a uib-dropdown-toggle="">
+      {{pager.page}} of {{pager.totalPages()}}
+    </a>
+    <ul class="dropdown-menu">
+      <li ng-click="pager.go(p)" ng-repeat="p in pager.pages()"><a>{{p}}</a></li>
+    </ul>
+
+  </span>
+  <a class="btn btn-default" ng-click="pager.next()" ng-disabled="!pager.canNext()">
+    <span class="fa fa-arrow-right"></span>
+  </a>
+</div>

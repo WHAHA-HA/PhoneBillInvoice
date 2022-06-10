@@ -1,0 +1,22 @@
+<span>
+    <span ng-if="!properties" disabled="disabled" class="form-control">{{context.property.name}}</span>
+
+    <select class="form-control" ng-if="properties"
+            ng-model="context.property"
+            ng-required="true"
+            name="property"
+            ng-options="property as property.name for property in properties">
+        <option value="">Select Property</option>
+    </select>
+
+    <select class="form-control"
+            ng-if="context.property || !properties"
+            ng-required="true"
+            name="operator"
+            ng-model="context.operator"
+            ng-options="operator as operator.title for operator in operators[context.property.type]">
+    </select>
+    <lcma-advanced-filter-editor ng-if="context.operator.editor"
+                                 editor="{{context.operator.editor}}"
+                                 ng-model="context.value"></lcma-advanced-filter-editor>
+</span>

@@ -1,0 +1,139 @@
+<div class="row mar-b">
+    <div class="col-sm-4 text-right">
+        Select Site
+    </div>
+    <!--<div class="col-sm-5 text-right">-->
+    <!--<ui-select ng-model="selection.value"-->
+               <!--on-select="onSelect($item, $model)">-->
+      <!--<ui-select-match>-->
+        <!--<span ng-bind="$select.selected.site_id"></span>-->
+      <!--</ui-select-match>-->
+      <!--<ui-select-choices repeat="site in (sites | filter: $select.search) track by site.id">-->
+        <!--<span ng-bind="site.site_id"></span>-->
+      <!--</ui-select-choices>-->
+    <!--</ui-select>-->
+    <!--</div>-->
+    <!--<div class="col-sm-3 text-left form-inline">-->
+      <!--<div class="btn-group">-->
+        <!--<span class="input-group-addon" ng-click="searchSite()"><i class="fa fa-search"></i></span>-->
+        <!--<span class="input-group-addon" ng-click="addSite()"><i class="fa fa-plus"></i></span>-->
+      <!--</div>-->
+<!--</div>-->
+
+    <div class="col-sm-7">
+        <ol id="dynamic-options" class="nya-bs-select" ng-model="selection.value"  data-live-search="true"  data-size="8" title="Select ...">
+            <li nya-bs-option="site in sites" data-value="site">
+                <a>{{ site.site_id }}</a>
+            </li>
+           <li class="btn-group btn-group-justified custom-picker-options-space"></li>
+            <li class="btn-group btn-group-justified custom-picker-options">
+                <a class="btn btn-default" ng-click="addSite()"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-default" ng-click="searchSite()"><i class="fa fa-search"></i></a>
+            </li>
+        </ol>
+    </div>
+
+</div>
+
+<div ng-if="preview">
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Floor/Room
+        </div>
+        <div class="col-sm-7">
+            <div class="col-sm-6">
+                <input name="id" class="form-control" ng-model="site.floor" type="text" readonly>
+            </div>
+            <div class="col-sm-6">
+                <input name="id" ng-model="site.room" type="text" readonly
+                 class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <!--  <div class="row mar-b">
+    <div class="col-sm-4 text-right">
+      Site Type
+    </div></a>
+    <div class="col-sm-7 text-left">
+      <input name="id" ng-model="site.site_type" type="text" readonly
+             class="form-control">
+    </div>
+  </div>-->
+
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Addr1
+        </div>
+        <div class="col-sm-7 text-left">
+            <input name="id" ng-model="site.building.addr_1" type="text" readonly
+                class="form-control">
+        </div>
+    </div>
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Addr2
+        </div>
+        <div class="col-sm-7 text-left">
+            <input name="id" ng-model="site.building.addr_2" type="text" readonly
+                class="form-control">
+        </div>
+    </div>
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Addr3
+        </div>
+        <div class="col-sm-7 text-left">
+            <input name="id" ng-model="site.building.addr_3" type="text" readonly
+                class="form-control">
+        </div>
+    </div>
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            City, St, Zip
+        </div>
+        <div class="col-sm-7 text-left">
+                <input name="city" ng-model="site.building.addr_city" type="text" readonly
+                class="form-control city">
+                <input name="state" ng-model="site.building.addr_state" type="text" readonly
+                class="form-control state">
+                <input name="zip" ng-model="site.building.addr_zip" type="text" readonly
+                class="form-control zip">
+            </div>
+        </div>
+
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Equipment
+        </div>
+        <div class="col-sm-7">
+
+            <ol id="equipment-options" class="nya-bs-select" ng-model="selectedEquipment.value"  data-live-search="true"  data-size="8" title="Select ...">
+                <li nya-bs-option="item in site.equipments" data-value="item">
+                    <a>{{ item.equip_type}}</a>
+                </li>
+                <!--<li class="btn-group btn-group-justified">-->
+                  <!--<a class="btn btn-default" ng-click="addEquipment()"><i class="fa fa-plus"></i></a>-->
+                  <!--<a class="btn btn-default" ng-click="searchEquipment()"><i class="fa fa-search"></i></a>-->
+                <!--</li>-->
+            </ol>
+        </div>
+    </div>
+    <div class="row mar-b">
+        <div class="col-sm-4 text-right">
+            Equipment Interface
+        </div>
+        <div class="col-sm-7">
+
+            <ol id="equipment-interface-options" class="nya-bs-select" ng-model="selectedEquipmentInterface.value"  data-live-search="true"  data-size="8" title="Select ...">
+                <li nya-bs-option="item in selectedEquipment.value.equipment_interfaces" data-value="item">
+                    <a>{{ item.interface_type}}</a>
+                </li>
+                <!--<li class="btn-group btn-group-justified">-->
+                <!--<a class="btn btn-default" ng-click="addEquipment()"><i class="fa fa-plus"></i></a>-->
+                <!--<a class="btn btn-default" ng-click="searchEquipment()"><i class="fa fa-search"></i></a>-->
+                <!--</li>-->
+            </ol>
+        </div>
+    </div>
+</div>

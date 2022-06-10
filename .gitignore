@@ -1,0 +1,12 @@
+node_modules
+public
+.tmp
+.sass-cache
+.idea
+client/vendor
+dist
+_cdn/*
+aws-credentials.json
+/server/config/local.env.js
+npm-debug.log
+development.js

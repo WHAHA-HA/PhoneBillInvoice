@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h4 class="modal-title">Set Document</h4>
+</div>
+<div class="modal-body">
+  <form name="DocumentForm" class="form-horizontal clearfix">
+
+    <div class="push-15 text-center" ng-if="!data.files.type">
+
+      <button class="btn btn-default"
+              ngf-select="setFiles($files)"
+              name="files">Select File
+      </button>
+      <p>or</p>
+      <div ngf-drop="setFiles($files)"
+           class="drop-box"
+           ngf-drag-over-class="'dragover'"
+           ngf-multiple="false">
+        Drop it here
+
+      </div>
+      <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+    </div>
+    <div class="push-15 text-center" ng-if="data.files.type">
+      <p class="push-15">
+        You selected
+      </p>
+      <p class="text-success push-15">
+        {{data.files.name}}
+      </p>
+      <div class="progress">         
+        <span ng-style="data.progressStyle" class="text-center">
+
+        </span>
+      </div>
+      <p class="text-success push-15">
+            {{progressMessage}}
+      </p>
+      <p>
+        <button type="button" ng-disabled="data.progress" class="btn btn-default" ng-click="data.files = null">Change</button>
+      </p>
+    </div>
+      <div ng-hide='noteHidden'>
+          <label>Description</label>
+          <textarea ng-model="data.description" class="form-control"></textarea>
+      </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-disabled="!data.files.type" ng-click="upload(DocumentForm)">
+    Upload
+  </button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

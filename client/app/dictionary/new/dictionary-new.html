@@ -1,0 +1,86 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Create New Dictionary Entry</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+    <form name="DictionaryForm" class="form-horizontal form-cozy" id="DictionaryForm">
+
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Dictionary Entry</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="1">
+            <lcma-form-group>
+              <lcma-form-label>Group</lcma-form-label>
+              <lcma-control-container>
+                <lcma-dictionary-group-picker ng-model="dictionary.group" name="group" id="group"
+                                              required="true"></lcma-dictionary-group-picker>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Custom Key</lcma-form-label>
+              <lcma-control-container>
+                <input class="form-control"
+                       ng-model="dictionary.custom_key"
+                       name="custom_key">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Value</lcma-form-label>
+              <lcma-control-container>
+                <input class="form-control"
+                       ng-model="dictionary.value"
+                       name="value"
+                       ng-required="true">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Abbreviation</lcma-form-label>
+              <lcma-control-container>
+                <input class="form-control"
+                       ng-model="dictionary.abbreviation"
+                       name="abbreviation">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Quick Filter</lcma-form-label>
+              <lcma-control-container>
+                <div class="col-md-7" style="margin-bottom: 10px;">
+                  <label class="custom-control-label col-xs-6 text-right" style="padding-top:6px;">Background</label>
+                  <div style="border:1px solid #ccc;border-radius:4px; height: 30px;" class="col-xs-6">
+                    <button colorpicker type="button" colorpicker-position="top"
+                            class="btn  col-xs-3" ng-style="{'background-color':dictionary.color.background}"
+                            ng-model="dictionary.color.background" name="background_color"
+                            style="height: 20px;border-radius:4px; margin-top:4px"></button>
+                    <input type="text" class="col-xs-9" style="border:none; margin-top: 4px;" maxlength="7"
+                           ng-app="" ng-model="dictionary.color.background"/>
+                  </div>
+                </div>
+                <div class="col-md-5" style="margin-bottom: 10px;">
+                  <label class="custom-control-label col-xs-3 text-right" style="padding-top:6px;padding-left: 0px;">Font</label>
+                  <div style="border:1px solid #ccc;border-radius:4px; height: 30px;" class="col-xs-9">
+                    <button colorpicker type="button" colorpicker-position="top"
+                            class="btn  col-xs-3" ng-style="{'background-color':dictionary.color.color}"
+                            ng-model="dictionary.color.color" name="font_color"
+                            style="height: 20px;border-radius:4px; margin-top:4px"></button>
+                    <input type="text" class="col-xs-9" style="border:none; margin-top: 4px;" maxlength="7"
+                           ng-app="" ng-model="dictionary.color.color"/>
+                  </div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+          </lcma-form-layout>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="create(DictionaryForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

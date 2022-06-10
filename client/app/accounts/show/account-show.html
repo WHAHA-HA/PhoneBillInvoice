@@ -1,0 +1,155 @@
+<div class="app-body-content app-body-with-toolbar">
+    <div class="app-toolbar">
+    </div>
+    <div class="app-data app-data-space invoice-facepage">
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix"><h2>Account Header Info</h2></div>
+            <div class="panel-body">
+                <form name="AccountForm" class="form-horizontal" id="AccountForm">
+                    <div class="col-lg-9">
+                        <lcma-form-layout columns="2">
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>Account:</lcma-form-label>
+                                <lcma-control-container>
+                                    <input class="form-control text-right"
+                                           ng-model="ctx.account.account_no"
+                                           name="account_no"
+                                           ng-required="true">
+                                </lcma-control-container>
+                            </lcma-form-group>
+
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>Vendor:</lcma-form-label>
+                                <lcma-control-container>
+                                    <lcma-vendor-picker ng-model="ctx.account.vendor_id" required="required" name="vendor_id" id="vendor_id"></lcma-vendor-picker>
+                                </lcma-control-container>
+                            </lcma-form-group>
+
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>Late Bill Log Days:</lcma-form-label>
+                                <lcma-control-container>
+                                    <input class="form-control text-right"
+                                           ng-model="ctx.account.late_bill_log_days"
+                                           name="bill_log_days"
+                                           ng-required="false">
+                                </lcma-control-container>
+                            </lcma-form-group>
+
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>Vendor Alias:</lcma-form-label>
+                                <lcma-control-container>
+                                    <input class="form-control text-right"
+                                           ng-model="ctx.account.vendor_alias"
+                                           name="vendor_alias"
+                                           ng-required="false">
+                                </lcma-control-container>
+                            </lcma-form-group>
+
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>AP Vendor ID:</lcma-form-label>
+                                <lcma-control-container>
+                                    <input class="form-control text-right"
+                                           ng-model="ctx.account.ap_vendor_id"
+                                           name="ap_vendor_id"
+                                           ng-required="false">
+                                </lcma-control-container>
+                            </lcma-form-group>
+
+                            <lcma-form-group label-size="4">
+                                <lcma-form-label>Bill Cycle:</lcma-form-label>
+                                <lcma-control-container>
+                                    <input class="form-control text-right"
+                                           ng-model="ctx.account.billing_cycle"
+                                           name="bill_cycle"
+                                           ng-required="true">
+                                </lcma-control-container>
+                            </lcma-form-group>
+                        </lcma-form-layout>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="row text-right">
+                            <button class="btn btn-primary" style="margin-right: 15px; margin-top: 10px;" type="submit"
+                                    ng-click="ctx.saveAccount(AccountForm)">Save</button>
+                        </div>
+                        <br>
+                        <div class="row text-right">
+                            <toggle-switch on-label="Active" off-label="Inactive"  ng-click="ctx.changeStatus()"
+                                           style="margin-right: 15px; margin-top: 10px;"
+                                           ng-model="ctx.account_status_id"></toggle-switch>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Invoice Trend</h2>
+            </div>
+            <div class="panel-body">
+                <lcma-reporting report="invoice_trend_by_account&'account':'{{ctx.account.account_no}}'"></lcma-reporting>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Loaded Invoices</h2>
+            </div>
+            <div class="panel-body">
+                <div class="clearfix">
+                    <div class="pull-right mar-b">
+                        <a ng-click="ctx.clearInvoicesFilters()" class="btn btn-default">
+                            <i class="icon-filter-clear"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div style="height: 250px;" class="grid" ui-grid="ctx.invoicesGrid" ui-grid-selection ui-grid-exporter
+                     ui-grid-resize-columns lcma-no-data-message></div>
+            </div>
+        </div>
+
+        <div class="panel panel-default panel-related">
+            <div class="panel-heading clearfix">
+                <h2>Related Items</h2>
+            </div>
+            <div class="panel-body">
+                <uib-tabset>
+                    <uib-tab heading="Notes">
+                        <div class=" clearfix">
+                            <button type="button"
+                                    class="btn btn-default pull-right"
+                                    ng-click="ctx.addNote()">Add Note
+                            </button>
+                        </div>
+                        <div ng-repeat="note in ctx.notes"
+                             class="mar-t"
+                             id="note_{{note.id}}"
+                             lcma-focus-on="note_{{note.id}}">
+
+                            <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+
+                            </lcma-note-list>
+
+                        </div>
+
+                        <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this account.</div>
+
+                    </uib-tab>
+
+                    <uib-tab index="1" heading="History">
+                        <lcma-history entity_type="account@{{ctx.account.id}}"></lcma-history>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>

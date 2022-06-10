@@ -1,0 +1,53 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Create Content Filter</h4>
+  </div>
+  <div class="modal-body">
+    <form name="FilterForm" class="form-horizontal form-cozy" id="FilterForm">
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Filter Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="1">
+            <lcma-form-group label-size="2">
+              <lcma-form-label>Module</lcma-form-label>
+              <lcma-control-container>
+                <lcma-module-picker ng-model="filter.module" ng-class="form - control" name="module" id="module"></lcma-module-picker>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="2" class="pad-10-b separator-h">
+              <lcma-form-label>Title</lcma-form-label>
+              <lcma-control-container>
+                <input type="text" ng-model="filter.title" class="form-control" ng-required="true" name="title">
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+        </div>
+      </div>
+      <div class="panel panel-alternate" ng-if="filter.module">
+        <div class="panel-heading">
+          <div class="panel-title">Filter Setup</div>
+        </div>
+        <div class="panel-body form-inline">
+          <lcma-advanced-filter properties="filter.module.properties"
+                                ng-model="filter.context"></lcma-advanced-filter>
+
+          <div ng-if="!filter.module" class="text-center text-muted mar-t">
+            <p>
+              Select module to get list of available properties.
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button ng-disabled="!FilterForm.$valid" class="btn btn-primary" type="button" ng-click="create(FilterForm)">Create
+      Filter
+    </button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

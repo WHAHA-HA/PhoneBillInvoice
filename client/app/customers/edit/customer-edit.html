@@ -1,0 +1,104 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Update Customer</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+        <form name="CustomerForm" class="form-horizontal form-cozy" id="CustomerForm">
+          <div class="panel panel-alternate">
+            <div class="panel-heading">
+              <div class="panel-title">Customer Info</div>
+            </div>
+            <div class="panel-body">
+              <lcma-form-layout columns="2">
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Company</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" name="company" ng-model="customer.company" type="text"
+                           class="form-control">
+                    <div ng-messages="CustomerForm.company.$error" ng-show="CustomerForm.company.$touched" role="alert">
+                      <div ng-message="required">You didn't enter Company.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Office Phone</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="false" name="office_phone" placeholder="Office Number" type="text"
+                           class="form-control"
+                           ng-model="customer.office_phone">
+                  </lcma-control-container>
+                </lcma-form-group>
+
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Address 1</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" name="address1" type="text" class="form-control"
+                           ng-model="customer.address1">
+                    <div ng-messages="CustomerForm.address1.$error" ng-show="CustomerForm.address1.$touched" role="alert">
+                      <div ng-message="required">Please provide Address 1.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Address 2</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="false" name="address2" type="text" class="form-control"
+                           ng-model="customer.address2">
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Address 3</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="false" name="address3" type="text" class="form-control"
+                           ng-model="customer.address3">
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>City</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" placeholder="City" name="city" type="text" class="form-control"
+                           ng-model="customer.city">
+                    <div ng-messages="CustomerForm.city.$error" ng-show="CustomerForm.city.$touched" role="alert">
+                      <div ng-message="required">Required</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>State</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" placeholder="State" name="state" type="text" class="form-control"
+                           ng-model="customer.state">
+                    <div ng-messages="CustomerForm.state.$error" ng-show="CustomerForm.state.$touched" role="alert">
+                      <div ng-message="required">Required</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group label-size="3">
+                  <lcma-form-label>Zip</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" placeholder="Zip" name="zip" type="text" class="form-control"
+                           ng-model="customer.zip">
+                    <div ng-messages="CustomerForm.zip.$error" ng-show="CustomerForm.zip.$touched" role="alert">
+                      <div ng-message="required">Required</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+              </lcma-form-layout>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="update(CustomerForm)">Update</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

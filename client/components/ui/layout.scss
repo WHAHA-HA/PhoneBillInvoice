@@ -1,0 +1,773 @@
+
+.app-layout {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+
+    .app-sidebar {
+        width: $app-sidebar-width;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $app-sidebar-bg-color;
+        overflow: hidden;
+        overflow-y: hidden;
+        z-index: 99;
+
+        .app-sidebar-body {
+            position: absolute;
+            top: 0;
+            bottom: 31px;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+
+        .btn-toggle-nav {
+            position: absolute;
+            height: 31px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+            border-top: solid 1px $brand-dark-secondary-color;
+
+            .btn {
+                width: 50px;
+                color: #FFF;
+            }
+        }
+
+        i.module-icon {
+            margin-right: 15px;
+            display: inline-block;
+            width: 14px;
+            font-size: 15px !important;
+        }
+
+        .panel {
+            border: 0;
+            margin: 0;
+            border-radius: 0;
+            background: transparent;
+
+        }
+
+        .pane-group {
+            margin-bottom: 0;
+        }
+
+        .panel-group .panel-heading + .panel-collapse .panel-body {
+            border-top: 0;
+            background-color: $brand-dark-secondary-color;
+        }
+
+        .panel-title {
+            padding: $small-padding;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .panel-body {
+            border-radius: 0;
+            border: 0;
+            background: transparent;
+
+            padding: $default-padding $default-padding $default-padding 30px;
+
+            .nav-sub {
+                padding-left: 10px;
+            }
+        }
+
+        .panel-heading {
+            background-color: $app-sidebar-bg-color;
+            border: 0;
+            padding: $default-padding;
+
+            a,
+            a:link,
+            a:visited,
+            a:hover,
+            a:active,
+            a:focus {
+
+                text-decoration: none;
+                color: $app-sidebar-color;
+            }
+
+            i {
+                font-weight: 100;
+            }
+
+        }
+
+        .accordion-toggle {
+            outline: none;
+        }
+
+        header {
+            background-color: $brand-dark-secondary-color;
+            height: $app-topbar-height;
+            border: 0;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        .app-logo {
+            width: 100%;
+            height: $app-topbar-height;
+            background-image: url($brand-logo-url);
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .app-logo-min {
+            width: 100%;
+            height: $app-topbar-height;
+            background-image: url($brand-logo-min-url);
+            background-position: left center;
+            background-repeat: no-repeat;
+        }
+
+        .app-nav {
+
+            .nav .nav-sub li a {
+                padding-left: 50px;
+                font-size: .9em;
+            }
+
+            .nav > li > a,
+            .nav > li > a:hover,
+            .nav > li.active > a {
+                color: $app-sidebar-color;
+
+                padding: 5px 0 5px 15px;
+
+                i {
+                    margin-right: 15px;
+                    display: inline-block;
+                    width: 14px;
+                }
+            }
+
+            .nav > li > a:focus {
+                background-color: transparent;
+                outline: none;
+            }
+
+            .nav > li > a:hover,
+            .nav > li > a:active {
+                background-color: $brand-dark-secondary-color;
+                color: $brand-neutral-color;
+            }
+
+            .nav > li.active ul {
+                background-color: $brand-dark-secondary-color;
+
+                li > a,
+                li > a:hover,
+                li > a:focus,
+                li > a:hover,
+                li > a:active,
+                li > a:focus,
+                li.active > a {
+                    background-color: $brand-dark-secondary-color;
+                    color: $brand-neutral-color;
+                }
+            }
+        }
+    }
+
+    .app-client-logo {
+        width: 100px;
+        height: 55px;
+        background-image: url($brand-client-logo-url);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: solid 1px $brand-gray-neutral;
+        margin: 10px 10px 0 0;
+    }
+
+    .app-topbar {
+        position: absolute;
+        background-color: $app-topbar-bg-color;
+        height: $app-topbar-height;
+        border-bottom: solid 1px $brand-gray-neutral;
+        top: 0;
+        right: 0;
+        left: $app-sidebar-width;
+        box-sizing: border-box;
+        padding: 5px 10px 12px;
+
+        h4 {
+            font-size: 13px;
+            font-weight: 400;
+            color: $brand-dark-color;
+            line-height: 25px;
+        }
+    }
+
+    .app-titlebar {
+        position: absolute;
+        background-color: $app-titlebar-bg-color;
+        height: $app-titlebar-height;
+        border-bottom: solid 1px $brand-gray-neutral;
+        top: $app-topbar-height;
+        right: 0;
+        left: $app-sidebar-width;
+        box-sizing: border-box;
+        padding: 8px 10px;
+        /* color: #FFF;*/
+
+        h4 {
+            font-size: 13px;
+            font-weight: 400;
+            color: $brand-dark-color;
+        }
+    }
+
+    .app-toolbar {
+        background-color: $app-toolbar-bg-color;
+        height: $app-toolbar-height;
+        border-bottom: solid 1px $brand-gray-neutral;
+        box-sizing: border-box;
+        padding: $default-padding;
+        min-width: $app-toolbar-min-width;
+    }
+
+    .app-body {
+        z-index: 11;
+        position: absolute;
+        top: $app-topbar-height + $app-titlebar-height;
+        bottom: 0;
+        right: 0;
+        left: $app-sidebar-width;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: $app-body-bg-color;
+
+        * {
+            /*font-size: .97em;*/
+        }
+
+        .app-body-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #eeeeee;
+            width: 100%;
+            overflow-x: auto;
+
+            .app-data {
+                position: absolute;
+                //margin: 15px;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                overflow: auto;
+                //border: solid 1px $brand-gray-neutral;
+
+                &.app-data-space {
+                    padding: $default-padding;
+                }
+            }
+
+            .app-data-grid {
+                overflow: hidden !important;
+            }
+        }
+    }
+
+    .app-body-content.app-body-with-toolbar .app-data {
+        top: $app-toolbar-height;
+        min-width: 870px;
+    }
+
+    .layout-split.app-body-with-toolbar {
+
+        .app-toolbar {
+            position: absolute;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .ui-splitbar {
+            background-color: #FAFAFA;
+            border-bottom: solid 1px #D4D4D4;
+        }
+
+    }
+
+    .layout-split {
+        overflow: hidden !important;
+        .ui-grid-render-container {
+            height: 100%;
+
+            .ui-grid-viewport {
+                height: 100% !important;
+            }
+        }
+
+        .split-panes.vertical {
+            .ui-grid-render-container {
+                height: 100%;
+
+                .ui-grid-viewport {
+                    height: 80% !important;
+                }
+            }
+        }
+
+        .app-modal-width {
+            width: auto;
+        }
+
+        .modal-header {
+            display: none;
+        }
+
+        .modal-body {
+            padding: 0;
+
+            .panel {
+                margin: 15px;
+            }
+        }
+
+        .modal-footer {
+            border-top: 0;
+        }
+
+        .app-body-content {
+            top: 10px;
+        }
+    }
+}
+
+.panel-compact {
+    margin-bottom: 10px;
+    .panel-body {
+        padding: 0;
+
+        .panel-body-wrap {
+            padding: 30px;
+        }
+    }
+}
+
+.ui-splitbar {
+    .glyphicon {
+        color: #444;
+    }
+}
+
+/**
+  LOGIN
+*/
+
+.login-body {
+    background-color: $brand-dark-color;
+
+    .container {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    h1 {
+        border-bottom: 1px solid $brand-gray-neutral;
+        padding: 25px;
+        margin: 0;
+    }
+
+    .app-logo {
+        margin-top: 25px;
+        width: 100%;
+        height: 65px;
+        background-image: url($brand-logo-lg-url);
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .form {
+        width: 500px;
+        background-color: $brand-content-bg-color;
+        margin: 50px auto;
+        border-radius: 6px;
+
+        .form-content {
+            padding: 50px 30px;
+        }
+
+    }
+
+}
+
+.sidebar-min {
+    .app-sidebar {
+        width: $app-sidebar-min-width;
+    }
+
+    .app-body {
+        left: $app-sidebar-min-width;
+    }
+
+    .app-topbar {
+        left: $app-sidebar-min-width;
+    }
+
+    .app-titlebar {
+        left: $app-sidebar-min-width;
+    }
+
+    .navigation {
+
+        .caption {
+            display: none;
+        }
+    }
+
+    .panel-open {
+        .panel-collapse {
+            display: none;
+        }
+    }
+
+    .app-logo {
+        display: none;
+    }
+
+    .app-logo-min {
+        display: block;
+    }
+}
+
+.sidebar-hover {
+    .app-sidebar {
+        width: $app-sidebar-width;
+    }
+
+    .navigation {
+        .caption {
+            display: inline-block;
+        }
+    }
+
+    .panel-open {
+        .panel-collapse {
+            display: block;
+        }
+    }
+
+    .app-logo {
+        display: block;
+    }
+
+    .app-logo-min {
+        display: none;
+    }
+}
+
+/**
+  FACEPAGE
+*/
+
+.invoice-facepage {
+
+    padding-top: 0px !important;
+
+    h4.heading {
+        font-size: 1.1em;
+        border-top: solid 1px $content-primary-color;
+        border-bottom: solid 1px $content-primary-color;
+        padding: 4px 0;
+        font-weight: bold;
+    }
+
+    h5.group-heading {
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .wiz-header {
+        background-color: #eeeeee;
+        border-top: solid 10px #eeeeee;
+        border-bottom: solid 10px #eeeeee;
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+    }
+}
+
+.partly-border {
+    position: relative;
+    width: 250px;
+    min-height: 100px;
+}
+
+.partly-border:before, .partly-border:after, .partly-border > :first-child:before, .partly-border > :first-child:after {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+
+    border-color: $content-primary-color; /* or whatever colour */
+    border-style: solid; /* or whatever style */
+    content: ' ';
+}
+
+.partly-border:before {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px
+}
+
+.partly-border:after {
+    top: 0;
+    right: 0;
+    border-width: 1px 1px 0 0
+}
+
+.partly-border > :first-child:before {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0
+}
+
+.partly-border > :first-child:after {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 1px 1px
+}
+
+.partly-border p {
+    padding: 20px;
+}
+
+/*
+  Grid
+*/
+
+.ui-grid-header,
+.ui-grid-top-panel,
+.ui-grid-header-viewport {
+    //overflow: visible;
+}
+
+.ui-grid-sort-priority-number {
+    display: none;
+}
+
+/*
+  Command bar
+*/
+
+.command-bar {
+    padding-top: $default-padding;
+    padding-bottom: $default-padding;
+}
+
+.btn-group > .btn, .btn-group-vertical > .btn {
+    float: none;
+}
+
+
+.dropdown-modal-height, ol, .dropdown-menu {
+    max-height: 400px !important;
+}
+
+.modal {
+
+    .dropdown-modal-height,
+    ol,
+    .dropdown-menu {
+        // max-height: 120px !important;
+    }
+
+}
+
+.nya-bs-select.btn-group .dropdown-menu.inner {
+    border: 1px solid #ccc;
+    min-width: 150px;
+    width: 100%;
+}
+
+div.ng-invalid-required > ol.nya-bs-select button.dropdown-toggle {
+    background: transparent url("../assets/img/required_field.png") no-repeat scroll right top;
+}
+
+div.ng-valid-required > ol.nya-bs-select button.dropdown-toggle {
+    background: transparent url("../assets/img/required_field.png") no-repeat scroll right top;
+}
+
+/*
+  List-Details view
+*/
+
+.panel-list {
+    box-sizing: border-box;
+    background-color: #FEFEFE;
+    height: 100%;
+    width: 300px;
+    float: left;
+    border-right: solid 1px #e9e9e9;
+}
+
+.panel-details {
+    box-sizing: border-box;
+    //padding-left: 300px;
+    //height: 100%;
+    //background-color: #FFF;
+    background-color: #F5F5F5;
+    z-index: 0;
+    //width: 100%;
+}
+
+.panel-list, .panel-details {
+
+    .panel-content {
+        //height: 100%;
+        //width: 100%;
+        overflow: auto;
+        box-sizing: border-box;
+    }
+}
+
+.panel-toolbox {
+    margin-top: 0px;
+}
+
+/*
+  Custom List
+*/
+
+.list {
+
+    .list-entry {
+        padding: 10px 10px;
+        border-bottom: solid 1px #e9e9e9;
+        cursor: pointer;
+
+        &.selected {
+            background-color: $brand-primary-color;
+            color: $brand-content-bg-color;
+
+            .badge {
+                background-color: $brand-content-bg-color;
+                color: $brand-primary-color;
+            }
+        }
+
+        .list-entry-title {
+            font-size: 1em;
+        }
+    }
+}
+
+.panel-alternate {
+
+    .panel-heading {
+        background-color: $brand-gray-light;
+        padding: 7px 5px;
+        border-bottom: solid 1px $brand-gray-alternate;
+    }
+
+    .panel-title {
+        color: $brand-gray-dark;
+        font-size: 1.2em;
+    }
+
+}
+
+.accordion {
+
+    .panel-default {
+        border-color: transparent;
+    }
+
+    .panel-alternate .panel-heading {
+        border-bottom: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+
+        padding: 10px;
+
+        i {
+            font-size: 0.8em;
+        }
+    }
+
+    .panel-group {
+        padding: 15px;
+
+        .panel {
+            border-radius: 0;
+        }
+
+        a, a:hover, a:focus, a:active {
+            text-decoration: none;
+        }
+
+    }
+
+    .panel-container {
+        > .panel-collapse {
+            > .panel-body {
+                padding: 0;
+                background-color: #f2f2f2;
+            }
+        }
+    }
+}
+
+.navigation-menu-padding {
+    .panel-heading {
+        padding: 7px 10px !important;
+    }
+
+    .panel-collapse > .panel-body {
+        padding: 5px 10px 5px 30px !important;
+    }
+}
+
+
+.custom-picker-options {
+    position: absolute !important;
+    bottom:1px;
+    background: white;
+}
+
+.custom-picker-options-double {
+    position: absolute !important;
+    bottom:27px;
+    background: white;
+}
+.custom-picker-options-space-double{
+    height: 54px;
+}
+.custom-picker-options-space{
+    height: 27px;
+}
+
+
+.panel-related {
+
+    > .panel-body {
+        min-height: 300px;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}

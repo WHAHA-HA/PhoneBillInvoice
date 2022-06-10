@@ -1,0 +1,55 @@
+<form name="flowActionForm">
+
+    <div class="modal-header">
+        <h3 class="modal-title">{{$settings.titleText}}</h3>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-group" ng-class="$settings.item.dateField2 ? 'col-md-6' : ''" ng-if="$settings.item.dateField">
+            <label>{{$settings.item.dateFieldLabel|| "Date"}}</label>
+            <input class="form-control" uib-datepicker-popup lcma-calendar-position name="date1"
+                   ng-model="data.date"
+                   is-open="date.opened"
+                   required="true"
+                   ng-click="date.opened = true">
+        </div>
+        <div class="form-group col-md-6" ng-if="$settings.item.dateField2">
+            <label>{{$settings.item.dateField2Label}}</label>
+            <input class="form-control" uib-datepicker-popup
+                   lcma-calendar-position name="date2"
+                   ng-model="data.date2"
+                   is-open="date2.opened"
+                   required="true"
+                   ng-click="date2.opened = true">
+        </div>
+        <div class="form-group" ng-if="$settings.item.dropdown">
+            <label>{{$settings.item.dropdownLabel}}</label>
+            <select ng-model ="data.dropdownValue" required="true" class="form-control" 
+                    ng-options="option.value for option in $settings.item.dropdownValues track by option.id">              
+            </select>
+        </div>
+        <div class="form-group" ng-hide="$settings.item.noNote">
+            <label>Note</label>
+            <textarea class="form-control" name="comment" rows="5" id="comment" ng-model="data.note"></textarea>
+        </div>
+
+        <div ng-show="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
+
+
+
+        <!-- <div class="form-group" ng-if="selectedAction">
+            <label>{{selectedAction.labelMessage}}</label>
+            <textarea class="form-control" rows="5" id="comment" ng-model="data.note"></textarea>
+           <button ng-disabled="!data.note" class="btn btn-primary btn-block" ng-click="executeAction($settings.item, selectedAction)">Confirm</button>
+         </div>-->
+    </div>
+    <div class="modal-footer">
+        <div class="btn-group" ng-repeat="action in $settings.item.actions" style="margin-right:10px;">
+            <button class="btn" ng-class="action.class"
+                    style="min-width:130px;display:inline-block;"
+                    ng-click="executeAction($settings.item, action, flowActionForm)">{{action.name}}
+            </button>
+        </div>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">{{$settings.buttonNoText}}</button>
+    </div>
+</form>

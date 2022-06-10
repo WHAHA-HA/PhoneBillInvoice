@@ -1,0 +1,44 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Create New Feature</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+
+    <form name="FeatureForm" class="form-horizontal form-cozy mar-b add-form">
+
+      <lcma-form-layout columns="1">
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>Type</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="type" ng-model="feature.type" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>Code</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="code" ng-model="feature.code" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>Description</lcma-form-label>
+          <lcma-control-container>
+            <textarea class="form-control"
+                      ng-model="feature.description"
+                      name="description"
+                      ng-required="true"></textarea>
+          </lcma-control-container>
+        </lcma-form-group>
+
+      </lcma-form-layout>
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="create(FeatureForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

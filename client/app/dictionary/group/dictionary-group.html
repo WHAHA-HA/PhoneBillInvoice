@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h5 class="modal-title">Reorder entries for "{{group}}"</h5>
+</div>
+<div class="modal-body">
+        <div class="row add-form">
+        <div class="col-sm-8" style="padding-left:0;">
+            <h5 class="text-muted">Drag to reorder</h5>
+        </div>
+        <div class="col-sm-2" style="padding-left:0;">
+            <a class="btn btn-default" ng-click="sortAlphabeticallyAsc()"><i class="fa fa-sort-alpha-asc"></i></a>
+        </div>
+         <div class="col-sm-2" style="padding-left:0;">
+            <a class="btn btn-default" ng-click="sortAlphabeticallyDesc()"><i class="fa fa-sort-alpha-desc"></i></a>
+        </div>
+    </div>
+        <form name="DictionaryGroupForm" class="panel panel-bordered form-horizontal form-cozy mar-b add-form">
+          <ul dnd-list="items" style="max-height: 180px; height:auto; overflow-y: auto;margin-bottom:0">
+            <li ng-repeat="item in items"
+                dnd-draggable="item"
+                class=""
+                style="background-color: #f4f4f4"
+                dnd-effect-allowed="copyMove"
+                dnd-moved="items.splice($index, 1);">
+              <i class="fa fa-sort"></i>
+              &nbsp;
+              {{item.value}}
+            </li>
+          </ul>
+        </form>
+    </div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="save(DictionaryGroupForm)">Save</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

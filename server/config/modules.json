@@ -1,0 +1,155 @@
+{
+  "modules": [
+    {
+      "key": "users",
+      "title": "Users",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "invoices",
+      "title": "Invoices",
+      "actions": ["View", "Create", "Modify", "Delete", "Approve"],
+      "properties": [
+        {"name": "tot_amt_due", "type": "number"},
+        {"name": "tot_new_chgs", "type": "number"},
+        {"name": "due_date", "type": "date"},
+        {"name": "sp_name", "type": "text"}
+      ]
+    },
+    {
+      "key": "accounts",
+      "title": "Accounts",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "orders",
+      "title": "Orders",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "inventory",
+      "title": "Inventory",
+      "actions": ["View", "Create", "Modify", "Delete", "View Site", "Create Site", "Delete Site", "Create Feature", "Delete Feature", "Create Plan", "Delete Plan", "Create Service", "Delete Service", "Create Route", "Delete Route"]
+    },
+    {
+      "key": "contracts",
+      "title": "Contracts",
+      "actions": ["View", "Create", "Modify", "Delete","View Section", "Create Section", "Modify Section", "Delete Section", "Create Document"]
+    },
+    {
+      "key": "appdata",
+      "title": "App Data",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "audit",
+      "title": "Audits",
+      "actions": ["View", "Create", "Modify"]
+    },
+    {
+      "key": "auditrate",
+      "title": "Audit Rates",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "buildings",
+      "title": "Buildings",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "charge",
+      "title": "Charges",
+      "actions": ["View"]
+    },
+    {
+      "key": "contacts",
+      "title": "Contacts",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "contentfilter",
+      "title": "Content Filter",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "dictionary",
+      "title": "Dictionary",
+      "actions": ["View", "Create", "Modify"]
+    },
+    {
+      "key": "disputes",
+      "title": "Disputes",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "disputecategory",
+      "title": "Dispute Category",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "document",
+      "title": "Document",
+      "actions": ["View", "Create", "Modify", "Delete", "Download", "Entity"]
+    },
+    {
+      "key": "employee",
+      "title": "Employee",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "equpment",
+      "title": "Equpment",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "notes",
+      "title": "Notes",
+      "actions": ["View", "Create"]
+    },
+    {
+      "key": "orderservice",
+      "title": "Order Service",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "permissions",
+      "title": "Permissions",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "projects",
+      "title": "Projects",
+      "actions": ["View", "Create", "Modify", "Delete", "View Order", "Create Order", "Delete Order"]
+    },
+    {
+      "key": "reports",
+      "title": "Reports",
+      "actions": ["View"]
+    },
+    {
+      "key": "roles",
+      "title": "Roles",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "sites",
+      "title": "Sites",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "stats",
+      "title": "Stats",
+      "actions": ["View"]
+    },
+    {
+      "key": "tickets",
+      "title": "Tickets",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    },
+    {
+      "key": "vendors",
+      "title": "Vendors",
+      "actions": ["View", "Create", "Modify", "Delete"]
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Update Project</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+        <form name="ProjectForm" class="form-horizontal form-cozy">
+            <div class="panel panel-alternate">
+                <div class="panel-heading">
+                    <div class="panel-title">Project Info</div>
+                </div>
+                <div class="panel-body">
+                    <lcma-form-layout columns="2">
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Project ID</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="project_id" ng-model="ctx.project.project_id" type="text" class="form-control">
+                                <div ng-messages="ProjectForm.project_id.$error" ng-show="ProjectForm.project_id.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Project ID.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Project Name</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="name" ng-model="ctx.project.name" type="text" class="form-control">
+                                <div ng-messages="ProjectForm.name.$error" ng-show="ProjectForm.name.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Project Name.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Project Owner</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-employee-picker ng-model="ctx.project.owner_id"></lcma-employee-picker>
+                                <div ng-messages="ProjectForm.owner_id.$error" ng-show="ProjectForm.owner_id.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Project Owner.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Status</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-dictionary-picker type-key="project-status" name="status" ng-model="ctx.project.status_id"
+                                    ></lcma-dictionary-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Description</lcma-form-label>
+                            <lcma-control-container>
+                <textarea class="form-control"
+                          ng-model="ctx.project.description"
+                          name="description"></textarea>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Start Date</lcma-form-label>
+                            <lcma-control-container>
+                                <input
+                                    uib-datepicker-popup="MM/dd/yyyy"
+                                    ng-model="ctx.project.start_date"
+                                    name="start_date"
+                                    init-date="{{ctx.project.start_date}}"
+                                    class="form-control input-sm"
+                                    is-open="ctx.start_date_ui.opened"
+                                    ng-click="ctx.start_date_ui.opened=true"
+                                    />
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>End Date</lcma-form-label>
+                            <lcma-control-container>
+                                <input
+                                    uib-datepicker-popup="MM/dd/yyyy"
+                                    ng-model="ctx.project.end_date"
+                                    name="end_date"
+                                    init-date="{{ctx.project.end_date}}"
+                                    class="form-control input-sm"
+                                    is-open="ctx.end_date_ui.opened"
+                                    ng-click="ctx.end_date_ui.opened=true"
+                                    />
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+
+
+                    </lcma-form-layout>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="ctx.updateProject(ProjectForm)">Update</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+
+
+            <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading clearfix">-->
+            <!--<h2>-->
+            <!--Chart-->
+            <!--</h2>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+            <!--<h2 class="text-center">Chart Section</h2>-->
+            <!--<div style="height: 100px;">-->
+
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!-- Related Info Section-->
+            <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading clearfix">-->
+            <!--<h2>Related Info</h2>-->
+            <!--</div>-->
+            <!--<div class="panel-body">-->
+
+            <!--<uib-tabset>-->
+            <!--<uib-tab heading="Orders">-->
+
+            <!--<div class=" clearfix">-->
+            <!--<button class="btn btn-default pull-right" ng-click="ctx.addOrderInfo()">-->
+            <!--<i class="fa fa-plus"></i>-->
+            <!--Add Order Info-->
+            <!--</button>-->
+            <!--</div>-->
+
+            <!--<div ng-if="!ctx.project.project_orders.length" class="empty-data">-->
+            <!--No orders associated to this Project.-->
+            <!--</div>-->
+            <!--<div ng-if="ctx.project.project_orders.length" class="grid" ui-grid="ctx.ordersGrid"></div>-->
+            <!--</uib-tab>-->
+
+            <!--<uib-tab heading="Tickets">-->
+            <!--</uib-tab>-->
+
+            <!--<uib-tab heading="Billing">-->
+            <!--</uib-tab>-->
+
+            <!--<uib-tab heading="Aliases">-->
+            <!--</uib-tab>-->
+
+            <!--<uib-tab heading="Channels">-->
+            <!--</uib-tab>-->
+
+            <!--<uib-tab heading="GL Codes">-->
+
+            <!--</uib-tab>-->
+            <!--<uib-tab heading="Notes">-->
+
+            <!--<div class=" clearfix">-->
+            <!--<button type="button"-->
+            <!--class="btn btn-default pull-right"-->
+            <!--ng-click="ctx.addNote()" ng-disabled="!ctx.project.id">Add Note-->
+            <!--</button>-->
+            <!--</div>-->
+            <!--<div ng-repeat="note in ctx.notes"-->
+            <!--class="mar-t"-->
+            <!--id="note_{{note.id}}"-->
+            <!--lcma-focus-on="note_{{note.id}}">-->
+
+            <!--<lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">-->
+
+            <!--</lcma-note-list>-->
+
+            <!--</div>-->
+
+            <!--<div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this Inventory.</div>-->
+            <!--</uib-tab>-->
+            <!--<uib-tab heading="History">-->
+
+            <!--<lcma-history entity_type="project@{{ctx.project.id}}"></lcma-history>-->
+            <!--</uib-tab>-->
+            <!--</uib-tabset>-->
+            <!--</div>-->
+            <!--</div>-->
+
+</div>
+
+
+

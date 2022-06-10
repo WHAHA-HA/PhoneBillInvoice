@@ -1,0 +1,930 @@
+{
+    "roles.list.grid": {
+        "sort": "name",
+        "columnDefs": [
+            {
+                "field": "id",
+                "name": "ID",
+                "sort": "none"
+            },
+            {
+                "field": "name",
+                "name": "Name",
+                "sort": "none"
+            },
+            {
+                "field": "user_in_roles.length",
+                "name": "No of Users"
+            }
+        ]
+    },
+    "invoices.list.grid": {
+        "columnDefs": [
+            {
+                "field": "sp_inv_num",
+                "name": "Invoice Number"
+            },
+            {
+                "field": "header.status_code",
+                "name": "Status"
+            },
+            {
+                "field": "vendor.name",
+                "name": "Vendor"
+            },
+            {
+                "field": "acct_level_1",
+                "name": "Account"
+            },
+            {
+                "field": "date_issued",
+                "name": "Invoice Date"
+            },
+            {
+                "field": "due_date",
+                "name": "Due Date"
+            },
+            {
+                "field": "tot_amt_due",
+                "name": "Total Due"
+            },
+            {
+                "field": "tot_new_chgs",
+                "name": "Total New Charges"
+            },
+            {
+                "field": "tot_new_chg_chg",
+                "name": "New Charges Diff"
+            },
+            {
+                "field": "tot_new_chg_chg_pct",
+                "name": "New Charges Diff %"
+            },
+            {
+                "field": "tot_mrc_chgs",
+                "name": "Total MRC"
+            },
+            {
+                "field": "tot_occ_chgs",
+                "name": "Total OCC"
+            },
+            {
+                "field": "tot_usage_chgs",
+                "name": "Usage"
+            },
+            {
+                "field": "tot_taxusr",
+                "name": "Total Taxes / Surcharge"
+            },
+            {
+                "field": "tot_disc_amt",
+                "name": "Total Discounts"
+            },
+            {
+                "field": "tot_new_chg_adj",
+                "name": "Tot Adjs New Chgs"
+            },
+            {
+                "field": "bal_fwd",
+                "name": "Balance Forward"
+            }
+        ]
+    },
+    "user.list.grid": {
+        "columnDefs": [
+            {
+                "field": "username",
+                "name": "Username"
+            },
+            {
+                "field": "last_name",
+                "name": "Last Name"
+            },
+            {
+                "field": "first_name",
+                "name": "First Name"
+            },
+            {
+                "field": "email",
+                "name": "Email"
+            },
+            {
+                "field": "mobile_number",
+                "name": "Mobile Number"
+            },
+            {
+                "field": "is_active",
+                "name": "Active"
+            },
+            {
+                "field": "roles",
+                "name": "Roles",
+                "type": "rel"
+            }
+        ]
+    },
+    "permissions.list.grid": {
+        "columnDefs": [
+            {
+                "field": "role_id",
+                "name": "Role"
+            },
+            {
+                "field": "module_id",
+                "name": "Module"
+            },
+            {
+                "field": "actions",
+                "name": "Action"
+            },
+            {
+                "field": "filters",
+                "name": "Filters"
+            }
+        ]
+    },
+    "content_filter.list.grid": {
+        "columnDefs": [
+            {
+                "field": "module_id",
+                "name": "Module"
+            },
+            {
+                "field": "title",
+                "name": "Title"
+            },
+            {
+                "field": "type",
+                "name": "Type"
+            },
+            {
+                "field": "property_name",
+                "name": "Property"
+            },
+            {
+                "field": "operator",
+                "name": "Operator"
+            },
+            {
+                "field": "value",
+                "name": "Value"
+            }
+        ]
+    },
+    "accounts.list.grid": {
+        "columnDefs": [
+            {
+                "field": "account_no",
+                "name": "Account"
+            },
+            {
+                "field": "status_id",
+                "name": "Status"
+            },
+            {
+                "field": "vendor.name",
+                "name": "Vendor"
+            },
+            {
+                "field": "ap_vendor_id",
+                "name": "AP Vendor ID"
+            },
+            {
+                "field": "billing_cycle",
+                "name": "Billing Cycle"
+            },
+            {
+                "field": "vendor_alias",
+                "name": "Vendor Alias"
+            },
+            {
+                "field": "late_bill_log_days",
+                "name": "Late Bill Log"
+            }
+        ]
+    },
+    "dictionary.list.grid": {
+        "columnDefs": [
+            {
+                "field": "key",
+                "name": "Key"
+            },
+            {
+                "field": "value",
+                "name": "Value"
+            },
+            {
+                "field": "group",
+                "name": "Group"
+            }
+        ]
+    },
+    "orders.list.grid": {
+        "columnDefs": [
+            {
+                "field": "id",
+                "name": "Order #"
+            },
+            {
+                "field": "type_id",
+                "name": "Order Type"
+            },
+            {
+                "field": "state",
+                "name": "Status"
+            },
+            {
+                "field": "request_date",
+                "name": "Request Date"
+            },
+            {
+                "field": "created_at",
+                "name": "Create Date"
+            },
+            {
+                "field": "send_date",
+                "name": "Sent Date"
+            }
+        ]
+    },
+    "project.list.grid": {
+        "columnDefs": [
+            {
+                "field": "project_id",
+                "name": "Project ID"
+            },
+            {
+                "field": "name",
+                "name": "Project Name"
+            },
+            {
+                "field": "status.value",
+                "name": "Project Status"
+            },
+            {
+                "field": "description",
+                "name": "Description"
+            }
+        ]
+    },
+    "inventory.list.grid": {
+        "columnDefs": [
+            {
+                "field": "unique_id",
+                "name": "SPID"
+            },
+            {
+                "field": "type_id",
+                "name": "Type"
+            },
+            {
+                "field": "vendor_id",
+                "name": "Vendor"
+            },
+            {
+                "field": "internal_id",
+                "name": "Internal ID"
+            },
+            {
+                "field": "install_date",
+                "name": "Install Date"
+            },
+            {
+                "field": "site_a_id",
+                "name": "Site A"
+            },
+            {
+                "field": "site_z_id",
+                "name": "Site Z"
+            }
+        ]
+    },
+    "invoice.charge.list.grid": {
+        "columnDefs": [
+            {
+                "field": "acct_level_2",
+                "name": "Subaccount"
+            },
+            {
+                "field": "chg_class",
+                "name": "Charge Type"
+            },
+            {
+                "field": "chg_desc_1",
+                "name": "Charge Desc 1"
+            },
+            {
+                "field": "chg_desc_2",
+                "name": "Charge Desc 2"
+            },
+            {
+                "field": "sp_serv_id",
+                "name": "SPID"
+            },
+            {
+                "field": "beg_chg_date",
+                "name": "Install Date"
+            },
+            {
+                "field": "address",
+                "name": "Service Address"
+            },
+            {
+                "field": "chg_amt",
+                "name": "Charge Amount"
+            }
+        ]
+    },
+    "dispute.list.grid": {
+        "columnDefs": [
+            {
+                "field": "dispute_id",
+                "name": "Dispute ID"
+            },
+            {
+                "field": "status",
+                "name": "Dispute Status"
+            },
+            {
+                "field": "disp_stat_dt",
+                "name": "Last Update"
+            },
+            {
+                "field": "user_id",
+                "name": "Filed By"
+            },
+            {
+                "field": "created_at",
+                "name": "Filed Date"
+            },
+            {
+                "field": "category_id",
+                "name": "Dispute Category"
+            },
+            {
+                "field": "total_amount",
+                "name": "Total Charges"
+            },
+            {
+                "field": "calculated_amount",
+                "name": "Total Calculated Charges"
+            },
+            {
+                "field": "disputed_amount",
+                "name": "Total Dispute"
+            },
+            {
+                "field": "final_amount",
+                "name": "Final Charge"
+            },
+            {
+                "field": "final_dispute",
+                "name": "Final Dispute"
+            },
+            {
+                "field": "amount_withheld",
+                "name": "Amount Withheld"
+            }
+        ]
+    },
+    "audit.list.grid": {
+        "columnDefs": [
+            {
+                "field": "id",
+                "name": "Audit ID"
+            },
+            {
+                "field": "name",
+                "name": "Audit Name"
+            },
+            {
+                "field": "vendor.name",
+                "name": "Vendor"
+            },
+            {
+                "field": "invoice_qty",
+                "name": "Invoice Quantity"
+            },
+            {
+                "field": "invoice_type.value",
+                "name": "Invoice Type"
+            },
+            {
+                "field": "invoice_charge",
+                "name": "Invoice Charges"
+            },
+            {
+                "field": "audit_run_month",
+                "name": "Run Month"
+            },
+            {
+                "field": "total_charges",
+                "name": "Total Charges"
+            },
+            {
+                "field": "total_charges_qty",
+                "name": "Total Charges Quantity"
+            },
+            {
+                "field": "total_impact",
+                "name": "Impacted Charges"
+            },
+            {
+                "field": "total_impact_qty",
+                "name": "Impacted Charges Quantity"
+            },
+            {
+                "field": "total_calculated_impact",
+                "name": "Total Calculated Charges"
+            },
+            {
+                "field": "total_dispute_impact",
+                "name": "Total Dispute Amount"
+            }
+        ]
+    },
+    "contract.list.grid": {
+        "columnDefs": [
+            {
+                "field": "name",
+                "name": "Name"
+            },
+            {
+                "field": "company_name",
+                "name": "Company"
+            },
+            {
+                "field": "company_sign_date",
+                "name": "Company Signed"
+            },
+            {
+                "field": "vendor_id",
+                "name": "Vendor"
+            },
+            {
+                "field": "vendor_sign_date",
+                "name": "Vendor Signed"
+            },
+            {
+                "field": "effective_date",
+                "name": "Effective Date"
+            },
+            {
+                "field": "termination_date",
+                "name": "Termination Date"
+            },
+            {
+                "field": "term_months",
+                "name": "Term (months)"
+            },
+            {
+                "field": "committed_value",
+                "name": "Committed Value"
+            }
+        ]
+    },
+    "ticket.list.grid": {
+        "columnDefs": [
+            {
+                "field": "id",
+                "name": "Ticket #"
+            },
+            {
+                "field": "title",
+                "name": "Title"
+            },
+            {
+                "field": "email",
+                "name": "Email"
+            },
+            {
+                "field": "assignee_id",
+                "name": "Assignee"
+            },
+            {
+                "field": "type_id",
+                "name": "Type"
+            },
+            {
+                "field": "created_date",
+                "name": "Created Date"
+            }
+        ]
+    },
+    "performance.list.grid": {
+        "columnDefs": [
+            {
+                "field": "cpu",
+                "name": "CPU"
+            },
+            {
+                "field": "memory",
+                "name": "Memory"
+            },
+            {
+                "field": "network",
+                "name": "Network"
+            },
+            {
+                "field": "performance_date",
+                "name": "Performance"
+            }
+        ]
+    },
+    "utilization.list.grid": {
+        "columnDefs": [
+            {
+                "field": "lan",
+                "name": "LAN"
+            },
+            {
+                "field": "speed",
+                "name": "Speed"
+            },
+            {
+                "field": "offline",
+                "name": "Offline"
+            }
+        ]
+    },
+    "buildings.list.grid": {
+        "columnDefs": [
+            {
+                "field": "name",
+                "name": "Building Name"
+            },
+            {
+                "field": "addr_1",
+                "name": "Address 1"
+            },
+             {
+                "field": "addr_2",
+                "name": "Address 2"
+            },
+             {
+                "field": "addr_3",
+                "name": "Address 3"
+            },
+            {
+                "field": "addr_city",
+                "name": "City"
+            },
+            {
+                "field": "addr_state",
+                "name": "State"
+            },
+            {
+                "field": "addr_zip",
+                "name": "ZIP"
+            },
+            {
+                "field": "geocode",
+                "name": "Geocode"
+            }
+        ]
+    },
+    "sites.list.grid": {
+        "columnDefs": [
+            {
+                "field": "site_id",
+                "name": "Site Name"
+            },
+            {
+                "field": "vendor_id",
+                "name": "Vendor"
+            },
+            {
+                "field": "building_id",
+                "name": "Building"
+            },
+            {
+                "field": "site_type",
+                "name": "Site Type"
+            },
+            {
+                "field": "building.addr_1",
+                "name": "Address 1"
+            },
+            {
+                "field": "building.addr_2",
+                "name": "Address 2"
+            },
+            {
+                "field": "building.addr_3",
+                "name": "Address 3"
+            },
+            {
+                "field": "city_state_zip",
+                "name": "City/State/Zip"
+            },
+            {
+                "field": "floor",
+                "name": "Floor"
+            },
+            {
+                "field": "room",
+                "name": "Room"
+            }
+        ]
+    },    
+    "equipment.list.grid": {
+        "columnDefs": [
+            {
+                "field": "equip_type",
+                "name": "Equipment Type"
+            },
+            {
+                "field": "equip_maker",
+                "name": "Equipment Maker"
+            },
+            {
+                "field": "equip_model",
+                "name": "Equipment Model"
+            },
+            {
+                "field": "site.site_id",
+                "name": "Site Name"
+            },
+            {
+                "field": "equip_serial",
+                "name": "Equipment Serial"
+            },
+            {
+                "field": "acq_date",
+                "name": "Acq Date"
+            },
+            {
+                "field": "in_svc_date",
+                "name": "In Svc Date"
+            },
+            {
+                "field": "vendor_id",
+                "name": "Vendor"
+            },
+            {
+                "field": "contract_id",
+                "name": "Contract"
+            }
+        ]
+    },
+    "employee.list.grid": {
+        "columnDefs": [
+            {
+                "field": "first_name",
+                "name": "First Name"
+            },
+            {
+                "field": "last_name",
+                "name": "Last Name"
+            },
+            {
+                "field": "home_site",
+                "name": "Home Site"
+            },
+            {
+                "field": "mobile_number",
+                "name": "Mobile Number"
+            },
+            {
+                "field": "office_number",
+                "name": "Office Number"
+            },
+            {
+                "field": "status_id",
+                "name": "Status"
+            },
+            {
+                "field": "gl_code1",
+                "name": "GL Code1"
+            },
+            {
+                "field": "gl_code2",
+                "name": "GL Code2"
+            },
+            {
+                "field": "gl_code3",
+                "name": "GL Code3"
+            },
+            {
+                "field": "gl_code4",
+                "name": "GL Code4"
+            },
+            {
+                "field": "gl_code5",
+                "name": "GL Code5"
+            },
+            {
+                "field": "gl_code6",
+                "name": "GL Code6"
+            },
+            {
+                "field": "gl_code7",
+                "name": "GL Code7"
+            },
+            {
+                "field": "gl_code8",
+                "name": "GL Code8"
+            }
+        ]
+    },
+    "vendor.list.grid": {
+        "columnDefs": [
+            {
+                "field": "name",
+                "name": "Name"
+            },
+            {
+                "field": "code",
+                "name": "Code"
+            }
+        ]
+    },
+    "contacts.list.grid": {
+        "columnDefs": [
+            {
+                "field": "first_name",
+                "name": "First Name"
+            },
+            {
+                "field": "last_name",
+                "name": "Last Name"
+            },
+            {
+                "field": "title",
+                "name": "Title"
+            },
+            {
+                "field": "function",
+                "name": "Function"
+            },
+            {
+                "field": "company",
+                "name": "Company"
+            },
+            {
+                "field": "city",
+                "name": "City"
+            },
+            {
+                "field": "state",
+                "name": "State"
+            }
+        ]
+    },
+    "customers.list.grid": {
+        "columnDefs": [
+            {
+                "field": "company",
+                "name": "Company"
+            },
+            {
+                "field": "city",
+                "name": "City"
+            },
+            {
+                "field": "state",
+                "name": "State"
+            }
+        ]
+    },
+    "chargesGrid": {
+        "columnDefs": [
+            {
+                "field": "sp_name",
+                "name": "Vendor"
+            },
+            {
+                "field": "acct_level_1",
+                "name": "Account"
+            },
+            {
+                "field": "sp_inv_num",
+                "name": "Invoice Number"
+            },
+            {
+                "field": "inv_status",
+                "name": "Invoice Status"
+            },
+            {
+                "field": "inv_date",
+                "name": "Invoice Date"
+            },
+            {
+                "field": "acct_level_2",
+                "name": "Sub Account",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_class",
+                "name": "Charge Type",
+                "type": "rel",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "sp_serv_id",
+                "name": "Service ID",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_code_1",
+                "name": "Charge Code1",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_desc_1",
+                "name": "Charge Description 1",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_code_2",
+                "name": "Charge Code2",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_desc_2",
+                "name": "Charge Description 2",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_qty1_billed",
+                "name": "Chg Qty",
+                "type": "number",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_rate",
+                "name": "Charge Rate",
+                "type": "number",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "chg_amt",
+                "name": "Charge Amount",
+                "type": "currency",
+                "width": 120,
+                "sort": "none"
+            },
+            {
+                "field": "svc_establish_date",
+                "name": "Install Date",
+                "type": "date"
+            },
+            {
+                "field": "beg_chg_date",
+                "name": "Beg Charge Date",
+                "type": "date"
+            },
+            {
+                "field": "end_chg_date",
+                "name": "End Charge Date",
+                "type": "date"
+            },
+            {
+                "field": "info_only_ind",
+                "name": "Info Only Ind",
+                "type": "rel"
+            },
+            {
+                "field": "fac_bw",
+                "name": "Facility Bandwidth"
+            },
+            {
+                "field": "call_type",
+                "name": "Call Type"
+            },
+            {
+                "field": "product_type",
+                "name": "Product Type"
+            },
+            {
+                "field": "dir_ind",
+                "name": "Dir Ind"
+            },
+            {
+                "field": "jur",
+                "name": "Jurisdiction"
+            },
+            {
+                "field": "chg_qty1_type",
+                "name": "Chg Qty Type"
+            },
+            {
+                "field": "chg_qty1_used",
+                "name": "Chg Qty Used"
+            },
+            {
+                "field": "chg_qty1_allowed",
+                "name": "Chg Qty Allowed"
+            }
+        ]
+    }
+}

@@ -1,0 +1,13 @@
+<div class="mar-t">
+  <div ng-repeat="entry in model| orderBy: 'created_at' : true">
+
+    <a ng-click="display(entry.id)">{{entry.created_at| lcmaDateTime}}</a> -
+    <div href lcma-user-pop-over-toggle>
+      {{entry.user.first_name}}
+      {{entry.user.last_name}}
+      <lcma-user-pop-over ng-model="entry.user"></lcma-user-pop-over>
+    </div>
+    <ng-include src="getEntryTemplateUrl(entry)"></ng-include>
+  </div>
+  <div ng-if="model.length === 0" class="text-center mar-all">No history logged for this {{entity_type}}.</div>
+</div>

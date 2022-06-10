@@ -1,0 +1,46 @@
+<div ng-controller="TopbarCtrl" class="clearfix">
+
+  <!--<a class=" btn btn-default" ng-click="toggleSidebar()">
+    <i class="fa fa-navicon"></i>
+  </a>-->
+
+
+  <div class="dropdown pull-right" uib-dropdown>
+    <a class=" btn btn-default dropdown-toggle" id="avatar-dropdown" uib-dropdown-toggle>
+      <div ng-show="!$me.avatar" class="default-avatar-circle-35">
+        <span class="initials">{{getInitialLetters($me)}}</span>
+      </div>
+      <img ng-show="$me.avatar" class="topbar-user-avatar" data-ng-src="{{$me.avatar}}"/>
+    </a>
+    <ul class="dropdown-menu" class="uib-dropdown-menu" aria-labelledby="avatar-dropdown">
+      <li class="dropdown-header">{{$me.first_name}} {{$me.last_name}}</li>
+      <li role="separator" class="divider"></li>
+      <li>
+        <a href="" ng-click="editProfile()">
+          <i class="fa fa-user pull-right"></i>
+          Profile</a>
+      </li>
+      <li>
+        <a href="" ng-click="editPassword()">
+          <i class="fa fa-key pull-right"></i>
+
+          Password</a>
+      </li>
+      <li>
+          <a href="" ng-click="editTheme()">
+          <i class="fa fa-paint-brush pull-right"></i>
+
+          Customize</a>
+      </li>
+      <li role="separator" class="divider"></li>
+      <li>
+        <a ui-sref="logout">
+          <i class="fa fa-sign-out pull-right"></i>
+          Log Out</a>
+      </li>
+    </ul>
+  </div>
+
+  <h4 class="pull-left" ng-bind-html="$lcmaPage.getTitle()"></h4>
+
+</div>

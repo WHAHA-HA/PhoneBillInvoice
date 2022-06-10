@@ -1,0 +1,13 @@
+<div>
+  <ol id="dynamic-options" class="nya-bs-select" ng-model="selection"  data-live-search="true"  data-size="8" title="Select ...">
+    <li nya-bs-option="project in projects" data-value="project.id">
+      <a>{{ project.name }}</a>
+    </li> 
+    <li class="btn-group btn-group-justified custom-picker-options-space"></li>
+    <li class="btn-group btn-group-justified custom-picker-options">
+        <a class="btn btn-default" ng-click="addItem()" lcma-check-permissions="Create@projects"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-default disabled" ng-click="searchItem()"><i class="fa fa-search"></i></a>
+    </li>
+  </ol>
+
+</div>

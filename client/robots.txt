@@ -1,0 +1,33 @@
+# robotstxt.org
+
+User-agent: *
+
+
+"angular": ">=1.2.*",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.0.1",
+    "bootstrap-sass-official": "~3.3.6",
+    "bootstrap": "~3.3.6",
+    "angular-resource": ">=1.2.*",
+    "angular-cookies": "~1.4.7",
+    "angular-sanitize": ">=1.2.*",
+    "font-awesome": "~4.4.0",
+    "lodash": "~4.6.1",
+    "angular-ui-router": "~0.2.15",
+    "ag-grid": "~3.2.2",
+    "angular-animate": "~1.4.7",
+    "angular-toastr": "~1.5.0",
+    "js-data-angular": "~3.1.0",
+    "js-data": "~2.8.2",
+    "angular-messages": "~1.4.7",
+    "simple-line-icons": "~2.2.3",
+    "angular-ui-grid": "~3.0.7",
+    "moment": "~2.10.6",
+    "ng-scrollbar": "~0.0.8",
+    "ng-file-upload": "~11.0.2",
+    "angular-bootstrap-grid-tree": "*",
+    "angular-loading-bar": "~0.8.0",
+    "ng-file-upload-shim": "^12.0.1",
+    "ng-img-crop": "ngImgCrop#^0.3.2",
+    "ui-select": "angular-ui-select#^0.14.9",
+    "angular-bootstrap": "^1.2.4"

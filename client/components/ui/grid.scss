@@ -1,0 +1,59 @@
+
+
+.cell-status {
+  width: 50px;
+  text-align: center;
+}
+
+.cell-date {
+  width: 90px;
+  text-align: left;
+}
+
+
+.cell-num,
+.cell-number,
+.cell-currency
+{
+  width: 90px;
+  text-align: right;
+}
+
+.cell-last {
+  padding-right: 10px !important;
+}
+
+.ui-grid-filter-container {
+  padding: 1px;
+}
+
+.ui-grid-top-panel {
+ font-weight: normal;
+}
+
+.cell-command {
+  cursor: pointer;
+}
+
+.ui-grid-row .cell-command:first-child {
+  border-right: 0 transparent !important;
+}
+
+.ui-grid-header-cell-row .cell-header-command:first-child {
+  border-right: 0 transparent !important;
+}
+
+.cell-boolean {
+  text-align: center;
+}
+
+.ui-grid-cell-contents>i{
+    font-size: 1.5em;
+    line-height: 1em;
+    vertical-align: -20%;
+}
+
+
+.ui-grid-pinned-container.ui-grid-pinned-container-left {
+  height:100%;
+}

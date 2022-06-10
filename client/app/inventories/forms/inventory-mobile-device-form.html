@@ -1,0 +1,194 @@
+<lcma-form-layout columns="3">
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Int Dev ID</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="int_dev_id" ng-model="ctx.inventory.int_dev_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP Dev ID</lcma-form-label>
+    <lcma-control-container>
+      <input name="sp_dev_id" ng-model="ctx.inventory.sp_dev_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Mobile Nbr</lcma-form-label>
+    <lcma-control-container>
+      <input name="mobile_nbr" ng-model="ctx.inventory.mobile_nbr" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Emp ID</lcma-form-label>
+    <lcma-control-container>
+      <lcma-employee-picker ng-model="ctx.inventory.emp_id"></lcma-employee-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>User Name</lcma-form-label>
+    <lcma-control-container>
+      <input name="username" ng-model="ctx.inventory.username" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Acq Date</lcma-form-label>
+    <lcma-control-container>
+      <input
+        uib-datepicker-popup="MM/dd/yyyy"
+        ng-model="ctx.inventory.acq_date"
+        name="acq_date"
+        placeholder="Acq Date"
+        init-date="{{ctx.inventory.acq_date}}"
+        class="form-control input-sm"
+        is-open="ctx.acq_date_ui.opened"
+        ng-click="ctx.acq_date_ui.opened=true"
+        >
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Acq Date</lcma-form-label>
+    <lcma-control-container>
+      <input
+        uib-datepicker-popup="MM/dd/yyyy"
+        ng-model="ctx.inventory.acq_date"
+        name="acq_date"
+        placeholder="Acq Date"
+        init-date="{{ctx.inventory.acq_date}}"
+        class="form-control input-sm"
+        is-open="ctx.acq_date_ui.opened"
+        ng-click="ctx.acq_date_ui.opened=true"
+        >
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Acq Cost</lcma-form-label>
+    <lcma-control-container>
+      <input name="acq_cost" ng-model="ctx.inventory.acq_cost" type="number" class="form-control" string-to-number>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Vendor</lcma-form-label>
+    <lcma-control-container>
+      <lcma-vendor-picker ng-model="ctx.inventory.vendor_id"></lcma-vendor-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Rel Plan ID</lcma-form-label>
+    <lcma-control-container>
+      <input name="rel_plan_id" ng-model="ctx.inventory.rel_plan_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Upgrade Date</lcma-form-label>
+    <lcma-control-container>
+      <input
+        uib-datepicker-popup="MM/dd/yyyy"
+        ng-model="ctx.inventory.upgrade_date"
+        name="upgrade_date"
+        placeholder="Upgrade Date"
+        init-date="{{ctx.inventory.upgrade_date}}"
+        class="form-control input-sm"
+        is-open="ctx.upgrade_date_ui.opened"
+        ng-click="ctx.upgrade_date_ui.opened=true"
+        >
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>BYOD</lcma-form-label>
+    <lcma-control-container>
+      <input name="byod" ng-model="ctx.inventory.byod" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Maker</lcma-form-label>
+    <lcma-control-container>
+      <input name="maker" ng-model="ctx.inventory.maker" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Device Type</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-mobile_device-type' name="type" ng-model="ctx.inventory.mobile_device_type_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Model No</lcma-form-label>
+    <lcma-control-container>
+      <input name="model_no" ng-model="ctx.inventory.model_no" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Device Name</lcma-form-label>
+    <lcma-control-container>
+      <input name="device_name" ng-model="ctx.inventory.device_name" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Technology</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-mobile_device-technology' name="technology" ng-model="ctx.inventory.technology_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>MDM Vendor</lcma-form-label>
+    <lcma-control-container>
+      <input name="mdm_vendor" ng-model="ctx.inventory.mdm_vendor" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>MDM Contract</lcma-form-label>
+    <lcma-control-container>
+      <input name="mdm_vendor" ng-model="ctx.inventory.mdm_vendor" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Ins Vendor</lcma-form-label>
+    <lcma-control-container>
+      <input name="ins_vendor" ng-model="ctx.inventory.ins_vendor" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Ins Contract</lcma-form-label>
+    <lcma-control-container>
+      <input name="ins_contract" ng-model="ctx.inventory.ins_contract" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Ins mo Fee</lcma-form-label>
+    <lcma-control-container>
+      <input name="ins_mo_fee" ng-model="ctx.inventory.ins_mo_fee" class="form-control" type="number" string-to-number>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP ID</lcma-form-label>
+    <lcma-control-container>
+      <input type="text" ng-model="ctx.inventory.sp_svc_id" required="required" class="form-control"/>
+    </lcma-control-container>
+  </lcma-form-group>
+
+</lcma-form-layout>
+

@@ -1,0 +1,4 @@
+
+<strong ng-controller="HistoryContractCtrl" ng-if="entry.parent_entity_type='contract' ">added document <a ng-click="readDocument(entry.meta_data, open)">{{entry.meta_data.path}}</a>.</strong>
+<strong ng-if="entry.parent_entity_type==='order'">Created {{entry.meta_data.path}} document for order.</strong>
+

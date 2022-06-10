@@ -1,0 +1,91 @@
+<div class="modal-header app-modal-width">
+  <h4 class="modal-title">Create New Order Info</h4>
+</div>
+<div class="modal-body app-modal-width">
+  <form name="OrderForm" class="form-horizontal form-cozy mar-b add-form">
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Order ID</label>
+      <div class="col-sm-9">
+        <lcma-order-picker ng-model="order.order_id" class="col-xs-3"></lcma-order-picker>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Svc Item #</label>
+      <div class="col-sm-9">
+        <input ng-required="true" name="svc_item_id" ng-model="order.svc_item_id" type="number"
+               class="form-control col-xs-3" string-to-number>
+        <div ng-messages="OrderForm.svc_item_id.$error" ng-show="OrdertForm.svc_item_id.$touched" role="alert">
+          <div ng-message="required">You don't enter Svc Item.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Svc Item Type</label>
+      <div class="col-sm-9">
+        <lcma-dictionary-picker type-key='project_order-svc-item-type' name="status" class="col-xs-3" ng-model="order.svc_item_type_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Proj Comp Date</label>
+      <div class="col-sm-9">
+        <input
+          uib-datepicker-popup="MM/dd/yyyy"
+          ng-model="order.proj_comp_date"
+          name="proj_comp_date"
+          init-date="{{order.proj_comp_date}}"
+          class="form-control input-sm text-right col-xs-3"
+          is-open="proj_comp_date_ui.opened"
+          ng-click="proj_comp_date_ui.opened=true"
+          />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Status</label>
+      <div class="col-sm-9">
+        <lcma-dictionary-picker  class="col-xs-3" type-key='project_order-status' name="status" ng-model="order.status_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Bill Start Date</label>
+      <div class="col-sm-9">
+        <input
+          uib-datepicker-popup="MM/dd/yyyy"
+          ng-model="order.bill_start_date"
+          name="bill_start_date"
+          init-date="{{order.bill_start_date}}"
+          class="form-control input-sm text-right col-xs-3"
+          is-open="bill_start_date_ui.opened"
+          ng-click="bill_start_date_ui.opened=true"
+          />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-3 custom-control-label">Bill End Date</label>
+      <div class="col-sm-9">
+        <input
+          uib-datepicker-popup="MM/dd/yyyy"
+          ng-model="order.bill_end_date"
+          name="bill_end_date"
+          init-date="{{order.bill_end_date}}"
+          class="form-control input-sm text-right col-xs-3"
+          is-open="bill_end_date_ui.opened"
+          ng-click="bill_end_date_ui.opened=true"
+          />
+      </div>
+    </div>
+
+  </form>
+</div>
+<div class="modal-footer app-modal-width">
+  <button class="btn btn-primary" type="button" ng-click="create(OrderForm)">Create</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

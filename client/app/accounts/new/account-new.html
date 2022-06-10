@@ -1,0 +1,87 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Account</h4>
+</div>
+<div class="modal-body">
+    <form name="AccountForm" class="clearfix add-form">
+        <lcma-form-layout columns="2">
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor Alias</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.vendor_alias"
+                           name="vendor_alias"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor</lcma-form-label>
+                <lcma-control-container>
+                    <lcma-vendor-picker ng-model="account.vendor_id" required = "required"></lcma-vendor-picker>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>AP Vendor ID</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="account.ap_vendor_id"
+                           name="ap_vendor_id"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Account</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="account.account_no"
+                           name="account_no"
+                           ng-required="true">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Billing Cycle</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.billing_cycle"
+                           name="billing_cycle"
+                           ng-required="true">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Status</lcma-form-label>
+                <lcma-control-container>
+                    <select class="form-control" name="status"
+                            ng-options="status.key as status.value for status in statuses"
+                            ng-model="account.status_id" ng-required="true">
+                    </select>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Late Bill Log Days</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.late_bill_log_days"
+                           name="late_bill_log_days"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+        </lcma-form-layout>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create(AccountForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>
+
+
+

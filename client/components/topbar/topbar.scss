@@ -1,0 +1,18 @@
+#avatar-dropdown.btn-default {
+  border: 0px none;
+  background-color: transparent;
+}
+
+#avatar-dropdown.btn-default:active {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.topbar-user-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.default-avatar-circle-35 { @include default-avatar(35px); }

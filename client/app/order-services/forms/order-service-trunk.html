@@ -1,0 +1,200 @@
+<ng-include src="'app/order-services/forms/order-service-common.html'"></ng-include>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Int Trunk ID</label>
+    <div class="col-sm-8">
+      <input ng-required="true" name="int_trunk_id" ng-model="ctx.service.inventory.int_trunk_id" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Trunk Grp Id</label>
+    <div class="col-sm-8">
+      <input name="trunk_grp_id" ng-model="ctx.service.trunk_grp_id" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Status</label>
+    <div class="col-sm-8">
+      <lcma-dictionary-picker type-key='inventory-trunk-status' name="status" ng-model="ctx.service.status_id"
+        ></lcma-dictionary-picker>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Trunk Type</label>
+    <div class="col-sm-8">
+      <lcma-dictionary-picker type-key='inventory-trunk-type' name="trunk_type" ng-model="ctx.service.trunk_type_id"
+        ></lcma-dictionary-picker>
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Mems/CC Qty</label>
+    <div class="col-sm-8">
+      <input name="mems_cc_qty" ng-model="ctx.service.mems_cc_qty" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">A Site</label>
+    <div class="col-sm-8">
+      <lcma-site-picker name="site_a" site-id="ctx.service.sitea_id"></lcma-site-picker>
+    </div>
+  </div>
+
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Z Site</label>
+    <div class="col-sm-8">
+      <lcma-site-picker name="site_z" site-id="ctx.service.sitez_id"></lcma-site-picker>
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Direction</label>
+    <div class="col-sm-8">
+      <lcma-dictionary-picker type-key='inventory-trunk-direction' name="direction"
+                              ng-model="ctx.service.direction_id"
+        ></lcma-dictionary-picker>
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">SIP Domain</label>
+    <div class="col-sm-8">
+      <input name="sip_domain" ng-model="ctx.service.sip_domain" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">GW ID</label>
+    <div class="col-sm-8">
+      <input name="gw_id" ng-model="ctx.service.gw_id" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">RTP Ports</label>
+    <div class="col-sm-8">
+      <input name="rtp_ports" ng-model="ctx.service.rtp_ports" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">RTP Port Ring</label>
+    <div class="col-sm-8">
+      <input name="rtp_port_ring" ng-model="ctx.service.rtp_port_ring" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">DNS IP</label>
+    <div class="col-sm-8">
+      <input name="dns_ip" ng-model="ctx.service.dns_ip" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Reg IP Host</label>
+    <div class="col-sm-8">
+      <input name="reg_ip_host" ng-model="ctx.service.reg_ip_host" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Cust IP Host</label>
+    <div class="col-sm-8">
+      <input name="cust_ip_host" ng-model="ctx.service.cust_ip_host" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Cust Port</label>
+    <div class="col-sm-8">
+      <input name="cust_port" ng-model="ctx.service.cust_port" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Proxy IP Host</label>
+    <div class="col-sm-8">
+      <input name="proxy_ip_host" ng-model="ctx.service.proxy_ip_host" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">2nd Proxy IP</label>
+    <div class="col-sm-8">
+      <input name="second_proxy_ip" ng-model="ctx.service.second_proxy_ip" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">2nd Proxy Port</label>
+    <div class="col-sm-8">
+      <input name="second_proxy_port" ng-model="ctx.service.second_proxy_port" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">OB Proxy IP</label>
+    <div class="col-sm-8">
+      <input name="ob_proxy_ip" ng-model="ctx.service.ob_proxy_ip" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">OB Proxy Port</label>
+    <div class="col-sm-8">
+      <input name="ob_proxy_port" ng-model="ctx.service.ob_proxy_port" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+
+<div class="row mar-b">
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Fax protocol</label>
+    <div class="col-sm-8">
+      <input name="fax_protocol" ng-model="ctx.service.fax_protocol" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">Cust CODEC</label>
+    <div class="col-sm-8">
+      <input name="cust_codec" ng-model="ctx.service.cust_codec" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group col-md-4 col-lg-4">
+    <label class="col-sm-4 custom-control-label">SP CODEC</label>
+    <div class="col-sm-8">
+      <input name="sp_codec" ng-model="ctx.service.sp_codec" type="text" class="form-control">
+    </div>
+  </div>
+</div>
+
+
+<div class="row mar-b">
+    <div class="col-sm-12">
+        <!--<label>Service Notes</label>-->
+        <textarea name="notes" class="form-control" ng-model="ctx.service.notes" rows="5"></textarea>
+    </div>
+</div>

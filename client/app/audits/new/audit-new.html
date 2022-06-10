@@ -1,0 +1,297 @@
+<div class="app-body-content app-audit-wizard">
+<!--  <div class="app-toolbar">
+    <div class="pull-right">
+      <button class="btn btn-primary" type="submit" ng-click="ctx.createAudit(AuditForm)">Create Audit</button>
+      <button class="btn btn-default" type="submit" ng-click="ctx.cancelAudit()">Cancel</button>
+    </div>
+  </div>-->
+
+  <div class="app-data app-data-space order-facepage">
+
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2>
+          Audit Info
+        </h2>
+      </div>
+      <div class="panel-body panel-body-cozy">
+        <form name="AuditForm" class="form-horizontal">
+          <div class="row mar-b">
+            <div class="cols-xs-12">
+              <wizard on-finish="finishedWizard()" name="audit_builder" template="app/audits/common/audit-builder-wizard.html">
+                <wz-step wz-title="Step 1">
+                  <div class="panel-body">
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                        Vendor
+                      </div>
+                      <div class="col-xs-3">
+                        <lcma-vendor-picker ng-model="ctx.audit.vendor_id"></lcma-vendor-picker>
+                      </div>
+                      <div class="col-xs-3">
+                        Invoice Type
+                      </div>
+                      <div class="col-xs-3">
+                        <lcma-dictionary-picker type-key='audit-invoice-type' name="invoice_type" ng-model="ctx.audit.invoice_type_id"
+                          ></lcma-dictionary-picker>
+                      </div>
+                    </div>
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                        Invoice Qty
+                      </div>
+                      <div class="col-xs-3">
+                        <input name="invoice_qty" ng-model="ctx.audit.invoice_qty" type="number"
+                               class="form-control" string-to-number>
+                      </div>
+                      <div class="col-xs-3">
+                        Date Range
+                      </div>
+                      <div class="col-xs-3">
+                        <select class="form-control"  name="prevMonth" id="prevMonth"
+                                ng-options="month.label for month in ctx.availablePrevMonths"
+                                ng-model="ctx.audit.prevMonth">
+                          <option value="">Pick Start and End month</option>
+                        </select>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-xs-3">
+                        Invoice Charge Fields
+                      </div>
+                      <div class="col-xs-9">
+                        <div class="container-fluid">
+                          <div class="row">
+                            <div ng-repeat="(listName, list) in ctx.invoiceChargesFields.lists" class="col-md-6">
+                              <label>{{ctx.listNames[listName]}}</label>
+                              <div class="panel panel-bordered">
+                                <ul dnd-list="list" class="clearfix">
+                                  <li ng-repeat="item in list"
+                                      dnd-draggable="item"
+                                      dnd-moved="list.splice($index, 1)"
+                                      dnd-effect-allowed="move"
+                                      dnd-selected="models.selected = item"
+                                      ng-class="{'selected': models.selected === item}"
+                                      draggable="true">
+                                      <!--<i class="fa fa-close pull-right" ng-if="listName === 'B'" ng-click=""></i>-->
+                                    {{item.label}}</li>
+                                  <li class="text-center text-muted disabled" ng-if="!list.length && listName === 'B'">Drag fields from the list on the left</li>
+                                </ul>
+
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row mar-b">
+                            <div class="col-xs-6 text-center">
+                              <button class="btn btn-link" ng-click="ctx.addAllChargeFields()"> Add All  </button>
+                            </div>
+                            <div class="col-xs-6 text-center">
+                              <button class="btn btn-link" ng-click="ctx.delAllChargeFields()"> Remove All </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row panel-commands">
+                      <div class="col-xs-12 text-right">
+                        <button class="btn btn-primary" type="submit" wz-next="ctx.updateInvoiceChargesGrid()">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </wz-step>
+
+                <wz-step wz-title="Step 2">
+                  <div class="panel-body">
+                    <div class="row mar-b">
+                      <div class="col-xs-12">
+                        <div ng-if="ctx.wizardStep == 2" class="grid app-data-grid mar-all" ui-grid="ctx.invoiceChargesGrid" ui-grid-selection ui-grid-exporter ui-grid-pinning ui-grid-resize-columns></div>
+                      </div>
+                    </div>
+
+                    <div class="row mar-b panel-commands">
+                      <div class="col-xs-6">
+                        <button class="btn btn-primary" wz-previous>
+                          <i class="fa fa-angle-left"></i>
+                          Back</button>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <button class="btn btn-primary" wz-next>Next
+                        <i class="fa fa-angle-right"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </wz-step>
+
+                <wz-step wz-title="Step 3">
+                  <div class="panel-body">
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                        Define Charge Calculation
+                      </div>
+                      <div class="col-xs-9">
+                        <input type="type" class="form-control" value="" >
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                        Test Audit
+                      </div>
+                      <div class="col-xs-3">
+                        <button class="form-control" ng-click="ctx.calc()">Test</button>
+                      </div>
+                      <div class="col-xs-3">
+                        Run Month
+                      </div>
+                      <div class="col-xs-3">
+                        <select class="form-control">
+                          <option>Jan, 2016</option>
+                          <option>Feb, 2016</option>
+                          <option>Mar, 2016</option>
+                          <option>Apr, 2016</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-8">
+                      </div>
+                      <div class="col-xs-2">
+                        Total
+                      </div>
+                      <div class="col-xs-3">
+                        Impacted
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                      </div>
+                      <div class="col-xs-5">
+                        Total Charges
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" ng-model="ctx.audit.total_charges" readonly>
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                      </div>
+                      <div class="col-xs-5">
+                        Total Qty of Charges
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" ng-model="ctx.audit.total_qty" readonly>
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                      </div>
+                      <div class="col-xs-5">
+                        Total Calculated Charges
+                      </div>
+                      <div class="col-xs-2">
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                      </div>
+                      <div class="col-xs-5">
+                        Total Dispute Amount
+                      </div>
+                      <div class="col-xs-2">
+                      </div>
+                      <div class="col-xs-2">
+                        <input class="form-class" value="">
+                      </div>
+                    </div>
+
+                    <div class="row panel-commands">
+                      <div class="col-xs-6">
+                        <button class="btn btn-primary" wz-previous>
+                          <i class="fa fa-angle-left"></i>
+                          Back</button>
+                      </div>
+                      <div class="col-xs-6 text-right">
+                        <button class="btn btn-primary" wz-next>Next
+                          <i class="fa fa-angle-right"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </wz-step>
+
+                <wz-step wz-title="Step 4">
+                  <div class="panel-body">
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                        Audit Name
+                      </div>
+                      <div class="col-xs-9">
+                        <input class="form-control" ng-model="ctx.audit.name">
+                      </div>
+                    </div>
+
+                    <div class="row mar-b">
+                      <div class="col-xs-3">
+                      </div>
+                      <!--<div class="col-xs-1">
+                        <button class="form-class">Edit</button>
+                      </div>
+                      <div class="col-xs-1">
+                        <button class="form-class">Save</button>
+                      </div>
+                      <div class="col-xs-1">
+                        <button class="form-class">Cancel</button>
+                      </div>-->
+
+                      <div class="col-xs-1">
+                        <button class="btn btn-primary form-class">Save Audit</button>
+                      </div>
+                    </div>
+                  </div>
+                </wz-step>
+
+              </wizard>
+            </div>
+          </div>
+
+          <!--<div class="row mar-b">-->
+
+            <!-- -->
+            <!--<div class="col-xs-1">-->
+              <!--Match Type-->
+            <!--</div>-->
+            <!--<div class="col-xs-2">-->
+              <!--<input type="checkbox" ng-model="ctx.audit.match_contains"-->
+                     <!--ng-true-value="'YES'" ng-false-value="'NO'"><br/>-->
+              <!--<input type="checkbox" ng-model="ctx.audit.match_equals"-->
+                     <!--ng-true-value="'YES'" ng-false-value="'NO'">-->
+            <!--</div>-->
+          <!--</div>-->
+
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

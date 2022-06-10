@@ -1,0 +1,107 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Customize Your Profile</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+
+    <form name="ProfileForm" class="form-horizontal form-cozy">
+
+      <div class="panel panel-alternate">
+
+        <div class="panel-body ">
+
+          <lcma-form-layout columns="1">
+
+            <lcma-form-group>
+              <lcma-form-label>First Name</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="first_name" placeholder="" type="text" class="form-control"
+                       ng-model="user.first_name">
+                <div ng-messages="UserForm.first_name.$error" ng-show="UserForm.first_name.$touched" role="alert">
+                  <div ng-message="required">Please provide first name.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Last Name</lcma-form-label>
+              <lcma-control-container>
+
+                <input ng-required="true" name="last_name" placeholder="" type="text" class="form-control"
+                       ng-model="user.last_name">
+                <div ng-messages="UserForm.last_name.$error" ng-show="UserForm.last_name.$touched" role="alert">
+                  <div ng-message="required">Please provide last name.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Email</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="email" type="email" placeholder="" class="form-control"
+                       ng-model="user.email">
+                <div ng-messages="UserForm.email.$error" ng-show="UserForm.email.$touched" role="alert">
+                  <div ng-message="required">You didn't enter valid email.</div>
+                  <div ng-message="email">You didn't enter valid email.</div>
+                </div>
+                <div class="error">{{emailErrMsg}}</div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Mobile Number</lcma-form-label>
+              <lcma-control-container>
+
+                <input ng-required="false" name="mobile_number" placeholder="" type="text"
+                       class="form-control"
+                       ng-model="user.mobile_number">
+              </lcma-control-container>
+            </lcma-form-group>
+
+          </lcma-form-layout>
+
+          <div class="row">
+            <div class="col-sm-5 control-label">
+              <button ngf-select ng-click="UploadPicture()" ng-model="picFile" ng-show="!showCropImage && !user.avatar"
+                      style="margin-bottom: 5px;" class="btn btn-default" accept="image/*">
+                Upload Picture
+              </button>
+
+              <button ng-click="RemovePicture()" style="margin-bottom: 5px;" class="btn btn-default" ng-show="showCropImage || user.avatar">
+                Remove Picture
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-5 control-label">
+              <div ng-show="!showCropImage && !user.avatar" class="default-avatar-circle">
+                <span class="initials">{{getInitialLetters()}}</span>
+              </div>
+
+              <img ng-show="!showCropImage && user.avatar" class="default-avatar-circle" data-ng-src="{{user.avatar}}"/>
+              <div ng-show="showCropImage" ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                <img-crop image="picFile | ngfDataUrl"
+                          result-image="avatar_temp">
+                </img-crop>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 error">{{errMsg}}</div>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="save(ProfileForm)">Save</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Close</button>
+  </div>
+</div>
+
+

@@ -1,0 +1,107 @@
+<ng-form name="ServiceForm">
+
+  <div class="mar-b text-center">
+    <lcma-flow style="display: inline-block" current-step="ctx.service.state" on-action="onFlowAction(item, action, data)" scheme="serviceFlowScheme"></lcma-flow>
+  </div>
+
+  <ng-include src="'app/order-services/forms/order-service-common.html'"></ng-include>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">TNF</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="toll_free_number" ng-model="ctx.inventory.toll_free_number" type="text" class="form-control">
+        <div ng-messages="ServiceForm.toll_free_number.$error" ng-show="ServiceForm.toll_free_number.$touched" role="alert">
+          <div ng-message="required">You didn't enter Toll Free Number</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Carrier</label>
+      <div class="col-sm-8">
+        <input name="carrier" ng-model="ctx.inventory.carrier" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Resp Org</label>
+      <div class="col-sm-8">
+        <input name="resp_org" ng-model="ctx.inventory.resp_org" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">SMS Template</label>
+      <div class="col-sm-8">
+        <lcma-dictionary-picker type-key='inventory-toll_free_number-sms-template' name="sms_template" ng-model="ctx.inventory.sms_template_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Status</label>
+      <div class="col-sm-8">
+        <lcma-dictionary-picker type-key='inventory-toll_free_number-status' name="status" ng-model="ctx.inventory.toll_free_number_status_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Contract ID</label>
+      <div class="col-sm-8">
+        <lcma-contract-picker ng-model="ctx.inventory.contract_id"></lcma-contract-picker>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Application</label>
+      <div class="col-sm-8">
+        <input name="application" ng-model="ctx.inventory.application" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-8 text-left">
+            <button class="btn btn-primary btn-sm" ng-click="ctx.addRoute()"><i class="fa fa-plus"></i></button>
+        </div>
+        <div class="col-sm-4 text-right" style="padding-left: 0px;">
+        </div>
+
+    </div>
+
+    <hr>
+    <div class="row">
+
+        <div class="col-sm-12 text-right">
+            <a class="btn btn-default" ng-disabled="ctx.routesGridApi.selection.getSelectedRows().length==0" ng-click="ctx.removeRoute()" title="Delete Selected"><i class="fa fa-trash"></i></a>
+        </div>
+        <div class="col-sm-12">
+            <div class="grid mar-all" ui-grid="ctx.routesGrid" ui-grid-selection></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-center">
+            <button class="btn btn-primary" type="button" ng-click="saveService(ServiceForm)">Save</button>
+        </div>
+        <div class="col-sm-4 text-right" >
+            <button type="button" style="margin-left: 5px"
+                  class="btn btn-primary"
+                  ng-click="ctx.removeService(service)">
+                <span ng-if="order.state < 206">Remove</span>
+                <span ng-if="order.state === 206">Cancel</span>
+            </button>
+        </div>
+    </div>
+
+</ng-form>

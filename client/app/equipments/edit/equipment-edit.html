@@ -1,0 +1,123 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Update Equipment</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+        <form name="EquipmentForm" class="form-horizontal form-cozy" id="EquipmentForm">
+            <div class="panel panel-alternate">
+                <div class="panel-heading">
+                    <div class="panel-title">Equipment Info</div>
+                </div>
+                <div class="panel-body">
+                    <lcma-form-layout columns="2">
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Site ID</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-site-picker name="site_id" id="site_id" site-id="equipment.site_id" ng-model="equipment.site_id"
+                                                  ng-required="true"></lcma-site-picker>
+                                <div ng-messages="EquipmentForm.site_id.$error" ng-show="EquipmentForm.site_id.$touched" role="alert">
+                                    <div ng-message="required">You didn't select Site ID.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Equipment Type</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="type" ng-model="equipment.equip_type" type="text"
+                                       id="equip_type" class="form-control">
+                                <div ng-messages="EquipmentForm.type.$error" ng-show="EquipmentForm.type.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Equipment Type.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Marker</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="maker" placeholder="Equipment Maker" ng-model="equipment.equip_maker"
+                                       type="text" class="form-control">
+                                <div ng-messages="EquipmentForm.maker.$error" ng-show="EquipmentForm.maker.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Equipment Maker.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Model</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="model" placeholder="Equipment Model" ng-model="equipment.equip_model"
+                                       type="text"
+                                       class="form-control">
+                                <div ng-messages="EquipmentForm.model.$error" ng-show="EquipmentForm.model.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Equipment Model.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Serial</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="serial" ng-model="equipment.equip_serial" type="text"
+                                       class="form-control">
+                                <div ng-messages="EquipmentForm.serial.$error" ng-show="EquipmentForm.serial.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Equipment Serial.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Acq/In Svc Date</lcma-form-label>
+                            <lcma-control-container>
+                                <div class="col-lg-6 pad-0-l">
+                                    <input
+                                        ng-required="true"
+                                        ng-model="equipment.acq_date"
+                                        name="acq_date"
+                                        uib-datepicker-popup="dd/MM/yyyy"
+                                        placeholder="Acquisition date"
+                                        class="form-control input-sm"
+                                        is-open="acq_date_ui.opened"
+                                        ng-click="acq_date_ui.opened = true">
+                                    <div ng-messages="EquipmentForm.acq_date.$error" ng-show="EquipmentForm.acq_date.$touched"
+                                         role="alert">
+                                        <div ng-message="required">You didn't enter Acquisition Date.</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 pad-0-l">
+                                    <input
+                                        ng-model="equipment.in_svc_date"
+                                        name="in_svc_date"
+                                        uib-datepicker-popup="dd/MM/yyyy"
+                                        placeholder="In Svc Date"
+                                        class="form-control input-sm"
+                                        is-open="in_svc_date_ui.opened"
+                                        ng-click="in_svc_date_ui.opened = true">
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Vendor ID</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-vendor-picker name="vendor_id" id="vendor_id"  ng-model="equipment.vendor_id"></lcma-vendor-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Contract ID</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-contract-picker name="contract_id"  id="contract_id" ng-model="equipment.contract_id"></lcma-contract-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="update(EquipmentForm)">Update</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container form">
+  <h1>Forgot Password</h1>
+  <div class="form-content">
+  <form name="ForgotForm">
+    <div>
+      <p>To reset your password enter email for the system and we will send you intructions on email provided.</p>
+    </div>
+    <div class="alert alert-danger" ng-if="ctx.error">
+      {{ctx.error.msg}}
+    </div>
+    <div class="alert alert-success" ng-if="ctx.success">
+      {{ctx.success.msg}}
+    </div>
+    <div class="form-group">
+
+      <input placeholder="Email" class="form-control" type="email" name="email" ng-model="ctx.auth.email" ng-required="true">
+      <div ng-messages="LoginForm.email.$error" ng-show="LoginForm.email.$touched" role="alert">
+        <div ng-message="required">You didn't enter valid email.</div>
+        <div ng-message="email">You didn't enter valid email.</div>
+      </div>
+    </div>
+    <div class="form-group text-center">
+      <label></label>
+      <button class="btn btn-primary btn-block" type="button" ng-click="ctx.resetPassword(ForgotForm)">Reset Password</button>
+      <p>or</p>
+      <a ui-sref="anonymous.login">Back to Login page</a>
+    </div>
+  </form>
+
+</div>
+</div>

@@ -1,0 +1,8 @@
+.default-avatar-circle-sm { @include default-avatar(50px); }
+.float-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.default-avatar-circle-xs { @include default-avatar(24px); }
+

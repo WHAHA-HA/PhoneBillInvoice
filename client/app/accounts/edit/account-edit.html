@@ -1,0 +1,109 @@
+<div class="modal-header">
+    <h4 class="modal-title">Update Account</h4>
+</div>
+<div class="modal-body">
+    <form name="AccountForm" class="clearfix">
+        <lcma-form-layout columns="2">
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Unique ID</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="account.id"
+                           name="account_id"
+                           ng-required="true">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor Alias</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.vendor_alias"
+                           name="vendor_alias"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor {{account.vendor}}</lcma-form-label>
+                <lcma-control-container>
+                    <lcma-vendor-picker ng-model="account.vendor_id"></lcma-vendor-picker>
+                    <div ng-messages="AccountForm.vendor.$error" ng-show="AccountForm.vendor.$touched" role="alert">
+                        <div ng-message="required">You didn't enter vendor.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>AP Vendor ID</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="account.ap_vendor_id"
+                           name="ap_vendor_id"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Account</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="account.account_no"
+                           name="account_no"
+                           ng-required="true">
+
+                    <div ng-messages="AccountForm.account_no.$error" ng-show="AccountForm.account_no.$touched" role="alert">
+                        <div ng-message="required">You didn't enter account number.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Billing Cycle</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.billing_cycle"
+                           name="billing_cycle"
+                           ng-required="true">
+                    <div ng-messages="AccountForm.billing_cycle.$error" ng-show="AccountForm.billing_cycle.$touched" role="alert">
+                        <div ng-message="required">You didn't enter billing cycle.</div>
+                        <div ng-message="number">Please enter valid billing cycle.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Status</lcma-form-label>
+                <lcma-control-container>
+                    <select class="form-control" name="status"
+                            ng-options="status.key as status.value for status in statuses"
+                            ng-model="account.status_id" ng-required="true">
+                    </select>
+                    <div ng-messages="AccountForm.status.$error" ng-show="AccountForm.status.$touched" role="alert">
+                        <div ng-message="required">You didn't select status.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>  
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Late Bill Log Days</lcma-form-label>
+                <lcma-control-container>
+                    <input type="text"
+                           class="form-control"
+                           ng-model="account.late_bill_log_days"
+                           name="late_bill_log_days"
+                           ng-required="false">
+                </lcma-control-container>
+            </lcma-form-group>  
+        </lcma-form-layout>      
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="update(AccountForm)">Update</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>
+
+
+

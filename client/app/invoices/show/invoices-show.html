@@ -1,0 +1,423 @@
+<div class="app-body-content">
+    <div class="app-data app-data-space invoice-facepage">
+
+        <lcma-flow current-step="ctx.invoice.header.status_code"
+                   on-action="ctx.onFlowAction(item, action, data)"
+                   history="ctx.invoice.status_history"
+                   scheme="ctx.invoiceFlowScheme"></lcma-flow>
+
+        <!--<ul class="wiz-header">
+          <li><a class="prev-step">New</a></li>
+          <li><a class="prev-step">Unassigned</a></li>
+          <li><a class="prev-step">New</a></li>
+          <li><a class="current-step">Ready for Approval</a></li>
+          <li><a class="next-step">Approved/Rejected</a></li>
+          <li><a class="next-step">Ap Feed Generated</a></li>
+          <li><a class="next-step">Ap Feed Sent</a></li>
+          <li><a class="next-step">Reverse Ap Feed Sent Received</a></li>
+        </ul>-->
+        <div class="panel panel-default" style="margin-top: 57px;">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-1">
+
+                        <img class="media-object" width="64px"
+                             ng-src="{{ctx.invoice.vendor.logo}}"
+                        >
+                    </div>
+                    <div class="col-sm-3">
+                        <p>
+                            {{ctx.invoice.vendor.name}}
+                            <br/>
+                            {{ctx.invoice.sp_remit_addr_1}}
+                            <br/>
+                            {{ctx.invoice.sp_remit_city}},
+                            {{ctx.invoice.sp_remit_state}},
+                            {{ctx.invoice.sp_remit_zip}}
+                        </p>
+
+                        <div class="partly-border">
+                            <p>
+                                {{ctx.invoice.billed_company_name}}
+                                <br/>
+                                {{ctx.invoice.billed_company_addr_1}}
+                                <br/>
+                                {{ctx.invoice.billed_company_city}},
+                                {{ctx.invoice.billed_company_state}},
+                                {{ctx.invoice.billed_company_zip}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-sm-offset-4">
+                        <h4 class="heading">Remittance Section</h4>
+
+                        <div class="mar-b-sm clearfix">
+                            <div class="col-sm-6">Invoice Date</div>
+                            <div class="col-sm-6 value-box"><span>{{ (ctx.invoice.due_date | lcmaDate) || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="mar-b-sm clearfix">
+                            <div class="col-sm-6">Account Number</div>
+                            <div class="col-sm-6 value-box"><span>{{ctx.invoice.acct_level_1 || 'N/A'}}</span></div>
+                        </div>
+                        <div class="mar-b-sm clearfix">
+                            <div class="col-sm-6">Invoice Number</div>
+                            <div class="col-sm-6 value-box"><span>{{ctx.invoice.sp_inv_num || 'N/A'}}</span></div>
+                        </div>
+                        <div class="mar-b-sm clearfix">
+                            <div class="col-sm-6">Due Date</div>
+                            <div class="col-sm-6 value-box"><span>{{(ctx.invoice.due_date | lcmaDate) || 'N/A'}}</span>
+                            </div>
+                        </div>
+                        <div class="mar-b-sm clearfix">
+                            <div class="col-sm-6">Total Due</div>
+                            <div class="col-sm-6 value-box text-right"><span>{{(ctx.invoice.tot_amt_due | currency) || 'N/A'}}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6">
+
+                        <h4 class="heading">Summary of Charges</h4>
+                        <h5 class="group-heading mar-b text-important">Balance Information</h5>
+
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Previous Balance</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.prev_bill_amt | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Payments Received</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.pmts_rcvd | currency) || 'N/A'}}</div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Balance Forward Adjustments</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.bal_fwd_adj | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-6"><h5 class="group-heading">Balance Forward</h5></div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.bal_fwd | currency) || 'N/A'}}</div>
+                            </div>
+                        </div>
+
+                        <h5 class="group-heading mar-b text-important">New Charges</h5>
+
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Monthly Recurring Charges</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_mrc_chgs | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Other Charges & Credits</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_occ_chgs | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Usage Charges</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_usage_chgs | currency) ||
+                                    'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Taxes / Surcharges</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_taxsur | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Discounts</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_disc_amt | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-5 col-sm-offset-1">Adjustments</div>
+                            <div class="col-sm-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_new_chg_adj | currency) ||
+                                    'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-6"><h5 class="group-heading">Total New Charges</h5></div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_new_chgs | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-6"><h5 class="group-heading">Adjustments (Amount Due)</h5></div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_amt_due_adj | currency) ||
+                                    'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-6"><h5 class="group-heading">Total Amount Due</h5></div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.tot_amt_due | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-6"><h5 class="group-heading">Amount Withheld</h5></div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <div class="value-box text-right"><span ng-if="ctx.invoice.amount_witheld > 0">-</span>{{
+                                    (ctx.invoice.amount_witheld | currency) || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-b-sm">
+                            <div class="col-sm-6"><h5 class="group-heading">Total Amount to be Paid</h5></div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <div class="value-box text-right">{{ (ctx.invoice.total | currency) || 'N/A'}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="heading">Invoice Information</h4>
+
+                        <div class="clearfix mar-b-sm">
+                            <div class="col-sm-8 text-right"><h5 class="group-heading">Invoice Status</h5></div>
+                            <!--<div class="col-sm-2"></div>-->
+                            <div class="col-sm-4" style="padding-right: 0px;">
+                                <div class="value-box text-right">
+                                    <lcma-invoice-status-view
+                                        ng-model="ctx.invoice.header.status_code"></lcma-invoice-status-view>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix mar-b-sm">
+                            <div class="col-sm-8 text-right"><h5 class="group-heading">Currency</h5></div>
+                            <!--<div class="col-sm-3"></div>-->
+                            <div class="col-sm-4" style="padding-right: 0px;">
+                                <div class="value-box text-right">
+                                    {{ ctx.invoice.currency || 'N/A'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix mar-b-sm">
+                            <div class="col-sm-8 text-right"><h5 class="group-heading">Invoice Owner</h5></div>
+                            <!--<div class="col-sm-3"></div>-->
+                            <div class="col-sm-4" style="padding-right: 0px;">
+                                <div class="value-box text-right">
+                                    <div ng-if="ctx.invoice.owner.first_name">
+                                        {{ctx.invoice.owner.first_name}} {{ctx.invoice.owner.last_name}}
+                                    </div>
+                                    <div ng-if="!ctx.invoice.owner.first_name">
+                                        N/A
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mar-t">
+                            <div class="col-sm-12">
+                                <h5>Contacts</h5>
+                                <div style="height: 115px;overflow-y: auto" class="panel panel-default">
+                                    <table class="table table-condensed table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Number</th>
+                                            <th>Fax</th>
+                                            <th>Comments</th>
+                                            <th>URL</th>
+                                            <th>Hours</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="contact in ctx.invoice.contacts">
+                                            <td>{{contact.cont_type}}</td>
+                                            <td>{{contact.cont_name}}</td>
+                                            <td>{{contact.cont_email}}</td>
+                                            <td>{{contact.cont_number}}</td>
+                                            <td>{{contact.cont_fax}}</td>
+                                            <td>{{contact.cont_comments}}</td>
+                                            <td>{{contact.cont_url}}</td>
+                                            <td>{{contact.cont_hours}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Notes</h5>
+                        <div style="height: 165px;overflow-y: auto" class="panel panel-default">
+                            <div class="panel-body">
+                                <div ng-repeat="note in ctx.invoice.notes">
+                                    <span>{{note.acct_level_1}}, </span>
+                                    <span ng-if="note.sp_inv_line_num">{{note.sp_inv_line_num}}, </span>
+                                    <span ng-if="note.note">{{note.note}} </span>
+                                </div>
+                                <p ng-if="!ctx.invoice.notes.length" class="text-center">
+                                    N/A
+                                </p>
+                            </div>
+                        </div>
+                        <!--<div class="row mar-t">
+                          <div class="col-sm-12">
+                            <h5>Notes</h5>
+                            <table class="table table-bordered">
+                              <thead>
+                              <tr>
+                                <th>Account</th>
+                                <th>Line Number</th>
+                                <th>Note</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr ng-repeat="contact in ctx.invoice.notes">
+                                <td>{{contact.acct_level_1}}</td>
+                                <td>{{contact.sp_inv_line_num}}</td>
+                                <td>{{contact.note}}</td>
+                              </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Invoice Details</h2>
+
+                <div class="btn-group panel-ctrls">
+                    <button ng-disabled="!ctx.chargesSelectionGrid.data.length || ctx.chargeExist "
+                            type="button"
+                            class="btn btn-default"
+                            ng-click="ctx.addDispute()">Add Dispute
+                    </button>
+                    <button type="button"
+                            class="btn btn-default"
+                            ng-click="ctx.addNote()">Add Note
+                    </button>
+                </div>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="pull-right">
+                    <a class="btn btn-default" ng-click="ctx.exportToCSV()" title="Export to CSV"><i
+                        class="fa fa-download"></i></a>
+                    <a ng-click="ctx.clearChargesFilters()" class="btn btn-default">
+                        <i class="icon-filter-clear"></i>
+                    </a>
+                    <a href lcma-grid-settings-link name="invoice.charge.list.grid" on-apply="onSettingsUpdate"></a>
+
+                    <lcma-pager class="pull-right" ng-model="ctx.ChargesPager"></lcma-pager>
+                    <lcma-pager-size-switch class="pull-right" ng-model="ctx.ChargesPager"></lcma-pager-size-switch>
+                    <lcma-pager-info class="pull-right" ng-model="ctx.ChargesPager"></lcma-pager-info>
+                </div>
+
+                <ul class="nav nav-pills mar-b" role="tablist">
+                    <li ng-class="{'active': !ctx.chargesQuery.where.chg_class && !ctx.chargesSelectionVisible}"><a
+                        ng-click="ctx.applyChargesQuickFilter(-1)">All</a></li>
+                    <li role="presentation" ng-repeat="status in ctx.chargeStatusesList"
+                        ng-class="{'active' : ctx.chargesQuickFilter === status.value && !ctx.chargesSelectionVisible}">
+                        <a ng-click="ctx.applyChargesQuickFilter(status.custom_key)" aria-controls="home" role="tab"
+                           data-toggle="tab">{{status.value.toUpperCase()}}</a>
+                    </li>
+                    <li ng-click="ctx.applyChargesQuickFilter('selection')"
+                        ng-class="{'active': ctx.chargesSelectionVisible}">
+                        <a>Selection <span class="badge">{{ctx.chargesSelectionGrid.data.length || 0}}</span></a>
+                    </li>
+                </ul>
+                <!-- Dropdown Column Section -->
+
+                <div ng-show="!ctx.chargesSelectionVisible" class="grid" ui-grid-exporter ui-grid-selection
+                     ui-grid-resize-columns
+                     ui-grid-auto-resize
+                     ui-grid="ctx.chargesGrid" ui-if="ctx.chargesSelectionGrid.data.length>0"
+                     ng-style="ctx.getGridHeight()"></div>
+                <div ng-show="ctx.chargesSelectionVisible" class="grid" ui-grid-exporter ui-grid-selection
+                     ui-grid-resize-columns
+                     ui-grid-auto-resize
+                     ui-grid="ctx.chargesSelectionGrid" ui-if="ctx.chargesSelectionGrid.data.length>0"
+                     ng-style="ctx.getGridHeight()"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-default  panel-related">
+            <div class="panel-heading clearfix">
+                <h2>Related Items</h2>
+            </div>
+            <div class="panel-body">
+                <uib-tabset active="ctx.relatedTabs.active">
+                    <uib-tab index="0" heading="Disputes" ng-click="ctx.activateRelatedTab(0)">
+                        <div class="grid" ui-grid="ctx.disputesGrid" lcma-no-data-message></div>
+                    </uib-tab>
+
+                    <uib-tab index="1" heading="Notes" ng-click="ctx.activateRelatedTab(1)">
+                        <br>
+                        <br>
+                        <div ng-repeat="note in ctx.notes" class="mar-t" id="note_{{note.id}}"
+                             lcma-focus-on="note_{{note.id}}">
+                            <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+                            </lcma-note-list>
+                        </div>
+                        <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this invoice.
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab index="2" heading="GL Coding Summary" ng-click="ctx.activateRelatedTab(2)">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <p>{{ctx.glCodeSummary.totalCharges}} charges totaling
+                                    {{(ctx.glCodeSummary.sumTotalCharges)||0 | currency}}</p>
+                                <p>{{ctx.glCodeSummary.totalGlApplied}} charges have GL codes applied totaling
+                                    {{(ctx.glCodeSummary.sumGlApplied)||0 | currency}}</p>
+                                <p>{{ctx.glCodeSummary.totalCharges-ctx.glCodeSummary.totalGlApplied}} charges do NOT
+                                    have GL codes applied totaling
+                                    {{(ctx.glCodeSummary.sumTotalCharges-ctx.glCodeSummary.sumGlApplied)||0 |
+                                    currency}}</p>
+                                <p>{{ctx.glCodeSummary.countGlApplied}} GL codes have been assigned to this bill.</p>
+                                <p><a href="">View all GL Coding Report</a></p>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab index="3" heading="Sub Account Summary" ng-click="ctx.activateRelatedTab(3)">
+                        <div class="grid" ui-grid="ctx.subAccountsGrid" lcma-no-data-message
+                             ng-if="ctx.relatedTabs.active==3 "></div>
+                    </uib-tab>
+
+                    <uib-tab index="4" heading="History" ng-click="ctx.activateRelatedTab(4)">
+                        <lcma-history entity_type="invoice@{{ctx.invoice.id}}"></lcma-history>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

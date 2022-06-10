@@ -1,0 +1,71 @@
+<div class="modal-header app-modal-width">
+  <h4 class="modal-title">Update Audit Rate</h4>
+</div>
+<div class="modal-body app-modal-width">
+  <form name="AuditRateEditForm" class="form-horizontal form-cozy mar-b add-form">
+    <lcma-form-layout columns="1">
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>Table Name</lcma-form-label>
+        <lcma-control-container>
+          <input ng-required="true" name="name" ng-model="auditRate.name" type="text"
+                 class="form-control">
+          <div ng-messages="AuditRateEditForm.name.$error" ng-show="AuditRateEditForm.name.$touched" role="alert">
+            <div ng-message="required">You didn't enter Audit Rate Table Name.</div>
+          </div>
+        </lcma-control-container>
+      </lcma-form-group>
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>Charge Class</lcma-form-label>
+        <lcma-control-container>
+          <input ng-required="true" name="chg_class" ng-model="auditRate.chg_class" type="text"
+                 class="form-control">
+        </lcma-control-container>
+      </lcma-form-group>
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>Description</lcma-form-label>
+        <lcma-control-container>
+          <textarea class="form-control"
+                    ng-model="auditRate.chg_description1"
+                    name="description"
+                    ng-required="true">
+        </textarea>
+        </lcma-control-container>
+      </lcma-form-group>
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>Description2</lcma-form-label>
+        <lcma-control-container>
+          <textarea class="form-control"
+                    ng-model="auditRate.chg_description2"
+                    name="description2"
+                    ng-required="false">
+          </textarea>
+        </lcma-control-container>
+      </lcma-form-group>
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>FAC_BW_KB</lcma-form-label>
+        <lcma-control-container>
+          <input ng-required="true" name="fac" ng-model="auditRate.fac_bw_kb" type="number"
+                 class="form-control">
+        </lcma-control-container>
+      </lcma-form-group>
+
+      <lcma-form-group label-size="4">
+        <lcma-form-label>Audit Rate</lcma-form-label>
+        <lcma-control-container>
+          <input ng-required="true" name="rate" ng-model="auditRate.rate" type="number"
+                 class="form-control">
+        </lcma-control-container>
+      </lcma-form-group>
+
+    </lcma-form-layout>
+  </form>
+</div>
+<div class="modal-footer app-modal-width">
+  <button class="btn btn-primary" type="button" ng-click="update(AuditRateEditForm)">Update</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

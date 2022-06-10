@@ -1,0 +1,85 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Permission Edit</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+
+        <form name="permissionForm" class="form-horizontal form-cozy clearfix" id="permissionForm">
+
+            <div class="panel panel-cozy">
+                <div class="panel-body">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <span class="col-sm-4">Role</span>
+                            <div class="col-sm-8">
+                                <span class="badge">{{permission.role.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <span class="col-sm-4">Module</span>
+                            <div class="col-sm-8">
+                                <span class="badge">{{permission.module.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                <div class="panel panel-alternate">
+                    <div class="panel-heading">
+                        <div class="panel-title">Actions</div>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="form-group" ng-repeat="action in permission.module.actions">
+                            <span class="col-sm-6 text-right">{{action}}</span>
+                            <div class="col-sm-6">
+                                <toggle-switch on-label="Allow" off-label="Deny" ng-model="permissions[action]" name="{{action}}" id="{{action}}"></toggle-switch>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="panel panel-alternate">
+                    <div class="panel-heading">
+                        <div class="panel-title">Filters</div>
+                    </div>
+                    <div class="panel-body">
+
+                        <select class="form-control"
+                                name="module"
+                                ng-model="selectedFilter"
+                                ng-required="false"
+                                ng-change="addFilter(selectedFilter)"
+                                ng-options="filter as filter.title for filter in filters"></select>
+
+                        <hr>
+
+                        <span class="badge" ng-repeat="filter in permission.filters">
+                            <i ng-click="removeFilter(filter, $index)" class="fa fa-trash pull-right"></i>
+                            {{filter.title|| 'Untitled'}}
+                        </span>
+
+                        <p ng-if="!permission.filters.length" class="text-center">
+                            Select filters from list above to add.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="update(permissionForm)">Update</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

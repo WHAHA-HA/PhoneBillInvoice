@@ -1,0 +1,45 @@
+<div>
+  <div ng-click="close()" style="float:right;margin-top: -35px;"><i class=" fa fa-close"></i></div>
+  <form name="DateFilterForm">
+
+    <div class="form-group">
+      <select ng-required="true"
+              ng-model="filter.operator"
+              class="form-control input-sm">
+        <option value="before">Before date</option>
+        <option value="between">Between dates</option>
+        <option value="after">After date</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <input type="text"
+             uib-datepicker-popup="MM/dd/yyyy"
+             ng-required="true"
+             placeholder="Select date from ..."
+             class="form-control input-sm"
+             max-date="filter.to"
+             ng-model="filter.from"
+             is-open="from.opened"
+             ng-click="from.opened=true">
+    </div>
+
+    <div class="form-group" ng-if="filter.operator === 'between'">
+      <input type="text"
+             uib-datepicker-popup="MM/dd/yyyy"
+             ng-required="true"
+             placeholder="Select date to ..."
+             class="form-control input-sm"
+             min-date="filter.from"
+             ng-model="filter.to"
+             is-open="to.opened"
+             ng-click="to.opened=true">
+    </div>
+
+    <div class="form-group">
+      <button ng-disabled="!DateFilterForm.$valid" class="btn btn-info" type="button" ng-click="applyFilter()">Apply</button>
+      <button class="btn btn-default" type="button" ng-click="clearFilter()">Clear</button>
+    </div>
+
+  </form>
+</div>

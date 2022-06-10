@@ -1,0 +1,110 @@
+<form name="OrderForm" class="form-horizontal">
+  <div class="app-body-content app-body-with-toolbar">
+    <div class="app-toolbar">
+      <div class="pull-right">
+        <button class="btn btn-primary" type="submit" ng-click="ctx.createOrder(OrderForm)">Create Order</button>
+        <button class="btn btn-default" type="submit" ng-click="ctx.cancelOrder()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="app-data app-data-space order-facepage">
+
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <h2>
+            Order Header Info
+          </h2>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="3">
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Vendor</label>
+              <div class="col-sm-8">
+                <lcma-vendor-picker ng-model="ctx.order.vendor_id"></lcma-vendor-picker>
+              </div>
+            </lcma-form-group>
+
+            
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Requester</label>
+              <div class="col-sm-8">
+                <lcma-employee-picker ng-model="ctx.order.requester_id"></lcma-employee-picker>
+              </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Request Date</label>
+              <div class="col-sm-8">
+                <input class="form-control"
+                       uib-datepicker-popup
+                       ng-model="ctx.order.request_date"
+                       is-open="request_date.opened"
+                       ng-click="request_date.opened = true"
+                       name="request_date">
+              </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Approver</label>
+              <div class="col-sm-8">
+                <lcma-employee-picker ng-model="ctx.order.approver_id"></lcma-employee-picker>
+              </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Total Est MRC</label>
+              <div class="col-sm-8">
+                <input type="number"
+                       class="form-control"
+                       ng-model="ctx.order.total_est_mrc"
+                       name="tot_svc_items">
+              </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Total Est NRC</label>
+              <div class="col-sm-8">
+                <input type="number"
+                       class="form-control"
+                       ng-model="ctx.order.total_est_nrc"
+                       name="tot_svc_items">
+              </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <label class="col-sm-4 control-label">Project</label>
+              <div class="col-sm-8">
+                <lcma-project-picker ng-model="ctx.order.project_id"></lcma-project-picker>
+              </div>
+            </lcma-form-group>
+
+
+          </lcma-form-layout>
+
+          <lcma-form-layout columns="2">
+
+            <lcma-form-group label-size="12">
+              <lcma-form-label style="text-align: left">Justification Description</lcma-form-label>
+              <lcma-control-container>
+                <textarea class="form-control"
+                          required="true"
+                          ng-model="ctx.order.justification_description"></textarea>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="12">
+              <lcma-form-label style="text-align: left">Additional Info</lcma-form-label>
+              <lcma-control-container>
+                <textarea class="form-control" ng-model="ctx.order.additional_info"></textarea>
+              </lcma-control-container>
+            </lcma-form-group>
+
+          </lcma-form-layout>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,41 @@
+
+<div class="panel panel-user">
+  <div class="panel-heading text-center">
+    <img class="avatar" ng-src="{{user.avatar}}" ng-show="user.avatar">
+    <div ng-show="!user.avatar" class="default-avatar-circle-sm float-center">
+      <span class="initials">{{getInitialLetters()}}</span>
+    </div>
+  </div>
+  <div class="panel-body text-center">
+    <h5>{{user.first_name}} {{user.last_name}}</h5>
+    <p>
+      <a href="mailto:{{user.email}}">{{user.email}}</a>
+    </p>
+    <p>
+      {{user.mobile_number}}
+    </p>
+    <p>
+      <span class="label label-success" ng-if="user.is_active">Active</span>
+      <span class="label label-danger" ng-if="!user.is_active">Inactive</span>
+    </p>
+  </div>
+
+  <!--<div class="text-center">
+  <div class="form-group">
+    <span class="text-align: center">
+      <img class="avatar" ng-src="{{user.avatar}}">
+    </span>
+  </div>
+  <div>
+    <div>
+      <label class="fa fa-envelope"> : {{user.email}}</label>
+    </div>
+    <div>
+      <label class="fa fa-mobile"> : {{user.mobile_number}}</label>
+    </div>
+    <div>
+      <label class="fa fa-user-active">Active : {{user_state}}</label>
+    </div>
+  </div>
+</div>-->
+</div>

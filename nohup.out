@@ -1,0 +1,307 @@
+[4mRunning "serve:dist" (serve) task[24m
+
+[4mRunning "clean:dist" (clean) task[24m
+Cleaning .tmp...[32mOK[39m
+Cleaning dist/package.json...[32mOK[39m
+Cleaning dist/public...[32mOK[39m
+Cleaning dist/server...[32mOK[39m
+
+[4mRunning "injector:sass" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mscss[39m files [90m(13 files)[39m
+
+[4mRunning "concurrent:dist" (concurrent) task[24m
+    
+    [4mRunning "svgmin:dist" (svgmin) task[24m
+    Total saved: 0 B
+    
+    [32mDone, without errors.[39m
+    
+    
+    Execution Time (2015-12-21 10:48:17 UTC)
+    loading tasks  162ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 76%
+    svgmin:dist     49ms  ▇▇▇▇▇▇▇▇▇▇▇ 23%
+    Total 212ms
+        
+    [4mRunning "imagemin:dist" (imagemin) task[24m
+    Minified 0 images (saved 0 B)
+    
+    [32mDone, without errors.[39m
+    
+    
+    Execution Time (2015-12-21 10:48:16 UTC)
+    loading tasks  328ms  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 96%
+    imagemin:dist   12ms  ▇▇ 4%
+    Total 341ms
+        
+    [4mRunning "sass:server" (sass) task[24m
+    
+    [32mDone, without errors.[39m
+    
+    
+    Execution Time (2015-12-21 10:48:16 UTC)
+    loading tasks  124ms  ▇▇ 4%
+    sass:server     3.1s  ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ 96%
+    Total 3.2s
+    
+[4mRunning "injector:scripts" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mjs[39m files [90m(59 files)[39m
+
+[4mRunning "injector:sass" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+Injecting [32mscss[39m files [90m(13 files)[39m
+
+[4mRunning "injector:css" (injector) task[24m
+[90mMissing option `template`, using `dest` as template instead[39m
+[32m>> [39mNothing changed
+
+[4mRunning "wiredep:target" (wiredep) task[24m
+
+[4mRunning "useminPrepare:html" (useminPrepare) task[24m
+Going through [36mclient/index.html[39m to update the config
+Looking for build script HTML comment blocks
+
+[1mConfiguration is now:[22m
+
+[1m  concat:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'.tmp/concat/app/vendor.css'[39m,
+          src: 
+           [ [32m'client/vendor/ag-grid/dist/theme-fresh.css'[39m,
+             [32m'client/vendor/ag-grid/dist/theme-blue.css'[39m,
+             [32m'client/vendor/ag-grid/dist/theme-dark.css'[39m,
+             [32m'client/vendor/angular-toastr/dist/angular-toastr.css'[39m,
+             [32m'client/vendor/simple-line-icons/css/simple-line-icons.css'[39m,
+             [32m'client/vendor/angular-ui-grid/ui-grid.css'[39m ] },
+        { dest: [32m'.tmp/concat/app/app.css'[39m,
+          src: 
+           [ [32m'{.tmp,client}/assets/css/font-awesome.css'[39m,
+             [32m'{.tmp,client}/vendor/ag-grid/dist/ag-grid.css'[39m,
+             [32m'{.tmp,client}/app/app.css'[39m ] },
+        { dest: [32m'.tmp/concat/app/vendor.js'[39m,
+          src: 
+           [ [32m'{client,node_modules}/vendor/jquery/dist/jquery.js'[39m,
+             [32m'{client,node_modules}/vendor/angular/angular.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-resource/angular-resource.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-cookies/angular-cookies.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-sanitize/angular-sanitize.js'[39m,
+             [32m'{client,node_modules}/vendor/lodash/dist/lodash.compat.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-ui-router/release/angular-ui-router.js'[39m,
+             [32m'{client,node_modules}/vendor/ag-grid/dist/ag-grid.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-animate/angular-animate.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-toastr/dist/angular-toastr.tpls.js'[39m,
+             [32m'{client,node_modules}/vendor/js-data/dist/js-data.js'[39m,
+             [32m'{client,node_modules}/vendor/js-data-http/dist/js-data-http.js'[39m,
+             [32m'{client,node_modules}/vendor/js-data-angular/dist/js-data-angular.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-messages/angular-messages.js'[39m,
+             [32m'{client,node_modules}/vendor/angular-ui-grid/ui-grid.js'[39m,
+             [32m'{client,node_modules}/vendor/moment/moment.js'[39m ] },
+        { dest: [32m'.tmp/concat/app/app.js'[39m,
+          src: 
+           [ [32m'{.tmp,client}/app/app.js'[39m,
+             [32m'{.tmp,client}/app/accounts/accounts.js'[39m,
+             [32m'{.tmp,client}/app/accounts/common/account.mdl.js'[39m,
+             [32m'{.tmp,client}/app/accounts/edit/account-edit.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/accounts/list/account-list.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/accounts/new/account-new.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/accounts/show/account-show.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/auth/auth.js'[39m,
+             [32m'{.tmp,client}/app/auth/common/auth.mdl.js'[39m,
+             [32m'{.tmp,client}/app/auth/forgot/forgot.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/auth/login/login.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/auth/reset/reset.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/charge/charge.mdl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/common/dispute.mdl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/common/invoice-status.mdl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/common/invoice.mdl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/common/invoice.svc.js'[39m,
+             [32m'{.tmp,client}/app/invoices/common/invoice.ui.js'[39m,
+             [32m'{.tmp,client}/app/invoices/dispute/dispute-new.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/dispute/dispute-show.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/invoices.js'[39m,
+             [32m'{.tmp,client}/app/invoices/list/invoice-list.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/invoices/show/invoice-show.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/main/main.controller.js'[39m,
+             [32m'{.tmp,client}/app/main/main.js'[39m,
+             [32m'{.tmp,client}/app/note/common/note.mdl.js'[39m,
+             [32m'{.tmp,client}/app/note/new/note-new.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/users/common/user.mdl.js'[39m,
+             [32m'{.tmp,client}/app/users/users.controller.js'[39m,
+             [32m'{.tmp,client}/app/users/users.js'[39m,
+             [32m'{.tmp,client}/app/vendors/common/vendor.mdl.js'[39m,
+             [32m'{.tmp,client}/app/vendors/edit/vendor-edit.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/vendors/list/vendor-list.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/vendors/new/vendor-new.ctrl.js'[39m,
+             [32m'{.tmp,client}/app/vendors/vendors.js'[39m,
+             [32m'{.tmp,client}/components/actionbar/actionbar.controller.js'[39m,
+             [32m'{.tmp,client}/components/alert/alert.js'[39m,
+             [32m'{.tmp,client}/components/api/api.js'[39m,
+             [32m'{.tmp,client}/components/auth-token/auth-token.js'[39m,
+             [32m'{.tmp,client}/components/bootstrap-tpl/ui-bootstrap-tpls.js'[39m,
+             [32m'{.tmp,client}/components/broadcast/broadcast.js'[39m,
+             [32m'{.tmp,client}/components/button/button.js'[39m,
+             [32m'{.tmp,client}/components/date-filter/date-filter.js'[39m,
+             [32m'{.tmp,client}/components/date/date.js'[39m,
+             [32m'{.tmp,client}/components/debounce/debounce.js'[39m,
+             [32m'{.tmp,client}/components/dialog/dialog.js'[39m,
+             [32m'{.tmp,client}/components/enter/enter.js'[39m,
+             [32m'{.tmp,client}/components/focus/focus.js'[39m,
+             [32m'{.tmp,client}/components/grid-filter/grid-filter.js'[39m,
+             [32m'{.tmp,client}/components/grid/grid.js'[39m,
+             [32m'{.tmp,client}/components/list-filter/list-filter.js'[39m,
+             [32m'{.tmp,client}/components/modal/modal.service.js'[39m,
+             [32m'{.tmp,client}/components/navbar/navbar.controller.js'[39m,
+             [32m'{.tmp,client}/components/note/note.js'[39m,
+             [32m'{.tmp,client}/components/number-filter/number-filter.js'[39m,
+             [32m'{.tmp,client}/components/page/page.js'[39m,
+             [32m'{.tmp,client}/components/pager/pager.js'[39m,
+             [32m'{.tmp,client}/components/repeat-while/repeat-while.js'[39m,
+             [32m'{.tmp,client}/components/role/role.js'[39m,
+             [32m'{.tmp,client}/components/topbar/topbar.controller.js'[39m ] } ] } }
+
+[1m  uglify:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'dist/public/app/vendor.js'[39m,
+          src: [ [32m'.tmp/concat/app/vendor.js'[39m ] },
+        { dest: [32m'dist/public/app/app.js'[39m,
+          src: [ [32m'.tmp/concat/app/app.js'[39m ] } ] } }
+
+[1m  cssmin:[22m
+  { generated: 
+   { files: 
+      [ { dest: [32m'dist/public/app/vendor.css'[39m,
+          src: [ [32m'.tmp/concat/app/vendor.css'[39m ] },
+        { dest: [32m'dist/public/app/app.css'[39m,
+          src: [ [32m'.tmp/concat/app/app.css'[39m ] } ] } }
+
+[4mRunning "autoprefixer:dist" (autoprefixer) task[24m
+File .tmp/app/app.css created.
+File .tmp/app/app.css.map created (source map).
+
+[4mRunning "ngtemplates:main" (ngtemplates) task[24m
+File [36m.tmp/templates.js[39m created.
+Added [36m.tmp/templates.js[39m to [33m<!-- build:js app/app.js -->[39m
+
+[4mRunning "ngtemplates:tmp" (ngtemplates) task[24m
+[31m>> [39mNo templates found
+File [36m.tmp/tmp-templates.js[39m created.
+Added [36m.tmp/tmp-templates.js[39m to [33m<!-- build:js app/app.js -->[39m
+
+[4mRunning "concat:generated" (concat) task[24m
+File .tmp/concat/app/vendor.css created.
+File .tmp/concat/app/app.css created.
+File .tmp/concat/app/vendor.js created.
+File .tmp/concat/app/app.js created.
+
+[4mRunning "ngAnnotate:dist" (ngAnnotate) task[24m
+[32m>> [39m2 files successfully generated.
+
+[4mRunning "copy:dist" (copy) task[24m
+Created [36m241[39m directories, copied [36m1333[39m files
+
+[4mRunning "cdnify:dist" (cdnify) task[24m
+Going through [36mdist/public/index.html[39m to update script refs
+✔ vendor/angular/angular.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js
+✔ vendor/angular-animate/angular-animate.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.min.js
+✔ vendor/angular-cookies/angular-cookies.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-cookies.min.js
+✔ vendor/angular-messages/angular-messages.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-messages.min.js
+✔ vendor/angular-resource/angular-resource.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-resource.min.js
+✔ vendor/angular-sanitize/angular-sanitize.js changed to //ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.min.js
+
+[4mRunning "cssmin:generated" (cssmin) task[24m
+File dist/public/app/vendor.css created: 87.06 kB → 63.8 kB
+File dist/public/app/app.css created: 209.11 kB → 140.93 kB
+
+[4mRunning "uglify:generated" (uglify) task[24m
+File dist/public/app/vendor.js created: 3.9 MB → 969.21 kB
+File dist/public/app/app.js created: 424.02 kB → 212.83 kB
+
+[4mRunning "rev:dist" (rev) task[24m
+dist/public/app/app.js [32m>> [39m3432594b.app.js
+dist/public/app/vendor.js [32m>> [39meea9648e.vendor.js
+dist/public/app/app.css [32m>> [39m35dea9d1.app.css
+dist/public/app/vendor.css [32m>> [39m74b0979f.vendor.css
+dist/public/assets/fonts/FontAwesome.otf [32m>> [39m0f8f081d.FontAwesome.otf
+dist/public/assets/fonts/fontawesome-webfont.eot [32m>> [39m89d3dcb8.fontawesome-webfont.eot
+dist/public/assets/fonts/fontawesome-webfont.svg [32m>> [39m76a4f23c.fontawesome-webfont.svg
+dist/public/assets/fonts/fontawesome-webfont.ttf [32m>> [39mc361af05.fontawesome-webfont.ttf
+dist/public/assets/fonts/fontawesome-webfont.woff [32m>> [39m05bc39f6.fontawesome-webfont.woff
+dist/public/assets/fonts/fontawesome-webfont.woff2 [32m>> [39m3d6a533b.fontawesome-webfont.woff2
+
+[4mRunning "usemin:html" (usemin) task[24m
+
+[1mProcessing as HTML - dist/public/index.html[22m
+Update the HTML to reference our concat/min/revved script files
+<script src="app/vendor.js" changed to <script src="app/eea9648e.vendor.js"
+<script src="app/app.js" changed to <script src="app/3432594b.app.js"
+Update the HTML with the new css filenames
+<link rel="stylesheet" href="app/vendor.css" changed to <link rel="stylesheet" href="app/74b0979f.vendor.css"
+<link rel="stylesheet" href="app/app.css" changed to <link rel="stylesheet" href="app/35dea9d1.app.css"
+Update the HTML with the new img filenames
+Update the HTML with data-main tags
+Update the HTML with data-* tags
+Update the HTML with background imgs, case there is some inline style
+Update the HTML with anchors images
+Update the HTML with reference in input
+
+[4mRunning "usemin:css" (usemin) task[24m
+
+[1mProcessing as CSS - dist/public/app/35dea9d1.app.css[22m
+Update the CSS to reference our revved images
+url(../fonts/fontawesome-webfont.eot changed to url(../fonts/89d3dcb8.fontawesome-webfont.eot
+url(../fonts/fontawesome-webfont.eot changed to url(../fonts/89d3dcb8.fontawesome-webfont.eot
+url(../fonts/fontawesome-webfont.woff2 changed to url(../fonts/3d6a533b.fontawesome-webfont.woff2
+url(../fonts/fontawesome-webfont.woff changed to url(../fonts/05bc39f6.fontawesome-webfont.woff
+url(../fonts/fontawesome-webfont.ttf changed to url(../fonts/c361af05.fontawesome-webfont.ttf
+url(../fonts/fontawesome-webfont.svg changed to url(../fonts/76a4f23c.fontawesome-webfont.svg
+url(../fonts/fontawesome-webfont.eot changed to url(../fonts/89d3dcb8.fontawesome-webfont.eot
+url(../fonts/fontawesome-webfont.eot changed to url(../fonts/89d3dcb8.fontawesome-webfont.eot
+url(../fonts/fontawesome-webfont.woff2 changed to url(../fonts/3d6a533b.fontawesome-webfont.woff2
+url(../fonts/fontawesome-webfont.woff changed to url(../fonts/05bc39f6.fontawesome-webfont.woff
+url(../fonts/fontawesome-webfont.ttf changed to url(../fonts/c361af05.fontawesome-webfont.ttf
+url(../fonts/fontawesome-webfont.svg changed to url(../fonts/76a4f23c.fontawesome-webfont.svg
+
+[1mProcessing as CSS - dist/public/app/74b0979f.vendor.css[22m
+Update the CSS to reference our revved images
+
+[4mRunning "usemin:js" (usemin) task[24m
+
+[1mProcessing as JS - dist/public/app/3432594b.app.js[22m
+Update the JS to reference our revved images
+
+[1mProcessing as JS - dist/public/app/eea9648e.vendor.js[22m
+Update the JS to reference our revved images
+
+[4mRunning "env:all" (env) task[24m
+
+[4mRunning "env:prod" (env) task[24m
+
+[4mRunning "express:prod" (express) task[24m
+[36mStarting [39mbackground Express server
+DB DATA { user: 'srcloop',
+  password: 'sqlsrcadm!n',
+  database: 'Client_Andrej',
+  host: 'pgsqlinstance.cr1my15mhsmj.us-east-1.rds.amazonaws.com',
+  port: 5432 }
+
+[4mRunning "wait" task[24m
+[32m>> [39mWaiting for server reload...
+Express server listening on 9000, in production mode
+Done waiting!
+
+[4mRunning "open:server" (open) task[24m
+
+[4mRunning "express-keepalive" task[24m
+[90mGET /assets/js/plugins/slick/slick.min.css [33m404 [90m26ms[0m
+[90mGET /api/invoice/stat [36m304 [90m614ms[0m
+[90mGET /api/user/me [36m304 [90m1148ms[0m
+[90mGET /components/ui/cloudage/logo.png [33m404 [90m8ms[0m
+[90mGET /fonts/Simple-Line-Icons.ttf?v=2.2.2 [32m200 [90m7ms[0m
+[90mGET /fonts/Simple-Line-Icons.woff2?v=2.2.2 [32m200 [90m4ms[0m
+[90mGET /fonts/Simple-Line-Icons.woff?v=2.2.2 [32m200 [90m2ms[0m
+[90mGET /fonts/3d6a533b.fontawesome-webfont.woff2?v=4.4.0 [32m200 [90m4ms[0m
+[90mGET /fonts/05bc39f6.fontawesome-webfont.woff?v=4.4.0 [32m200 [90m7ms[0m
+[90mGET /fonts/c361af05.fontawesome-webfont.ttf?v=4.4.0 [32m200 [90m4ms[0m

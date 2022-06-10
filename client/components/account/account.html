@@ -1,0 +1,30 @@
+<div>
+    <ol id="dynamic-options" class="nya-bs-select" ng-model="selection"  data-live-search="true"  data-size="8" title="Select ..." ng-show="!multiple">
+        <li nya-bs-option="account in accounts" data-value="account.account_no">
+            <a>{{ account.account_no }}</a>
+        </li>
+       <li class="btn-group btn-group-justified custom-picker-options-space-double"></li>
+        <li class="btn-group btn-group-justified custom-picker-options-double">
+         <a class="btn btn-default" ng-click="addItem()" lcma-check-permissions="Create@accounts"><i class="fa fa-plus"></i></a>
+            <a class="btn btn-default disabled" ng-click="searchItem()"><i class="fa fa-search"></i></a>
+        </li>
+        <li class="btn-group btn-group-justified custom-picker-options">
+            <a class="btn btn-default" ng-click="clearItem()">Clear Item</a>
+        </li>
+    </ol>
+
+  <ol id="dynamic-options" class="nya-bs-select" ng-model="selection"  data-live-search="true"  data-size="8" title="Select ..." multiple ng-show="multiple">
+    <li nya-bs-option="account in accounts" data-value="account.account_no">
+      <a>{{ account.account_no }}</a>
+    </li>
+    <li class="btn-group btn-group-justified custom-picker-options-space-double"></li>
+    <li class="btn-group btn-group-justified custom-picker-options-double">
+         <a class="btn btn-default" ng-click="addItem()" title="Add..." lcma-check-permissions="Create@accounts"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-default disabled" title="Search..." ng-click="searchItem()"><i class="fa fa-search"></i></a>
+    </li>
+    <li class="btn-group btn-group-justified custom-picker-options">
+      <a class="btn btn-default" ng-click="checkAll()">Check All</a>
+      <a class="btn btn-default" ng-click="clearAll()">Clear All</a>
+    </li>
+  </ol>
+</div>

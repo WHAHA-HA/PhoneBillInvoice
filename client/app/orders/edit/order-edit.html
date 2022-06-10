@@ -1,0 +1,411 @@
+<div class="app-body-content app-body-with-toolbar">
+  <div class="app-toolbar">
+    <div class="pull-left dropdown col-md-6 col-xs-6 col-lg-6" uib-dropdown style="padding-left:0;">
+        <a href class="btn btn-default" uib-dropdown-toggle ng-disabled="ctx.order.state>=110">
+
+        <i class="fa fa-plus"></i>
+      </a>
+      <ul class="dropdown-menu" uib-dropdown-menu>
+        <li ng-repeat="v in ctx.orderServiceTypes">
+          <a href ng-click="ctx.appendService(v)">{{v.value}}</a>
+        </li>
+      </ul>
+    </div>
+    <div class="pull-right">
+        <button class="btn btn-default" style="margin-right: 40px;" type="button" ng-click="ctx.expandCollapseAll()" ng-if="!ctx.service.type"> 
+            <span ng-if="!ctx.expandCollapse"><i class="fa fa-expand"></i></span>
+          <span ng-if="ctx.expandCollapse"><i class="fa fa-compress"></i></span>
+        </button>
+        
+      <button class="btn btn-primary" type="submit" ng-click="ctx.saveOrder(OrderForm)">Save Order</button>
+      <button class="btn btn-default" type="button" ng-click="ctx.removeOrder()">
+        <i class="fa fa-trash"></i>
+      </button>
+       
+    </div>
+  </div>
+
+  <div class="app-data app-data-space order-facepage" id="app-data">
+
+    <div class="panel panel-default panel-compact">
+      <div class="panel-heading clearfix">
+        <h2>
+          Order Header Info : {{ctx.order.id}}
+        </h2>
+      </div>
+      <div class="panel-body">
+        <div class="panel-toolbox text-center">
+          <lcma-flow current-step="ctx.order.state"
+                     steps-count="7"
+
+                     on-action="onFlowAction(item, action, data)" scheme="orderFlowScheme"></lcma-flow>
+        </div>
+        <form name="OrderForm" class="form-horizontal">
+
+          <div class="panel-body-wrap">
+            <lcma-form-layout columns="1">
+              <lcma-container columns="[3,5,4]">
+                <lcma-container-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Vendor</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" ng-model="ctx.order.vendor.name" disabled/>
+                    </div>
+                  </lcma-form-group>
+
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Processor</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" ng-value="ctx.order.processor.first_name + ' ' + ctx.order.processor.last_name" disabled/>
+                    </div>
+                  </lcma-form-group>
+
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Requester</label>
+                    <div class="col-sm-8">
+                      <input type="text" class="form-control" ng-value="ctx.order.requester.first_name + ' ' + ctx.order.requester.last_name" disabled/>
+                    </div>
+                  </lcma-form-group>
+
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Approver</label>
+                    <div class="col-sm-8">
+                      <lcma-employee-picker ng-model="ctx.order.approver_id"></lcma-employee-picker>
+                    </div>
+                  </lcma-form-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Project</label>
+                    <div class="col-sm-8">
+                      <lcma-project-picker ng-model="ctx.order.project_id"></lcma-project-picker>
+                    </div>
+                  </lcma-form-group>
+
+
+                </lcma-container-group>
+
+                <lcma-container-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Service Order No</label>
+                    <div class="col-sm-8">
+                      <input type="text"
+                             class="form-control"
+                             ng-model="ctx.order.order_number"
+                             name="order_number">
+                    </div>
+                  </lcma-form-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Purchase Order No</label>
+                    <div class="col-sm-8">
+                      <input type="text"
+                             class="form-control"
+                             ng-model="ctx.order.purchase_number"
+                             name="purchase_number">
+                    </div>
+                  </lcma-form-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Total Est MRC</label>
+                    <div class="col-sm-8">
+                      <input type="number" ng-show="ctx.hasServices()"
+                             class="form-control"
+                             ng-model="ctx.order.est_mrc"
+                             name="tot_svc_items">
+                       <input type="text" 
+                              class="form-control" ng-hide="ctx.hasServices()"
+                             ng-model="ctx.order.total_est_mrc">
+                    </div>
+                  </lcma-form-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Total Est NRC</label>
+                    <div class="col-sm-8">
+                      <input type="number"
+                             class="form-control" ng-show="ctx.hasServices()"
+                             ng-model="ctx.order.est_nrc">
+                       <input type="text"
+                             class="form-control" ng-hide="ctx.hasServices()"
+                             ng-model="ctx.order.total_est_nrc">
+                    </div>
+                  </lcma-form-group>
+
+                  <lcma-form-group>
+                    <label class="col-sm-4 control-label">Total Svc Items</label>
+                    <div class="col-sm-8">
+                      <input type="number"
+                             class="form-control"
+                             readonly
+                             ng-model="ctx.order.tot_svc_items"
+                             name="tot_svc_items">
+                    </div>
+                  </lcma-form-group>
+                </lcma-container-group>
+
+                <lcma-container-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Request Date</lcma-form-label>
+                    <lcma-control-container>
+                      <input class="form-control"
+                             uib-datepicker-popup
+                             ng-model="ctx.order.request_date"
+                             is-open="request_date.opened"
+                             ng-click="request_date.opened = true"
+                             name="request_date" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Create Date</lcma-form-label>
+                    <lcma-control-container>
+                      <input class="form-control"
+                             uib-datepicker-popup
+                             ng-model="ctx.order.created_at"
+                             is-open="created_at.opened"
+                             ng-click="created_at.opened = true"
+                             name="created_at" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Ready for Approval</lcma-form-label>
+                    <lcma-control-container>
+                        <input class="form-control"
+                             ng-value="ctx.order.ready_for_approval | date:'yyyy-MM-dd'" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Approve Date</lcma-form-label>
+                    <lcma-control-container>
+                        <input class="form-control"
+                             uib-datepicker-popup
+                             ng-model="ctx.order.approve_date"
+                             is-open="approve_date.opened"
+                             ng-click="approve_date.opened = true"
+                             name="approve_date" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Sent Date</lcma-form-label>
+                    <lcma-control-container>
+                         <input class="form-control"
+                             uib-datepicker-popup
+                             ng-model="ctx.order.send_date"
+                             is-open="send_date.opened"
+                             ng-click="send_date.opened = true"
+                             name="send_date" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Ack Date</lcma-form-label>
+                    <lcma-control-container>
+                        <input class="form-control"
+                             ng-value="ctx.order.ack_date  | date:'yyyy-MM-dd'" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Accept/Reject Date</lcma-form-label>
+                    <lcma-control-container>
+                        <input class="form-control"
+                             ng-value="ctx.order.vendor_accept_date | date:'yyyy-MM-dd'" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+
+                  <lcma-form-group label-size="6">
+                    <lcma-form-label>Complete Date</lcma-form-label>
+                    <lcma-control-container>
+                        <input class="form-control"
+                             ng-value="ctx.order.complete_date | date:'yyyy-MM-dd'" disabled>
+                    </lcma-control-container>
+                  </lcma-form-group>
+                </lcma-container-group>
+
+              </lcma-container>
+
+            </lcma-form-layout>
+
+            <hr>
+            <lcma-form-layout columns="2">
+              <lcma-form-group label-size="3">
+                <lcma-form-label>Justification</lcma-form-label>
+                <lcma-control-container>
+                <textarea class="form-control"
+                          required="true"
+                          ng-model="ctx.order.justification_description"></textarea>
+                </lcma-control-container>
+              </lcma-form-group>
+
+              <lcma-form-group label-size="3">
+                <lcma-form-label>Additional Info</lcma-form-label>
+                <lcma-control-container>
+                  <textarea class="form-control" ng-model="ctx.order.additional_info"></textarea>
+                </lcma-control-container>
+              </lcma-form-group>
+
+            </lcma-form-layout>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="panel panel-default" ng-if="ctx.service && ctx.inventory.type_id" id="new-inventory" du-smooth-scroll du-scrollspy>
+      <div class="panel-heading clearfix">
+        <div class="btn-group panel-ctrls">
+
+        </div>
+        <h2>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'ckt'">
+              New Circuit
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'trunk'">
+            New SIP Trunk
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'toll_free_number'">
+              New Toll Free Number
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'telephone_number'">
+              New Telephone Number
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'wireline'">
+              New Wireline Voice Service
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'mobile'">
+              New Mobile Service Plan
+          </span>
+          <span ng-if="ctx.getServiceType(ctx.inventory.type_id).custom_key === 'mobile_device'">
+              New Mobile Device
+          </span>
+        </h2>
+      </div>
+      <div>
+        <form name="ServiceForm">
+          <ng-include
+            src="'app/order-services/forms/order-service-'+ ctx.getServiceType(ctx.inventory.type_id).custom_key +'.html'"></ng-include>
+
+          <div class="row mar-b add-form">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 text-center">
+            </div>
+            <div class="col-sm-4 text-right">
+              <button class="btn btn-primary" type="button" ng-click="ctx.addNewService(ServiceForm)">Add</button>
+              <button class="btn btn-default" type="button" ng-click="ctx.discardNewService(ServiceForm)">Discard
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="panel panel-default" ng-repeat="service in ctx.order.services">
+      <div class="panel-heading clearfix" ng-click="ctx.services[service.id].open = !ctx.services[service.id].open">
+
+        <div class="order-item-titlebar">
+            <h2 style="width: 100%">
+            <span class="fa fa-angle-right fa-lg text-left order-item-titlebar-icon" ng-if="!ctx.services[service.id].open"></span>
+            <span class="fa fa-angle-down fa-lg order-item-titlebar-icon" ng-if="ctx.services[service.id].open"></span>
+            Service {{ctx.order.id}}-{{service.service_id_val}},
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'ckt'">
+                    Circuit:  {{service.inventory.topology_id === 'RNG' ? "Ring" : "Point to Point"}}
+                    <span ng-if="service.inventory.siteZ">, Site Z: {{service.inventory.siteZ.site_id}}</span>
+                    <span ng-if="service.inventory.siteA">, Site A: {{service.inventory.siteA.site_id}}</span>
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'toll_free_number'">
+                    Toll Free Number
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'telephone_number'">
+                    Telephone Number
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'wireline'">
+                    Wireline Voice Service
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'mobile'">
+                    Mobile Service Plan
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'mobile_device'">
+                    Mobile Device
+                </span>
+                <span ng-if="ctx.getServiceType(service.inventory.type_id).custom_key === 'trunk'">
+                    SIP Trunk
+                </span>
+          </h2>
+        </div>
+      </div>
+      <div ng-if="ctx.services[service.id].open">
+
+        <!--<ng-include src="'app/order-services/forms/order-service-'+ service.type +'.html'"></ng-include>-->
+        <lcma-order-service-form ng-model="service" on-complete="ctx.onServiceComplete()"
+                                 type="{{ ctx.getServiceType(service.inventory.type_id).custom_key}}"
+                                 order="order"></lcma-order-service-form>
+
+      </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2>Related Items</h2>
+      </div>
+      <div class="panel-body">
+        <uib-tabset>
+          <uib-tab heading="Documents"
+                   active="ctx.relatedTabs.active === 'documents'"
+                   ng-click="ctx.activateRelatedTab('documents')">
+                <lcma-document-grid folder='order_docs' parent='order' entity="ctx.order"></lcma-document-grid>    
+          </uib-tab>
+          <uib-tab heading="Notes" active="ctx.relatedTabs.active === 'notes'"
+                   ng-click="ctx.activateRelatedTab('notes')">
+            <div class=" clearfix">
+              <button type="button"
+                      class="btn btn-default pull-right"
+                      ng-click="ctx.addNote()">Add Note
+              </button>
+            </div>
+            <div ng-repeat="note in ctx.notes"
+                 class="mar-t"
+                 id="note_{{note.id}}"
+                 lcma-focus-on="note_{{note.id}}">
+
+              <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+
+              </lcma-note-list>
+
+            </div>
+
+            <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this order.</div>
+
+          </uib-tab>
+
+          <uib-tab heading="History" active="ctx.relatedTabs.active === 'history'"
+                   ng-click="ctx.activateRelatedTab('history')">
+            <lcma-history entity_type="order@{{ctx.order.id}}"></lcma-history>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+
+  </div>
+
+  <!--<div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <div class="btn-group panel-ctrls">
+
+        </div>
+        <h2>
+          Services
+        </h2>
+      </div>
+      <div class="panel-body panel-body-cozy">
+
+        <div class="grid mar-all" style="height:300px;" ui-grid="ctx.servicesGrid"></div>
+  -->
+</div>
+

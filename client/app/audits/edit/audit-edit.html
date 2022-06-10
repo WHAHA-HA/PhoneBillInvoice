@@ -1,0 +1,184 @@
+<div class="app-body-content app-body-with-toolbar">
+  <div class="app-toolbar">
+    <div class="pull-right">
+      <button class="btn btn-primary" type="submit" ng-click="ctx.updateAudit(AuditForm)">Save Audit Info
+      </button>
+    </div>
+  </div>
+
+  <div class="app-data app-data-space order-facepage">
+
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2>
+          Audit Info
+        </h2>
+      </div>
+      <div class="panel-body">
+        <form name="AuditForm" class="form-horizontal">
+          <div class="row mar-b">
+            <div class="col-xs-1">
+              Vendor
+            </div>
+            <div class="col-xs-2">
+              <lcma-vendor-picker ng-model="ctx.audit.vendor_id"></lcma-vendor-picker>
+            </div>
+            <div class="col-xs-1">
+              Invoice Qty
+            </div>
+            <div class="col-xs-2">
+              <input ng-required="true" name="invoice_qty" ng-model="ctx.audit.invoice_qty" type="number"
+                     class="form-control" string-to-number>
+            </div>
+            <div class="col-xs-1">
+              Invoice Type
+            </div>
+            <div class="col-xs-2">
+              <lcma-dictionary-picker type-key='audit-invoice-type' name="invoice_type" ng-model="ctx.audit.invoice_type_id"
+                ></lcma-dictionary-picker>
+            </div>
+            <div class="col-xs-1">
+              Invoice Charges
+            </div>
+            <div class="col-xs-2">
+              <input name="invoice_charges" ng-model="ctx.audit.invoice_charges" type="number"
+                     class="form-control" string-to-number>
+            </div>
+          </div>
+
+          <div class="row mar-b">
+            <div class="col-xs-1">
+              Invoice Charge Fields
+            </div>
+            <div class="col-xs-8">
+              Invoice Charge Field Section
+            </div>
+            <div class="col-xs-1">
+              Match Type
+            </div>
+            <div class="col-xs-2">
+              <input type="checkbox" ng-model="ctx.audit.match_contains"
+                     ng-true-value="'YES'" ng-false-value="'NO'"><br/>
+              <input type="checkbox" ng-model="ctx.audit.match_equals"
+                     ng-true-value="'YES'" ng-false-value="'NO'">
+            </div>
+          </div>
+
+          <div class="row mar-b">
+            <div class="col-xs-1">
+              Charge Calculation
+            </div>
+            <div class="col-xs-5">
+              <input type="type" class="form-control" value="inv_chg_chg_qty* ratetbl_rate" readonly>
+            </div>
+          </div>
+
+          <div class="row mar-b">
+            <div class="col-xs-1">
+              Test Audit
+            </div>
+            <div class="col-xs-5">
+              <button class="btn btn-default">Test</button>
+            </div>
+            <div class="col-xs-1">
+              Run Month
+            </div>
+            <div class="col-xs-5">
+              <select>
+                <option>Jan, 2016</option>
+                <option>Feb, 2016</option>
+                <option>Mar, 2016</option>
+                <option>Apr, 2016</option>
+                <option>May, 2016</option>
+                <option>Jun, 2016</option>
+                <option>Jul, 2016</option>
+                <option>Aug, 2016</option>
+                <option>Sep, 2016</option>
+                <option>Oct, 2016</option>
+                <option>Nov, 2016</option>
+                <option>Dec, 2016</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mar-b">
+            <div class="col-xs-1">
+              Audit Name
+            </div>
+            <div class="col-xs-2">
+              <input name="invoice_charges" ng-required="true"  ng-model="ctx.audit.name" class="form-control">
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <!-- Related Info Section-->
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2>Related Info</h2>
+      </div>
+      <div class="panel-body">
+
+        <uib-tabset>
+          <uib-tab heading="Orders">
+
+            <div class=" clearfix">
+              <button class="btn btn-default pull-right" ng-click="ctx.addOrderInfo()">
+                <i class="fa fa-plus"></i>
+                Add Order Info
+              </button>
+            </div>
+
+            <div ng-if="!ctx.project.project_orders.length" class="empty-data">
+              No orders associated to this Project.
+            </div>
+            <div ng-if="ctx.project.project_orders.length" class="grid" ui-grid="ctx.ordersGrid"></div>
+          </uib-tab>
+
+          <uib-tab heading="Tickets">
+          </uib-tab>
+
+          <uib-tab heading="Billing">
+          </uib-tab>
+
+          <uib-tab heading="Aliases">
+          </uib-tab>
+
+          <uib-tab heading="Channels">
+          </uib-tab>
+
+          <uib-tab heading="GL Codes">
+
+          </uib-tab>
+          <uib-tab heading="Notes">
+
+            <div class=" clearfix">
+              <button type="button"
+                      class="btn btn-default pull-right"
+                      ng-click="ctx.addNote()" ng-disabled="!ctx.project.id">Add Note
+              </button>
+            </div>
+            <div ng-repeat="note in ctx.notes"
+                 class="mar-t"
+                 id="note_{{note.id}}"
+                 lcma-focus-on="note_{{note.id}}">
+
+              <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+
+              </lcma-note-list>
+
+            </div>
+
+            <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this Inventory.</div>
+          </uib-tab>
+          <uib-tab heading="History">
+                <lcma-history entity_type="audit@{{ctx.audit.id}}"></lcma-history>
+          </uib-tab>
+        </uib-tabset>
+      </div>
+    </div>
+  </div>
+</div>
+
+

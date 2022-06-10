@@ -1,0 +1,56 @@
+$icon-font-path: "../assets/fonts/bootstrap/";
+$fa-font-path:        "../assets/fonts" !default;
+
+@import 'bootstrap-sass/assets/stylesheets/bootstrap';
+@import 'font-awesome/scss/font-awesome';
+
+/**
+ * App-wide Styles
+ */
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/**
+** Show horizontal bar
+**/
+
+//.panel-default {
+//  min-width: 900px;
+//}
+
+// Component styles are injected through grunt
+// injector
+@import 'accounts/accounts.scss';
+@import 'audits/audit.scss';
+@import 'auth/auth.scss';
+@import 'contracts/contracts.scss';
+@import 'disputes/dispute.scss';
+@import 'gl-rule-builder/gl-rule.scss';
+@import 'inventories/inventories.scss';
+@import 'invoices/invoices.scss';
+@import 'main/main.scss';
+@import 'order-services/order-services.scss';
+@import 'orders/orders.scss';
+@import 'projects/projects.scss';
+@import 'recon/recon.scss';
+@import 'reports/reports.scss';
+@import 'users/users.scss';
+@import 'vendors/vendors.scss';
+@import 'confirmation/confirmation.scss';
+@import 'form-layout/form-layout.scss';
+@import 'modal/modal.scss';
+@import 'splitter/splitter.scss';
+@import 'topbar/topbar.scss';
+@import 'ui/_variables.scss';
+@import 'ui/animate.scss';
+@import 'ui/boostrap.scss';
+@import 'ui/grid.scss';
+@import 'ui/layout.scss';
+@import 'ui/style.scss';
+@import 'user-popover/user-popover.scss';
+// endinjector

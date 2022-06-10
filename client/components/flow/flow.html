@@ -1,0 +1,18 @@
+<ul class="wiz-header {{className}}" >
+  <li ng-repeat="item in path  track by $index">
+    <a ng-click="executeAction(item)"
+       ng-class="{'prev-step' : (item.isPrev || item.noState), 'current-step' : (item.isCurrent && !item.noState), 'next-step' : item.isNext, 'red-step':item.classDanger}">
+      {{item.isNext ? (item.actionName || item.name) : item.name}}
+    </a>
+   <!-- <div class="btn-group dropdown" uib-dropdown ng-if="item.actions.length" dropdown-append-to-body="true">
+      <a ng-class="{'prev-step' : item.isPrev, 'current-step' : item.isCurrent, 'next-step' : item.isNext}" class="dropdown-toggle" uib-dropdown-toggle >
+        {{item.isNext ? item.actionName : item.name}}
+      </a>
+      <ul uib-dropdown-menu class="uib-dropdown-menu" aria-labelledby="invoice-actions-dropdown">
+        <li ng-repeat="action in item.actions">
+          <a ng-click="executeAction(item, action)">{{action.name}}</a>
+        </li>
+      </ul>
+    </div>-->
+  </li>
+</ul>

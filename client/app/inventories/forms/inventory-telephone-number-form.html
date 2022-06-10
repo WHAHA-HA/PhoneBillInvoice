@@ -1,0 +1,64 @@
+<lcma-form-layout columns="3">
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Telephone Number</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="telephone_number" ng-model="ctx.inventory.telephone_number" type="text"
+             class="form-control">
+      <div ng-messages="InventoryForm.telephone_number.$error" ng-show="InventoryForm.telephone_number.$touched" role="alert">
+        <div ng-message="required">You didn't enter Telephone Number</div>
+      </div>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Hunt Group ID</lcma-form-label>
+    <lcma-control-container>
+      <input name="hunt_group_id" ng-model="ctx.inventory.hunt_group_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Service</lcma-form-label>
+    <lcma-control-container>
+      <input name="service" ng-model="ctx.inventory.service" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Status</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-telephone_number-status' name="telephone_number_status" ng-model="ctx.inventory.telephone_number_status_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Carrier</lcma-form-label>
+    <lcma-control-container>
+      <input name="carrier" ng-model="ctx.inventory.carrier" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Customer Name</lcma-form-label>
+    <lcma-control-container>
+      <input name="customer_name" ng-model="ctx.inventory.customer_name" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Acct Number</lcma-form-label>
+    <lcma-control-container>
+      <input name="acct_number" ng-model="ctx.inventory.acct_number" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP ID</lcma-form-label>
+    <lcma-control-container>
+      <input type="text" ng-model="ctx.inventory.sp_svc_id" required="required" class="form-control"/>
+    </lcma-control-container>
+  </lcma-form-group>
+
+</lcma-form-layout>

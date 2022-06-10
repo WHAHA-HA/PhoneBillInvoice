@@ -1,0 +1,194 @@
+<div class="app-body-content app-gl-rules-wizard">
+    <div class="app-data app-data-space order-facepage">
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>
+                    GL Rule Info
+                </h2>
+            </div>
+            <div class="panel-body panel-body-cozy">
+                <form name="GlRuleForm" class="form-horizontal">
+                    <div class="row mar-b">
+                        <div class="cols-xs-12">
+                            <wizard on-finish="finishedWizard()" name="gl_rule_builder" template="app/gl-rule-builder/common/gl-rule-builder-wizard.html">
+                                <wz-step wz-title="Step 1 - Name Rule">
+                                    <div class="panel-body">
+                                        <lcma-form-layout columns="1">
+                                            <lcma-form-group label-size="3">
+                                                <lcma-form-label>Rule Name</lcma-form-label>
+                                                <lcma-control-container>
+                                                    <input ng-required="true" name="name" type="text" class="form-control"
+                                                           ng-model="ctx.glRule.rule_name">
+                                                </lcma-control-container>
+                                            </lcma-form-group>
+
+                                            <lcma-form-group label-size="3">
+                                                <lcma-form-label>Rule Description</lcma-form-label>
+                                                <lcma-control-container>
+                                                    <input ng-required="true" name="name" type="text" class="form-control"
+                                                           ng-model="ctx.glRule.rule_desc">
+                                                </lcma-control-container>
+                                            </lcma-form-group>
+                                        </lcma-form-layout>                     
+                                    </div>
+                                </wz-step>
+
+                                <wz-step wz-title="Step 2 - Rule Logic">
+                                    <div class="panel-body">
+                                        <div class="row no-left-right-margin">
+                                            <div class="form-group col-lg-3 col-md-3 no-left-right-margin">
+                                                <div class="control-label col-lg-5  col-md-5">Charge Type</div>
+                                                <div class="col-lg-7  col-md-7">
+                                                    <select ng-model="ctx.clause.chargeType" class="form-control" ng-required="true" ng-options="option.value for option in ctx.chargeTypes track by option.id">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-2 col-md-2 no-left-right-margin">
+                                                <div class="control-label col-lg-3 col-md-3">Field</div>
+                                                <div class="col-lg-9 col-md-9">
+                                                    <select ng-model="ctx.clause.field" class="form-control" ng-required="true" ng-options="option.value for option in ctx.ruleFields track by option.id">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-2 col-md-2 no-left-right-margin">
+                                                <div class="control-label col-lg-4 col-md-4">Operator</div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <select ng-model="ctx.clause.operator" ng-required="true" class="form-control">
+                                                        <option value="=" label="Equals"></option>
+                                                        <option value="<>" label="Not Equals"></option>
+                                                        <option value="like" label="Contains"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-3 col-md-3 no-left-right-margin">
+                                                <div class="control-label col-lg-3 col-md-3">Value</div>
+                                                <div class="col-lg-9 col-md-9">
+                                                    <input type="text" class="form-control" ng-required="true" ng-model="ctx.clause.value"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-lg-2 col-md-2 no-left-right-margin">
+                                                <div class="col-lg-6 col-md-6">
+                                                    <a title="Add Clause" class="btn btn-default"  ng-click="ctx.addRule()">
+                                                        <i class="fa fa-plus"></i>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <a title="Remove Clause" class="btn btn-default pull-right" 
+                                                       ng-disabled="ctx.gridRulesApi.selection.getSelectedRows().length == 0" ng-click="removeRule()">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid mar-all" ui-grid="ctx.gridRulesOptions"  ui-grid-edit ui-grid-selection ui-grid-resize-columns  lcma-no-data-message></div>
+
+                                        <div class="panel panel-alternate">
+                                            <div class="panel-heading">
+                                                <div class="panel-title">Charges Impacted by GL Rule</div>
+                                            </div>
+                                            <div class="panel-body">
+
+                                                <lcma-form-layout columns="6" class="no-left-right-margin">
+
+                                                    <lcma-form-group label-size="4">
+                                                        <lcma-form-label>Vendor</lcma-form-label>
+                                                        <lcma-control-container>
+                                                            <lcma-vendor-picker ng-model="ctx.filter.vendor_ids" ></lcma-vendor-picker>
+                                                        </lcma-control-container>
+                                                    </lcma-form-group>
+
+                                                    <lcma-form-group label-size="4">
+                                                        <lcma-form-label>Account</lcma-form-label>
+                                                        <lcma-control-container>
+                                                            <lcma-account-picker ng-model="ctx.filter.account_numbers" vendor-ids="ctx.filter.vendor_ids"></lcma-account-picker>
+                                                        </lcma-control-container>
+                                                    </lcma-form-group>
+
+                                                    <lcma-form-group label-size="3">
+                                                        <lcma-form-label>From</lcma-form-label>
+                                                        <lcma-control-container>
+                                                            <input
+                                                                uib-datepicker-popup="MM/dd/yyyy"
+                                                                ng-model="ctx.filter.start_date"
+                                                                name="start_date"
+                                                                placeholder="Invoice Date"
+                                                                class="form-control input-sm"
+                                                                is-open="ctx.filter.start_date_ui.opened"
+                                                                ng-click="ctx.filter.start_date_ui.opened = true"
+                                                                >
+                                                        </lcma-control-container>
+                                                    </lcma-form-group>
+
+                                                    <lcma-form-group label-size="3">
+                                                        <lcma-form-label>To</lcma-form-label>
+                                                        <lcma-control-container>
+                                                            <input
+                                                                uib-datepicker-popup="MM/dd/yyyy"
+                                                                ng-model="ctx.filter.end_date"
+                                                                name="end_date"
+                                                                placeholder="Invoice Date"
+                                                                class="form-control input-sm"
+                                                                is-open="ctx.filter.end_date_ui.opened"
+                                                                ng-click="ctx.filter.end_date_ui.opened = true"
+                                                                >
+                                                        </lcma-control-container>
+                                                    </lcma-form-group>
+
+                                                    <lcma-form-group label-size="6">                                                
+                                                    </lcma-form-group>
+
+                                                    <lcma-form-group label-size="6">
+                                                        <lcma-form-label></lcma-form-label>
+                                                        <lcma-control-container>
+                                                            <input type="button" class="btn btn-default pull-right" ng-click="ctx.runRule()" value="Run Rule"/>
+                                                        </lcma-control-container>
+                                                    </lcma-form-group>
+
+                                                </lcma-form-layout>
+
+                                                <div class="grid mar-all" ui-grid="ctx.gridImpactedChargesOptions" ui-grid-auto-resize lcma-no-data-message></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </wz-step>
+
+                                <wz-step wz-title="Step 3 - Select GL Codes">
+                                    <div class="panel-body">
+                                        <div class="row mar-b no-left-right-margin">                                            
+                                            <div style="float:right;">
+                                                <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+                                                <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+                                                <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+                                            </div>
+                                        </div>
+                                        <div class="grid app-data-grid" ui-grid="ctx.gridStringsOptions" ui-grid-selection 
+                                             ui-grid-resize-columns lcma-no-data-message>
+                                        </div>
+
+                                    </div>
+                                </wz-step>
+                                <wz-step wz-title="Step 4 - Selected GL Codes">
+                                    <div class="panel-body">
+                                        <div class="grid app-data-grid" ui-grid="ctx.gridSelectedStringsOptions" ui-grid-selection 
+                                             ui-grid-resize-columns ui-grid-edit lcma-no-data-message>
+                                        </div>
+                                        <div class="row" style="margin-right: 0; margin-top: 20px;">
+                                            <a class="btn btn-primary pull-right" ng-click="ctx.saveRule(GlRuleForm)">Save Rule</a>
+                                        </div>
+                                    </div>
+                                </wz-step>
+
+                            </wizard>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

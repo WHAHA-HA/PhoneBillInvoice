@@ -1,0 +1,69 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Create New Vendor</h4>
+    </div>
+    <div class="modal-body app-modal-width" >
+        <form name="VendorForm" class="form-horizontal form-cozy" id="VendorForm">
+
+          <div class="panel panel-alternate">
+            <div class="panel-heading">
+              <div class="panel-title">Vendor Info</div>
+            </div>
+            <div class="panel-body">
+              <lcma-form-layout columns="3">
+
+                <lcma-form-group class="text-center">
+                  <div class="avatar-container">
+                    <button ngf-select ng-click="EditPicture()" ng-model="picFile"
+                            style="margin-bottom: 5px;" class="btn btn-default" accept="image/*">
+                      Edit Picture
+                    </button>
+                    <br/>
+                    <img ng-show="!showCropImage && vendor.logo" class="vendor_logo" data-ng-src="{{vendor.logo}}"/>
+                    <div ng-show="showCropImage" ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                      <img-crop image="picFile | ngfDataUrl"
+                                result-image="logo_tmp">
+                      </img-crop>
+                    </div>
+                  </div>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                  <lcma-form-layout columns="1">
+                    <lcma-form-group>
+                      <lcma-form-label>Name</lcma-form-label>
+                      <lcma-control-container>
+                        <input class="form-control"
+                               ng-model="vendor.name"
+                               name="name"
+                               ng-required="true">
+                        <div ng-messages="VendorForm.name.$error" ng-show="VendorForm.name.$touched" role="alert">
+                          <div ng-message="required">You didn't enter vendor name.</div>
+                        </div>
+                      </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group>
+                      <lcma-form-label>Code</lcma-form-label>
+                      <lcma-control-container>
+                        <input class="form-control"
+                               ng-model="vendor.code"
+                               name="code"
+                               ng-required="true">
+
+                        <div ng-messages="VendorForm.code.$error" ng-show="VendorForm.code.$touched" role="alert">
+                          <div ng-message="required">You didn't enter vendor code.</div>
+                        </div>
+                      </lcma-control-container>
+                    </lcma-form-group>
+                  </lcma-form-layout>
+              </lcma-form-layout>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="create(VendorForm)">Create</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

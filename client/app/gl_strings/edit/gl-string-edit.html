@@ -1,0 +1,58 @@
+<div>
+  <div class="modal-body">
+    <form name="GlStringForm" class="form-horizontal form-cozy">
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">GL String Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="2">
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Full GL String</lcma-form-label>
+              <lcma-control-container>
+                <input type="text" class="form-control" disabled ng-model="glstring.full_string_formatted">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>GL Status</lcma-form-label>
+              <lcma-control-container>
+                <toggle-switch on-label="Active" off-label="Inactive" ng-model="glstring.status"></toggle-switch>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Date Added</lcma-form-label>
+              <lcma-control-container>
+                <input class="form-control" disabled
+                       value="{{glstring.date_added|lcmaDate}}">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>GL Code Type</lcma-form-label>
+              <lcma-control-container>
+                <input disabled type="text" class="form-control" ng-model="glstring.gl_code_type">
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+
+          <lcma-form-layout columns="2" ng-if="segments.length > 0">
+            <lcma-form-group label-size="3" ng-repeat="segment in segments">
+              <lcma-form-label>{{segment.value}}</lcma-form-label>
+              <lcma-control-container>
+                <input disabled type="text" class="form-control" ng-model="glstring[segment.custom_key+'_obj'].segment_value">
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="save(GlStringForm)">Update Status</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

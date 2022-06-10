@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create New Note</h4>
+</div>
+<div class="modal-body">
+ <form name="noteForm" class="form-horizontal form-cozy mar-b add-form">
+   <div class="form-group">
+     <textarea class="form-control" ng-model="note.content" rows="3" placeholder="Type note" ng-required="true"></textarea>
+   </div>
+   <div class="form-group" ng-if="charges.length">
+     <div class="grid" ui-grid-selection ui-grid-resize-columns ui-grid="chargesGrid" style="height: 200px"></div>
+   </div>
+ </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="create(noteForm)">Create</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

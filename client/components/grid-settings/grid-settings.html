@@ -1,0 +1,94 @@
+<div class="modal-header">
+  <div class="pull-right">
+    <input type="text" class="form-control" ng-model="ctx.selectedSettings.name">
+  </div>
+
+  <h4 class="modal-title">Grid Settings</h4>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-xs-3">
+      <ul class="user-col-settings">
+        <li ng-repeat="item in ctx.settings" ng-click="ctx.selectSettings(item)"
+            ng-class="{'selected': ctx.selectedSettings == item }">
+            <span class="pull-right" ng-if="!item.is_current && !item.is_default">
+                <a ng-click="ctx.remove(item)">
+                    <span class="fa fa-trash"></span>
+                </a>                    
+            </span>
+          <span class="badge pull-right" ng-if="item.is_current">Current</span>
+          {{item.name}}
+        </li>
+      </ul>
+      <div class="text-center">
+        <a href class="btn btn-link" ng-click="ctx.new()">
+          <i class="fa fa-plus"></i>
+          Add
+        </a>
+      </div>
+    </div>
+    <div class="col-xs-9">
+
+      <uib-tabset active="ctx.relatedTabs.active">
+        <uib-tab index="0" heading="Columns">
+
+          <div ng-repeat="(listName, list) in ctx.selectedSettings.gridCols" class="col-xs-6 text-center">
+            <label>{{ctx.gridListNames[listName]}}</label>
+            <div class="panel panel-bordered">
+              <ul dnd-list="list" class="clearfix">
+                <li ng-repeat="item in list"
+                    dnd-draggable="item"
+                    dnd-effect-allowed="move"
+                    dnd-selected="item.selected = !item.selected"
+                    ng-class="{'selected': item.selected}"
+                    dnd-moved="ctx.onListMoved(list, $index)"
+                    draggable="true">
+                  {{item.name}} <span class="text-muted">({{item.field}})</span>
+                </li>
+                <li class="text-center text-muted disabled" ng-if="!list.length && $index === 1">Drag fields from the
+                  list on the left
+                </li>
+              </ul>
+
+            </div>
+            <button class="btn btn-link" ng-click="ctx.addAllAvailableFields()" ng-if="$index === 0"> Add All</button>
+            <button class="btn btn-link" ng-click="ctx.delAllSelectedFields()" ng-if="$index === 1"> Remove All</button>
+            <button class="btn btn-link" ng-click="ctx.delSelectedField()" ng-if="$index === 1"> Remove</button>
+          </div>
+
+        </uib-tab>
+
+        <uib-tab index="1" heading="Common">
+          <lcma-form-layout columns="1" style="margin-top: 20px;">
+            <lcma-form-group label-size="5">
+              <lcma-form-label>Sort By</lcma-form-label>
+              <lcma-control-container>
+                <select ng-model="ctx.selectedSettings.value.sort" class="form-control"
+                        ng-options="entry.field as entry.name for entry in ctx.visibleFields()"></select>
+              </lcma-control-container>
+            </lcma-form-group>
+            <lcma-form-group label-size="5">
+              <lcma-form-label>Page Size</lcma-form-label>
+              <lcma-control-container>
+                <select ng-model="ctx.selectedSettings.value.page_size" class="form-control">
+                  <option value="1">1</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+              </lcma-control-container>
+            </lcma-form-group>
+        </uib-tab>
+      </uib-tabset>
+
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary pull-left" type="button" ng-if="!ctx.selectedSettings.is_current"
+          ng-click="ctx.setAsCurrent()">Set as Current
+  </button>
+  <button class="btn btn-primary" type="button" ng-click="ctx.update()">Save Changes</button>
+  <button class="btn btn-link" type="button" ng-click="ctx.cancel()">Cancel</button>
+</div>

@@ -1,0 +1,77 @@
+<div class="app-body-content app-body-with-toolbar container-fluid">
+
+    <div class="app-toolbar row">
+        <form class="form-horizontal form-cozy">
+
+            <lcma-form-layout columns="4" class='no-left-right-margin'>
+                <lcma-form-group label-size="4" ng-show="ctx.relatedTabs.active == 'unlinked_inventories'">
+                    <lcma-form-label>Month</lcma-form-label>
+                    <lcma-control-container>
+                        <input
+                            uib-datepicker-popup="MM/yyyy"
+                            ng-model="ctx.month"
+                            class="form-control input-sm"
+                            is-open="ctx.options.opened" 
+                            datepicker-options ='ctx.options'
+                            ng-click="ctx.options.opened = true"
+                            >
+                    </lcma-control-container>
+                </lcma-form-group>
+                <div>
+                    <a href class="btn btn-default" ng-click="ctx.refreshInventoriesGrid()"><span class="fa fa-refresh"></span></a>
+                </div>
+                <div></div>
+                <lcma-form-group label-size="4">
+                    <div class="pull-right" ng-show="ctx.relatedTabs.active == 'unlinked_inventories'">
+                        <span uib-dropdown on-toggle="toggled(open)" style="padding-right: 20px">
+                            <a href id="simple-dropdown" uib-dropdown-toggle class="btn btn-default" title="Add to Inventory"
+                                ng-disabled="ctx.inventoryGridApi.selection.getSelectedRows().length==0">
+                                <i class="fa fa-plus"></i> Add to Inventory
+                            </a>
+                            <ul uib-dropdown-menu aria-labelledby="simple-dropdown" class="inventory-list-types">
+                                <li ng-repeat="v in ctx.inventoryTypes">
+                                    <a href ng-click="ctx.addInventory(v.custom_key)">{{v.value}}</a>
+                                </li>
+
+                            </ul>
+                        </span>
+                    </div>
+                </lcma-form-group>
+            </lcma-form-layout>
+
+        </form>
+    </div>
+
+    <div class="app-data mar-all">
+        <uib-tabset>
+            <uib-tab heading="Unlinked Inventory"
+                     active="ctx.relatedTabs.active === 'unlinked_inventories'"
+                     ng-click="ctx.activateRelatedTab('unlinked_inventories')">
+                <div class="app-toolbar">
+                    <div style="float:right;">
+                        <a class="btn btn-default" ng-click="ctx.exportToCSV()" title="Export to CSV"><i class="fa fa-download"></i></a>
+
+                        <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+                        <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+                        <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+                    </div>
+                </div>
+                <div class="grid app-data app-data-grid" ui-grid="ctx.inventoriesGridOptions" style="top: 85px;" ui-grid-exporter lcma-no-data-message  ui-grid-selection ui-grid-pinning ui-grid-resize-columns ui-grid-exporter> </div>
+
+            </uib-tab>
+            <uib-tab heading="Accruals"
+                     active="ctx.relatedTabs.active === 'accruals' "
+                     ng-click="ctx.activateRelatedTab('accruals')">
+
+                <div class="app-toolbar">                     
+                    <div style="float:right;">
+                        <a class="btn btn-default" ng-click="ctx.exportAccrualsGridToCSV()" title="Export to CSV"><i class="fa fa-download"></i></a>
+                    </div>
+                </div>
+                <div class="grid app-data app-data-grid" style="height: 100% !important;top: 85px;" ui-grid="ctx.accrualsGridOptions" ui-grid-exporter ui-grid-auto-resize lcma-no-data-message  ui-grid-pinning ui-grid-resize-columns ui-auto-resize ui-grid-exporter> </div>
+            </uib-tab>
+
+        </uib-tabset>
+    </div>
+</div>
+

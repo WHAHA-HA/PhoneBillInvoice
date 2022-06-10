@@ -1,0 +1,76 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title">Edit Site</h4>
+    </div>
+    <div class="modal-body">
+        <form name="SiteForm" class="form-horizontal form-cozy" id="SiteForm">
+            <div class="panel panel-alternate">
+                <div class="panel-heading">
+                    <div class="panel-title">Site Info</div>
+                </div>
+                <div class="panel-body">
+                    <lcma-form-layout columns="2">
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Site Name</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="site_id" ng-model="site.site_id" type="text"
+                                       class="form-control">
+                                <div ng-messages="SiteForm.site_id.$error" ng-show="SiteForm.site_id.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Site Name.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Vendor</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-vendor-picker name="vendor_id" id="vendor_id" ng-model="site.vendor_id"></lcma-vendor-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Building</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-building-picker name="building_id" id="building_id" ng-model="site.building_id"></lcma-building-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Site Type</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-dictionary-picker id="site_type" name="site_type" ng-model="site.site_type" type-key="site-type"
+                                                        ng-required="true"></lcma-dictionary-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Floor/Room</lcma-form-label>
+                            <lcma-control-container>
+                                <div class="col-lg-6 pad-0-l">
+                                    <input ng-required="true" name="floor" placeholder="Floor" ng-model="site.floor" type="number"
+                                           class="form-control">
+                                </div>
+                                <div class="col-lg-6 pad-0-l">
+                                    <input ng-required="true" name="room" placeholder="Room" ng-model="site.room" type="text"
+                                           class="form-control">
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Parent Site</lcma-form-label>
+                            <lcma-control-container>
+                                <lcma-site-picker name="parent_id" id="parent_id" site-id="site.parent_id" ng-model="site.parent_id"></lcma-site-picker>
+                            </lcma-control-container>
+                        </lcma-form-group>
+                    </lcma-form-layout>
+                </div>
+            </div>
+        </form>
+
+        <div class="modal-footer" style="border-top: 0;">
+            <button class="btn btn-primary" type="button" ng-click="update(SiteForm)">Update</button>
+            <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

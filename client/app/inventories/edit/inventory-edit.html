@@ -1,0 +1,411 @@
+<div class="app-body-content app-body-with-toolbar">
+    <div class="app-toolbar">
+        <div class="pull-right">
+            <button class="btn btn-primary" type="button" ng-click="ctx.updateInventory(InventoryForm)">Save Inventory
+                Info
+            </button>
+            <button class="btn btn-default" type="button" ng-click="ctx.removeInventory()">
+                <i class="fa fa-trash"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="app-data app-data-space inventory-facepage">
+        <form name="InventoryForm" class="inventory-form inventory-form form-horizontal form-cozy">
+
+            <div class="panel panel-default" ng-if=" 'ckt' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Circuit Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-circuit-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'wireline' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Voice Service Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-wireline-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'mobile' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Wireless Plan Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-mobile-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'trunk' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        SIP Trunk Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-trunk-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'mobile_device' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Mobile Device Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-mobile-device-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'telephone_number' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Telephone Number Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-telephone-number-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'toll_free_number' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Toll Free Number Info
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <ng-include src="'app/inventories/forms/inventory-toll-free-number-form.html'"></ng-include>
+                </div>
+            </div>
+
+            <div class="panel panel-default"
+                 ng-if=" 'ckt' === ctx.inventory.type.custom_key && ctx.inventory.topology.custom_key === 'P2P'">
+                <div class="panel-heading clearfix">
+                    <h2>
+                        Site A/Z
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <h5>Site A</h5>
+                            <div lcma-site-detail preview="true" site-id="ctx.inventory.site_a_id"
+                                 equipment-id="ctx.inventory.equipment_a_id"
+                                 equipment-interface-id="ctx.inventory.equipment_interface_a_id" class="site-detail"
+                                 editing="true">
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <h5>Site Z</h5>
+                            <div lcma-site-detail preview="true" site-id="ctx.inventory.site_z_id"
+                                 equipment-id="ctx.inventory.equipment_z_id"
+                                 equipment-interface-id="ctx.inventory.equipment_interface_z_id" class="site-detail"
+                                 editing="true">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default"
+                 ng-if=" 'ckt' === ctx.inventory.type.custom_key  && ctx.inventory.topology.custom_key === 'RNG'">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-xs-12 padding-left-20">
+                            <h2>
+                                Site Ring
+                                <div class="rel-picker">
+                                    <ui-select ng-model="ctx.selectionSite"
+                                               on-select="ctx.addSite($item, $model)">
+                                        <ui-select-match>
+                                            <span ng-bind="$select.selected.site_id"></span>
+                                        </ui-select-match>
+                                        <ui-select-choices
+                                            repeat="site in (ctx.sites | filter: $select.search) track by site.id">
+                                            <span ng-bind="site.site_id"></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+
+                            </h2>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid mar-all" ui-grid="ctx.sitesGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'wireline' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-xs-9 padding-left-20">
+                            <h2>
+                                Features Info
+                            </h2>
+                        </div>
+                        <div class="col-xs-3 text-right padding-right-20 padding-bottom-10 padding-top-10">
+                            <button class="btn btn-default" ng-click="ctx.addInventoryFeature()">
+                                <i class="fa fa-plus"></i>
+                                Add Feature
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid mar-all" ui-grid="ctx.featuresGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default" ng-if=" 'mobile' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-xs-9 padding-left-20">
+                            <h2>
+                                Plan Features
+                            </h2>
+                        </div>
+                        <div class="col-xs-3 text-right padding-right-20 padding-bottom-10 padding-top-10">
+                            <button class="btn btn-default" ng-click="ctx.addInventoryPlan()">
+                                <i class="fa fa-plus"></i>
+                                Add Plan Feature
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid mar-all" ui-grid="ctx.plansGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'trunk' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-xs-9 padding-left-20">
+                            <h2>
+                                Underlying Services
+                            </h2>
+                        </div>
+                        <div class="col-xs-3 text-right padding-right-20 padding-bottom-10 padding-top-10">
+                            <button class="btn btn-default" ng-click="ctx.addUnderlyingService()">
+                                <i class="fa fa-plus"></i>
+                                Add Underlying Service
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid mar-all" ui-grid="ctx.underlyingServicesGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if=" 'toll_free_number' === ctx.inventory.type.custom_key ">
+                <div class="panel-heading clearfix">
+                    <div class="row">
+                        <div class="col-xs-9 padding-left-20">
+                            <h2>
+                                Route
+                            </h2>
+                        </div>
+                        <div class="col-xs-3 text-right padding-right-20 padding-bottom-10 padding-top-10">
+                            <button class="btn btn-default" ng-click="ctx.addRoute()">
+                                <i class="fa fa-plus"></i>
+                                Add Route
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="grid mar-all" ui-grid="ctx.routesGrid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+        <!-- Related Info Section-->
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Related Info</h2>
+            </div>
+            <div class="panel-body">
+
+                <uib-tabset>
+                    <uib-tab heading="Orders"
+                             active="ctx.relatedTabs.active === 'orders'"
+                             ng-click="ctx.activateRelatedTab('orders')">
+                        <div
+                            ng-if="ctx.inventory.order_service && ctx.inventory.id && 'ckt' === ctx.inventory.type.custom_key "
+                            style="padding-left: 10px; padding-top: 10px;">
+                            <a ui-sref="app.orderEdit({id:ctx.inventory.order_service.order_id})">{{ctx.inventory.order_service.order_id
+                                | lcmaDigits: 7}}</a>
+                        </div>
+                        <div
+                            ng-if="!(ctx.inventory.order_service && ctx.inventory.id && 'ckt' === ctx.inventory.type.custom_key) "
+                            class="empty-data">
+                            There is no orders associated with this inventory
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab heading="Tickets"
+                             active="ctx.relatedTabs.active === 'tickets'"
+                             ng-click="ctx.activateRelatedTab('tickets')">
+                    </uib-tab>
+
+                    <uib-tab heading="Billing"
+                             active="ctx.relatedTabs.active === 'billing'"
+                             ng-click="ctx.activateRelatedTab('billing')">
+
+                        <div ng-if="ctx.relatedTabs.active === 'billing'" class="grid mar-all"
+                             ui-grid="ctx.billingGrid" ui-grid-auto-resize lcma-no-data-message></div>
+
+                    </uib-tab>
+
+                    <uib-tab heading="Aliases"
+                             active="ctx.relatedTabs.active === 'aliases'"
+                             ng-click="ctx.activateRelatedTab('aliases')">
+                    </uib-tab>
+
+                    <uib-tab heading="Channels"
+                             active="ctx.relatedTabs.active === 'channels'"
+                             ng-click="ctx.activateRelatedTab('channels')">
+                    </uib-tab>
+
+                    <uib-tab heading="GL Codes" class="mar-b"
+                             active="ctx.relatedTabs.active === 'glcodes'"
+                             ng-click="ctx.activateRelatedTab('glcodes')">
+                        <div class="add-form">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="row mar-b no-left-right-margin">
+                                        <label class="control-label">All GL Strings</label>
+                                        <div style="float:right;">
+                                            <lcma-pager class="pull-right" ng-model="ctx.glStringPager"></lcma-pager>
+                                            <lcma-pager-size-switch class="pull-right"
+                                                                    ng-model="ctx.glStringPager"></lcma-pager-size-switch>
+                                            <lcma-pager-info class="pull-right"
+                                                             ng-model="ctx.glStringPager"></lcma-pager-info>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <label class="control-label">Inventory GL Strings</label>
+                                    <button class="btn btn-primary pull-right" ng-click="ctx.saveGlStrings()"
+                                            ng-disabled="ctx.gl_code_sum()!=100">Save
+                                    </button>
+                                    <label class="control-label pull-right"
+                                           style="padding-top: 7px; margin-right: 10px;">Total: <span class="badge">{{ctx.gl_code_sum()}}</span>
+                                        %</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+
+                                    <div class="grid app-data-grid" ui-grid="ctx.gridStringsOptions" ui-grid-selection
+                                         ui-grid-resize-columns lcma-no-data-message>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="grid app-data-grid" ui-grid="ctx.gridSelectedStringsOptions"
+                                         ui-grid-selection
+                                         ui-grid-resize-columns ui-grid-edit lcma-no-data-message>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab heading="Pricing"
+                             active="ctx.relatedTabs.active === 'pricing'"
+                             ng-click="ctx.activateRelatedTab('pricing')">
+
+                        <div class=" clearfix mar-b dispute-padding">
+                            <button class="btn btn-default" ng-click="ctx.addDocument()">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                            <button class="btn btn-default pull-right" ng-hide="ctx.documentsGrid.data.length == 0"
+                                    ng-disabled="ctx.documentsGridApi.selection.getSelectedRows().length == 0"
+                                    ng-click="removeEntityDocument()" title="Delete Selected">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+
+                        <div ng-if="ctx.relatedTabs.active === 'pricing'" class="grid app-data-grid  mar-all"
+                             ui-grid="ctx.documentsGrid" ui-grid-selection ui-grid-resize-columns
+                             lcma-no-data-message></div>
+
+                    </uib-tab>
+
+                    <uib-tab heading="Notes"
+                             active="ctx.relatedTabs.active === 'notes'"
+                             ng-click="ctx.activateRelatedTab('notes')">
+
+                        <div class=" clearfix">
+                            <button type="button"
+                                    class="btn btn-default pull-right"
+                                    ng-click="ctx.addNote()" ng-disabled="!ctx.inventory.id">Add Note
+                            </button>
+                        </div>
+                        <div ng-repeat="note in ctx.notes"
+                             class="mar-t"
+                             id="note_{{note.id}}"
+                             lcma-focus-on="note_{{note.id}}">
+
+                            <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+                            </lcma-note-list>
+                        </div>
+
+                        <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this Inventory.
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="History"
+                             active="ctx.relatedTabs.active === 'history'"
+                             ng-click="ctx.activateRelatedTab('history')">
+                        <lcma-history entity_type="inventory@{{ctx.inventory.id}}"></lcma-history>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+
+    </div>
+</div>
+

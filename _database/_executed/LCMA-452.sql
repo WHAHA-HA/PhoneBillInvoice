@@ -1,0 +1,1 @@
+﻿UPDATE cost_dispute_detail SET status = 51 WHERE status<50;

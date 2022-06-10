@@ -1,0 +1,111 @@
+<lcma-form-layout columns="3">
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Int Plan ID</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="int_plan_id" ng-model="ctx.inventory.int_plan_id" type="text"
+             class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Plan Type</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-plan-type' name="plan_type" ng-model="ctx.inventory.plan_type_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Mobile Nbr</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="mobile_nbr" ng-model="ctx.inventory.mobile_nbr" type="text"
+             class="form-control" >
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Emp ID</lcma-form-label>
+    <lcma-control-container>
+      <lcma-employee-picker ng-model="ctx.inventory.emp_id"></lcma-employee-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>User Name</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="username" ng-model="ctx.inventory.username" type="text"
+             class="form-control" >
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Vendor</lcma-form-label>
+    <lcma-control-container>
+      <lcma-vendor-picker ng-model="ctx.inventory.vendor_id"></lcma-vendor-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Svc Type</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-svc-type' name="svc_type" ng-model="ctx.inventory.svc_type_id" ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Status</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-status' name="status" ng-model="ctx.inventory.status_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Contract ID</lcma-form-label>
+    <lcma-control-container>
+      <lcma-contract-picker ng-model="ctx.inventory.contract_id"></lcma-contract-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Term Date</lcma-form-label>
+    <lcma-control-container>
+      <input
+        uib-datepicker-popup="MM/dd/yyyy"
+        ng-model="ctx.inventory.term_date"
+        name="exp_date"
+        placeholder="Term Date"
+        init-date="{{ctx.inventory.term_date}}"
+        class="form-control input-sm"
+        is-open="ctx.term_date_ui.opened"
+        ng-click="ctx.term_date_ui.opened = true"
+        />
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Voice Pool ID</lcma-form-label>
+    <lcma-control-container>
+      <input name="voice_pool_id" ng-model="ctx.inventory.voice_pool_id" type="text"
+             class="form-control" />
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Data Pool ID</lcma-form-label>
+    <lcma-control-container>
+      <input  name="data_pool_id" ng-model="ctx.inventory.data_pool_id" type="text"
+              class="form-control" />
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP ID</lcma-form-label>
+    <lcma-control-container>
+      <input type="text" ng-model="ctx.inventory.sp_svc_id" required="required" class="form-control"/>
+    </lcma-control-container>
+  </lcma-form-group>
+
+</lcma-form-layout>
+

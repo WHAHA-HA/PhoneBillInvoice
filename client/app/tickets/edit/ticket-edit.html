@@ -1,0 +1,77 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Update Ticket</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+    <form name="TicketForm" class="form-horizontal form-cozy">
+        <div class="panel panel-alternate">
+            <div class="panel-heading">
+                <div class="panel-title">Ticket Info</div>
+            </div>
+            <div class="panel-body">
+                <lcma-form-layout columns="2">
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Title</lcma-form-label>
+                        <lcma-control-container>
+                            <input ng-required="true" name="title" type="text" class="form-control"
+                                   ng-model="ticket.title">
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Email</lcma-form-label>
+                        <lcma-control-container>
+                            <input ng-required="true" name="email" type="text" class="form-control"
+                                   ng-model="ticket.email">
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Assignee</lcma-form-label>
+                        <lcma-control-container>
+                            <lcma-user-picker ng-model="ticket.assignee_id"></lcma-user-picker>
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Type</lcma-form-label>
+                        <lcma-control-container>
+                            <lcma-dictionary-picker type-key='ticket-type' name="type_id" ng-model="ticket.type_id"
+                                ></lcma-dictionary-picker>
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Description</lcma-form-label>
+                        <lcma-control-container>
+                            <textarea class="form-control"
+                                      ng-model="ticket.description"
+                                      name="description"
+                                      ng-required="true"></textarea>
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                    <lcma-form-group label-size="3">
+                        <lcma-form-label>Created</lcma-form-label>
+                        <lcma-control-container>
+                            <input lcma-calendar-position
+                                   uib-datepicker-popup="MM/dd/yyyy"
+                                   ng-model="ticket.created_date"
+                                   name="created_date"
+                                   class="form-control input-sm"
+                                   is-open="created_date_ui.opened"
+                                   ng-click="created_date_ui.opened=true"
+                                >
+                        </lcma-control-container>
+                    </lcma-form-group>
+
+                </lcma-form-layout>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="update(TicketForm)">Update</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

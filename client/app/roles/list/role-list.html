@@ -1,0 +1,130 @@
+<!--
+TODO:
+
+* Inline Edit in details pane
+* New Entry: Inline in details panel
+
+
+-->
+
+<div class="app-body-content app-body-with-toolbar container-fluid layout-split">
+  <div class="app-toolbar row">
+    <div class="col-sm-4">
+
+      <div class="btn-group">
+        <a class="btn btn-default" ng-click="ctx.addRole()"><i class="fa fa-plus"></i></a>
+      </div>
+      <div class="btn-group">
+        <a class="btn btn-default" ng-click="ctx.refresh()" title="Refresh"><i class="fa fa-refresh"></i></a>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div style="float:right;" class="row-split">
+        <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+        <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+        <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+      </div>
+
+      <div class="row-split pull-right">
+        <a class="btn btn-default" ng-disabled="ctx.checkDisabled()" ng-click="ctx.removeRole()" title="Delete Selected"><i class="fa fa-trash"></i></a>
+        <a class="btn btn-default" ng-click="ctx.exportToCSV()" title="Export to CSV"><i class="fa fa-download"></i></a>
+        <a class="btn btn-default" ng-click="ctx.clearFilters()" title="Clear Filter"><i class="icon-filter-clear"></i></a>
+        <div class="btn-group" uib-dropdown on-toggle="toggled(open)">
+          <a href uib-dropdown-toggle class="btn btn-default" title="Settings">
+            <i class="fa fa-cog"></i>
+          </a>
+          <ul uib-dropdown-menu aria-labelledby="simple-dropdown" class="inventory-list-types">
+            <li>
+              <a href on-apply="ctx.onSettingsUpdate" lcma-grid-settings-href="roles.list.grid">Grid Settings</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href ng-click="ctx.layout.orientation = 'vertical'">Top-Bottom</a>
+            </li>
+            <li>
+              <a href ng-click="ctx.layout.orientation = 'horizontal'">Left-Right</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+  <lcma-layout orientation="{{ctx.layout.orientation}}" on-change="ctx.onLayoutChange(settings)" settings-key="roles.list.layout">
+    <lcma-layout-pane size="{{ctx.layout.list.pane1}}" min-size="30">
+      <div class="app-data app-data-grid" ui-grid="ctx.gridOptions" ui-grid-selection ui-grid-exporter
+           ui-grid-resize-columns lcma-no-data-message></div>
+    </lcma-layout-pane>
+    <lcma-layout-pane size="{{ctx.layout.details.pane2}}" class="panel-details" min-size="30">
+      <lcma-wrapper ng-if="ctx.currentSelection===null" template-url="app/roles/new/role-new.html" resolve="resolvesNew"
+                    on-change="ctx.onChange(data, create)" on-dismiss="ctx.onDismiss(create)"
+                    controller="RoleNewCtrl"></lcma-wrapper>
+      <uib-accordion ng-if="ctx.currentSelection" class="accordion">
+
+        <div class="panel panel-alternate">
+          <div class="panel-heading">
+            <div class="panel-title">Role Info</div>
+          </div>
+          <div class="panel-body">
+            <form name="RoleEditForm" id="RoleEditForm">
+
+              <div class="col-sm-10">
+                <div class="form-group">
+                  <label class="control-label col-sm-2">Role Name </label>
+                  <div class="col-sm-10">
+                    <input ng-required="true" name="name" type="text" class="form-control"
+                           ng-model="ctx.currentSelectionCopy.name">
+                    <div ng-messages="RoleEditForm.name.$error" ng-show="BuildingForm.name.$touched" role="alert">
+                      <div ng-message="required">Please provide Role Name</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>&nbsp;</label>
+                  <button type="button" class="btn btn-primary btn-sm"
+                          ng-click="ctx.updateRole(ctx.currentSelection, RoleEditForm)">
+                    Save
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="panel panel-alternate">
+          <div class="panel-heading">
+            <div class="panel-title">Permission Settings</div>
+          </div>
+          <div class="panel-body">
+
+            <uib-accordion-group class="panel-alternate panel-container" ng-repeat="permission in ctx.currentSelection.permissions">
+              <uib-accordion-heading>
+                <div>
+                  <i class="fa fa-chevron-right"></i>
+                  {{permission.module_id}}
+                </div>
+              </uib-accordion-heading>
+              <lcma-wrapper ng-init="permission.role = ctx.currentSelection"
+                            template-url="app/permissions/edit/permissions-edit.html"
+                            resolve="{$currentPermission:permission}" on-change="ctx.onChange(data, create)"
+                            on-dismiss="ctx.onDismiss()" controller="PermissionEditCtrl"></lcma-wrapper>
+            </uib-accordion-group>
+
+            <div ng-if="!ctx.currentSelection.permissions.length" class="text-center">
+              <p class="text-muted">
+                No permissions defined for this role.
+              </p>
+              Go to <a ui-sref="app.permissions">Permissions</a> page to manage it.
+            </div>
+
+          </div>
+        </div>
+
+
+      </uib-accordion>
+    </lcma-layout-pane>
+  </lcma-layout>
+</div>

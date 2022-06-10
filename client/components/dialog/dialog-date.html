@@ -1,0 +1,21 @@
+<div class="modal-header app-modal-width-340">
+    <h3 class="modal-title">{{$settings.titleText}}</h3>
+</div>
+<div class="modal-body app-modal-width-340" style="height: 300px">
+    <div class="form-group">
+        <label>Select Date:</label>
+        <input
+            lcma-calendar-position
+            uib-datepicker="MM/dd/yyyy"
+            ng-model="date"
+            name="date_control"
+            placeholder="Date"
+            class="well well-sm" 
+            is-open="date_control_ui.opened"
+            ng-click="date_control_ui.opened=true">
+    </div>
+</div>
+<div class="modal-footer app-modal-width-340">
+    <button class="btn btn-primary" type="button" ng-click="yes()">{{$settings.buttonYesText}}</button>
+    <button class="btn btn-warning" type="button" ng-click="no()">{{$settings.buttonNoText}}</button>
+</div>

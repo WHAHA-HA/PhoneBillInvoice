@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title">List of note charges</h4>
+</div>
+<div class="modal-body">
+ <form name="noteForm">
+   <div class="form-group" ng-if="charges.length">
+     <div class="grid" ui-grid-selection ui-grid="chargesGrid" style="height: 200px"></div>
+   </div>
+   <div class="gorm-group text-center" ng-if="!charges.length">
+     <div class="alert alert-warning">
+       No charges selected. This note is linked to the entire invoice.
+     </div>
+   </div>
+ </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-link" type="button" ng-click="close()">Close</button>
+</div>

@@ -1,0 +1,66 @@
+<div class="modal-header">
+    <h4 class="modal-title">History Details For {{title}}</h4>
+</div>
+<div class="modal-body add-form" style="overflow-y: scroll; max-height: 400px;">
+    <table class="table table-hover table-condensed">  
+        <thead>
+            <tr>
+                <th style="padding-bottom: 10px;">Versions</th>
+                <th>
+                    <select class="form-control" ng-model="item" ng-options="option as (option.created_at |     lcmaDateTime) for option in history">
+                    </select> 
+                </th>
+                <th> 
+                    <select class="form-control" ng-model="compareWith" ng-options="option as (option.created_at |     lcmaDateTime) for option in history">
+                        <option value="" disabled>Select</option>
+                    </select>  
+                </th>                    
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="active">
+                <td>Date</td>
+                <td>{{item.created_at| lcmaDateTime}}</td>
+                <td>{{compareWith.created_at| lcmaDateTime}}</td>
+            </tr>
+            <tr class="active">
+                <td>Action</td>
+                <td>{{item.action_key}}</td>
+                <td>{{compareWith.action_key}}</td>
+            </tr>
+            <tr class="active">
+                <td>Author</td>
+                <td>
+                    <div href lcma-user-pop-over-toggle>
+                        {{item.user.first_name}}
+                        {{item.user.last_name}}
+                        <lcma-user-pop-over ng-model="item.user" style="z-index: 6000; position: fixed;"></lcma-user-pop-over>
+                    </div>                
+                </td>
+                <td>
+                    <div href lcma-user-pop-over-toggle>
+                        {{compareWith.user.first_name}}
+                        {{compareWith.user.last_name}}
+                        <lcma-user-pop-over ng-model="compareWith.user" style="z-index: 6000; position: fixed;"></lcma-user-pop-over>
+                    </div>                
+                </td>
+            </tr>
+            <tr ng-repeat="f in fields" >
+                <td>{{f.label}}</td>
+                <td>
+                    {{(!item.meta_data[f.value])? "N/A": ""}}
+                    {{(item.meta_data[f.value] && f.type!=="date")?item.meta_data[f.value]: ""}}
+                    {{(item.meta_data[f.value] && f.type==="date")?(item.meta_data[f.value] | lcmaDateTime):""}}
+                </td>
+                <td ng-class="(compareWith.meta_data == null || compareWith.meta_data[f.value] == item.meta_data[f.value]) ? '' : 'info'">
+                    {{(compareWith.meta_data!=null && !compareWith.meta_data[f.value])? "N/A": ""}}
+                    {{(compareWith.meta_data[f.value] && f.type!=="date")?compareWith.meta_data[f.value]: ""}}
+                    {{(compareWith.meta_data[f.value] && f.type==="date")?(compareWith.meta_data[f.value] | lcmaDateTime):""}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-link" type="button" ng-click="cancel()">Close</button>
+</div>

@@ -1,0 +1,144 @@
+.split-panes
+{
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  position: absolute;
+}
+
+.app-body-with-toolbar .split-panes {
+  top: 50px;
+}
+
+.app-layout .app-body-content.app-body-with-toolbar .split-panes .app-data {
+  top: 0;
+}
+
+.split-panes > .split-handler
+{
+  background: transparent;
+  position: absolute;
+  z-index: 999;
+}
+
+/* Horizontal */
+
+.split-panes.horizontal > .split-handler
+{
+  width: 4px;
+  top: 0px;
+  left: 50%;
+  bottom: 0px;
+  cursor: ew-resize;
+}
+
+.split-panes.horizontal > .split-pane1,
+.split-panes.horizontal > .split-pane2
+{
+  position: absolute;
+  height: 100%;
+  //width: 100%;
+  overflow: auto;
+}
+
+.split-panes.horizontal > .split-pane1
+{
+  width: 50%;
+}
+
+.split-panes.horizontal > .split-pane2
+{
+  left: 50%;
+  right: 0px;
+  border-left: 1px solid #aaa;
+}
+
+
+
+
+.split-panes.horizontal > .split-handler .commands
+{
+  position: absolute;
+  margin-left: -10px;
+  width: 20px;
+  background-color: #FEFEFE;
+  border: solid 1px #CCCCCC;
+  border-radius: 6px;
+  padding: 5px 0;
+  top: 49%;
+
+  //display: none;
+  cursor: pointer;
+
+  i {
+    margin: 0 3px;
+  }
+
+  .down {
+    transform: rotate(270deg);
+  }
+
+  .up {
+    transform: rotate(270deg);
+  }
+}
+
+
+/* Vertical */
+
+.split-panes.vertical > .split-handler
+{
+  height: 4px;
+  top: 50%;
+  left: 0px;
+  right: 0px;
+  cursor: ns-resize;
+}
+
+
+.split-panes.vertical > .split-handler .commands
+{
+  position: absolute;
+  margin-top: -10px;
+  height: 20px;
+  background-color: #FEFEFE;
+  border: solid 1px #CCCCCC;
+  border-radius: 6px;
+  padding: 0 5px;
+  left: 49%;
+
+  //display: none;
+  cursor: pointer;
+
+  i {
+    margin: 0 3px;
+  }
+}
+
+
+.split-panes.vertical > .split-handler:hover .commands
+{
+  display: block;
+}
+
+.split-panes.vertical > .split-pane1,
+.split-panes.vertical > .split-pane2
+{
+  position: absolute;
+  width: 100%;
+  overflow-y: auto;
+
+}
+
+.split-panes.vertical > .split-pane1
+{
+  height: 50%;
+}
+
+.split-panes.vertical > .split-pane2
+{
+  top: 50%;
+  bottom: 0px;
+  border-top: 1px solid #aaa;
+}

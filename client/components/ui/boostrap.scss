@@ -1,0 +1,327 @@
+/**
+  Panel
+*/
+
+.panel {
+  border-radius: 0px;
+
+  .panel-heading {
+    padding: 0 10px;
+    background-color: #1a3f6d;
+
+    h2 {
+      color: #f9f9f9;
+      height: 100%;
+      width: auto;
+      float: left;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 0 10px;
+      position: relative;
+      margin: 0;
+      line-height: 20px;
+    }
+
+    .panel-ctrls {
+      width: auto;
+      float: right;
+      padding: 0;
+      margin: 0;
+
+      .btn {
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-right: 0px;
+        line-height: 16px;
+      }
+    }
+
+  }
+  .panel-body {
+    padding-right: 30px;
+  }
+  .panel-body-cozy {
+    padding: 0;
+  }
+}
+
+.panel-user {
+
+  padding: 0;
+  font-size: 13px;
+  color: #000;
+
+  .panel-heading {
+    background-color: #0B1B2E;
+    padding: 20px;
+    border-radius: 0;
+  }
+}
+
+/**
+  Button
+*/
+.btn {
+  border-radius: 0px;
+  font-size: 12px;
+}
+
+/**
+  Nav
+*/
+.nav-tabs {
+
+  border-bottom: 0;
+  background-color: #fff;
+
+  li > a,
+  li > a:hover,
+  li > a:focus {
+    border: 0;
+    background-color: #fff;
+    border-bottom: 3px solid transparent;
+  }
+
+  li.active > a,
+  li.active > a:hover,
+  li.active > a:focus {
+    border: 0;
+    background-color: #fff;
+    border-bottom: 3px solid $brand-primary-color;
+  }
+}
+
+.tabs-heading {
+  ul.nav-tabs {
+    background-color: #1a3f6d;
+    > li {
+      margin-bottom: 0px;
+    }
+    > li > a {
+      color: #dadada;
+      background-color: #1a3f6d;
+    }
+
+    .li.active {
+      margin-bottom: -3px;
+    }
+
+    li.active > a,
+    li.active > a:hover
+    li.active > a:active,
+    li.active > a:focus {
+      background-color: transparent;
+      border-color: #639ee5;
+      border-width: 5px;
+      color: #f9f9f9;
+      font-weight: 300;
+    }
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+}
+
+.nav-pills {
+  li > a {
+    border-radius: 32px;
+    padding: 5px 15px;
+
+    .badge {
+      padding: 1px 5px;
+      font-size: 11px;
+      font-family: 'Open Sans', 'Droid Sans', Tahoma, Arial, sans-serif;
+      line-height: 14px;
+    }
+  }
+}
+
+/**
+  Modal
+*/
+.modal {
+  .modal-content {
+    border-radius: 0;
+
+    /**
+    ** height
+    **/
+
+    @media (max-height: 1024px) {
+      max-height: 900px;
+      overflow-y: auto;
+    }
+
+    @media (max-height: 900px) {
+      max-height: 800px;
+      overflow-y: auto;
+    }
+
+    @media (max-height: 800px) {
+      max-height: 700px;
+      overflow-y: auto;
+    }
+
+    @media (max-height: 700px) {
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    @media (max-height: 600px) {
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-md {
+    width: 700px;
+  }
+
+  .modal-lg {
+    width: 970px;
+  }
+  .modal-vlg {
+    width: 1050px;
+  }
+
+}
+
+/**
+  Form
+*/
+.form-control {
+  border-radius: 0;
+  font-size: 12px;
+  height: auto;
+  padding: 4px 6px;
+  box-shadow: none;
+}
+
+select.form-control {
+  height: 28px;
+  padding: 4px 6px;
+
+}
+
+.form-cozy {
+  .form-group {
+    margin-bottom: 5px;
+  }
+}
+
+.transparent {
+  background-color: #FFF !important;
+}
+
+label {
+  font-weight: normal;
+}
+
+.input-group select {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-right: 0;
+  -webkit-appearance: none;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+}
+
+/**
+  Alert
+*/
+.alert {
+  border-radius: 0;
+}
+
+/**
+  Popover
+*/
+.popover {
+  width: 250px;
+}
+
+.tooltip {
+  z-index: 10000;
+}
+
+/*
+  Table
+*/
+
+.table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > th, .table > caption + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > td, .table > thead:first-child > tr:first-child > td {
+  text-transform: capitalize;
+}
+
+/*
+  Badge
+*/
+.badge {
+  font-weight: normal;
+}
+
+/*
+  Select
+*/
+
+.ui-select-bootstrap > .ui-select-match > .btn {
+  min-height: 28px;
+}
+
+form {
+  .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+/*
+  NYA Select
+*/
+
+.nya-bs-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+  width: auto;
+  display: block;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  .nya-bs-option {
+    a {
+      padding: 5px;
+    }
+
+    .btn {
+      padding: 4px 6px;
+    }
+  }
+}
+
+.lcma-pager {
+  .dropdown-menu {
+    max-height: 250px;
+    overflow-y: auto;
+    min-width: 100px;
+
+  }
+}
+
+.nya-bs-select {
+
+  .btn {
+    padding: 4px 6px;
+  }
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}

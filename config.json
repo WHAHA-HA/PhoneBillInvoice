@@ -1,0 +1,10 @@
+{
+  "version": "{VERSION}",
+
+  "aws": {
+    "defaultRegion": "us-east-1",
+    "defaultBucket": "lcma-dev1",
+    "accessKeyId": "AKIAIJPYKLB65XDASKCQ",
+    "secretAccessKey": "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"
+  }
+}

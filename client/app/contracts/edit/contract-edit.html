@@ -1,0 +1,209 @@
+<div class="modal-header">
+    <h4 class="modal-title">Update Contract Document</h4>
+</div>
+<div class="modal-body add-form">
+    <form name="ContractForm" class="form-horizontal clearfix form-cozy mar-b add-form">
+        <lcma-form-layout columns="2">
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Name</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="contract.name"
+                           name="name"
+                           ng-required="true">
+                    <div ng-messages="ContractForm.name.$error" ng-show="ContractForm.name.$touched" role="alert">
+                        <div ng-message="required">You didn't enter contract name.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Parent</lcma-form-label>
+                <lcma-control-container>
+                    <select name="master"
+                            ng-model="contract.master_id"
+                            class="form-control"
+                            ng-options="contract.id as contract.name for contract in contracts">
+                        <option value="">None</option>
+                    </select>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Description</lcma-form-label>
+                <lcma-control-container>
+                    <textarea class="form-control"
+                              ng-model="contract.description"
+                              name="description"
+                              ng-required="false"></textarea>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Type</lcma-form-label>
+                <lcma-control-container>
+                    <select name="type"
+                            ng-model="contract.type"
+                            class="form-control"
+                            ng-required="true">
+                        <option value="1">MSA</option>
+                        <option value="2">Svc Schedule</option>
+                        <option value="3">SS Amendment</option>
+                        <option value="4">Svc Order</option>
+                        <option value="5">Quote</option>
+                        <option value="6">Supporting Doc</option>
+                        <option value="7">Settlement Agreement</option>
+                    </select>
+                </lcma-control-container>
+            </lcma-form-group>
+        </lcma-form-layout>
+
+        <lcma-form-layout columns="2">
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor</lcma-form-label>
+                <lcma-control-container>
+                    <lcma-vendor-picker name="vendor_id" ng-model="contract.vendor_id" ng-required="true"></lcma-vendor-picker>
+                    <div ng-messages="ContractForm.vendor_id.$error" ng-show="ContractForm.vendor_id.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't select vendor.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Vendor Signed</lcma-form-label>
+                <lcma-control-container>
+                    <input lcma-calendar-position
+                           ng-model="contract.vendor_sign_date"
+                           name="vendor_sign_date"
+                           ng-required="true"
+                           uib-datepicker-popup
+                           placeholder="Select date"
+                           class="form-control input-sm"
+                           is-open="vendor_sign_date_ui.opened"
+                           ng-click="vendor_sign_date_ui.opened = true">
+                    <div ng-messages="ContractForm.vendor_sign_date.$error" ng-show="ContractForm.vendor_sign_date.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't enter vendor sign date.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+        </lcma-form-layout>
+
+        <lcma-form-layout columns="2">
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Company</lcma-form-label>
+                <lcma-control-container>
+                    <input class="form-control"
+                           ng-model="contract.company_name"
+                           name="company_name"
+                           ng-required="true">
+                    <div ng-messages="ContractForm.company_name.$error" ng-show="ContractForm.company_name.$touched" role="alert">
+                        <div ng-message="required">You didn't enter company name.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Company Signed</lcma-form-label>
+                <lcma-control-container>
+                    <input lcma-calendar-position
+                           ng-required="true"
+                           ng-model="contract.company_sign_date"
+                           name="company_sign_date"
+                           uib-datepicker-popup
+                           placeholder="Select date"
+                           class="form-control input-sm"
+                           is-open="company_sign_date_ui.opened"
+                           ng-click="company_sign_date_ui.opened = true">
+                    <div ng-messages="ContractForm.company_sign_date.$error" ng-show="ContractForm.company_sign_date.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't enter company sign date.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Effective Date</lcma-form-label>
+                <lcma-control-container>
+                    <input lcma-calendar-position
+                           ng-required="true"
+                           ng-model="contract.effective_date"
+                           name="effective_date"
+                           uib-datepicker-popup
+                           placeholder="Select date"
+                           class="form-control input-sm"
+                           is-open="effective_date_ui.opened"
+                           ng-click="effective_date_ui.opened = true">
+                    <div ng-messages="ContractForm.effective_date.$error" ng-show="ContractForm.effective_date.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't enter effective date.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Termination Date</lcma-form-label>
+                <lcma-control-container>
+                    <input lcma-calendar-position
+                           ng-required="true"
+                           ng-model="contract.termination_date"
+                           name="termination_date"
+                           uib-datepicker-popup
+                           placeholder="Select date"
+                           class="form-control input-sm"
+                           is-open="termination_date_ui.opened"
+                           ng-click="termination_date_ui.opened = true">
+                    <div ng-messages="ContractForm.termination_date.$error" ng-show="ContractForm.termination_date.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't enter termination date.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Term</lcma-form-label>
+                <lcma-control-container>
+                    <input type="number"
+                           min="1"
+                           max="150"
+                           class="form-control"
+                           ng-model="contract.term_months"
+                           name="term_months"
+                           ng-required="true">
+                    <div ng-messages="ContractForm.term_months.$error" ng-show="ContractForm.term_months.$touched" role="alert">
+                        <div ng-message="required">You didn't enter contract name.</div>
+                        <div ng-message="number">Enter valid number of months.</div>
+                        <div ng-message="min">Enter valid number of months.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="4">
+                <lcma-form-label>Committed Value</lcma-form-label>
+                <lcma-control-container>
+                    <input type="number"
+                           min="0"
+                           class="form-control"
+                           ng-model="contract.committed_value"
+                           name="committed_value"
+                           ng-required="true">
+                    <div ng-messages="ContractForm.committed_value.$error" ng-show="ContractForm.committed_value.$touched"
+                         role="alert">
+                        <div ng-message="required">You didn't enter committed value</div>
+                        <div ng-message="number">Enter valid committed value.</div>
+                        <div ng-message="min">Enter valid committed value.</div>
+                    </div>
+                </lcma-control-container>
+            </lcma-form-group>
+
+        </lcma-form-layout>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-disabled="!ContractForm.$valid" ng-click="update(ContractForm)">
+        Update
+    </button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

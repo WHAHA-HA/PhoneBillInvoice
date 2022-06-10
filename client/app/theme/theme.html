@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <h4 class="modal-title">Customize Your Account</h4>
+</div>
+<div class="modal-body">
+    <div class="row panel-group" style="margin-bottom:0">
+        <div class="col-md-3">
+            <div class="list-group" style="height: 250px;overflow-y: auto; overflow-x: hidden;">
+                <a ng-click="select(theme.id);loadTheme(theme)" ng-class="{active: theme.id == selected}" href="" class="list-group-item" ng-repeat="theme in themes">{{theme.name}}</a>
+            </div>
+        </div>
+        <div class="col-md-9" style="padding-left: 0">
+            <form class="form-inline" style="margin-right: 20px;">
+                <div class="row" style="padding-bottom:20px;">
+                    <div class="col-md-7">
+                        <label class="custom-control-label col-md-3">Name:</label>
+                        <input type="text" class="form-control  col-md-9" ng-model="theme.name"/>
+                    </div>
+                    <div class="col-md-5" ng-hide="theme.master_theme">
+                        <label class="custom-control-label col-xs-5">Visible:</label>
+                        <div class="pull-right col-xs-7">
+                            <toggle-switch on-label="Only Me" off-label="All" ng-model="theme.owner"></toggle-switch>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="max-height: 200px;overflow-y: auto; overflow-x: hidden;">
+                    <div class="form-group col-md-6" style="margin-bottom: 10px;" ng-repeat="item in theme.code">
+                        <label class="custom-control-label col-xs-7 text-right" style="padding-top:6px;">{{item.label}}</label>
+                        <div style="border:1px solid #ccc;border-radius:4px; height: 30px;" class="col-xs-5">
+                            <button colorpicker type="button" colorpicker-position="top" 
+                                    class="btn  col-xs-3" ng-style="{'background-color':item.color}"
+                                    ng-model="item.color" style="height: 20px;border-radius:4px; margin-top:4px" > </button>
+                            <input type="text" class="col-xs-9" style="border:none; margin-top: 4px;" maxlength="7"
+                                   ng-app="" ng-model="item.color" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-right" style="padding-top:15px;">
+                    <button class="btn btn-primary" type="button" ng-click="applyTheme(theme)">Apply</button>
+                    <button class="btn btn-primary" type="button" ng-click="save(true)" ng-disabled="!theme.editable">Save</button>
+                    <button class="btn btn-primary" type="button" ng-click="save(false)">Save As</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-link" type="button" ng-click="cancel()">Close</button>
+</div>

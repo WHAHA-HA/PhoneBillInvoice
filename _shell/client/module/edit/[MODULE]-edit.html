@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title">[MODULE] Title</h4>
+</div>
+<div class="modal-body">
+  <form name="[MODULE]Form" class="form-horizontal form-cozy mar-b">
+    <div class="form-group">
+      <label class="col-sm-4 control-label">Label</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="field" ng-model="model.field" type="text"
+               class="form-control">
+        <div ng-messages="[MODULE]Form.field.$error" ng-show="[MODULE]Form.field.$touched" role="alert">
+          <div ng-message="required">This field is required.</div>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="submit([MODULE]Form)">Submit</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

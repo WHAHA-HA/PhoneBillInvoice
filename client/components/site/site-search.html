@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h4 class="modal-title">Site Search</h4>
+</div>
+<div class="modal-body">
+  <div class="app-toolbar row">
+    <div class="col-sm-12">
+      <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+      <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+      <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+    </div>
+
+  </div>
+  <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+  <div class="grid app-data app-data-grid mar-all" ui-grid="ctx.gridOptions" ui-grid-selection ui-grid-exporter ui-grid-pinning ui-grid-resize-columns></div>
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="ctx.ok()">Done</button>
+  <button class="btn btn-warning" ng-click="ctx.close()">Cancel</button>
+</div>

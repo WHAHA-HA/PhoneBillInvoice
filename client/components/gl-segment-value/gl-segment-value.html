@@ -1,0 +1,13 @@
+<div>
+  <ol id="dynamic-options" class="nya-bs-select " ng-model="selection"  data-live-search="true"  data-size="8" title="Select ...">
+      <li nya-bs-option="value in values" data-value="value.id">
+      <a class="gl-segment-item">
+          <b>{{ value.segment_value }}</b> {{value.segment_desc}}
+      </a>
+    </li>   
+    <li class="btn-group btn-group-justified custom-picker-options-space"></li>
+    <li class="btn-group btn-group-justified custom-picker-options">
+      <a class="btn btn-default" ng-click="clearItem()">Clear</a>
+    </li>
+  </ol>
+</div>

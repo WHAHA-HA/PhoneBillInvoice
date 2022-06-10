@@ -1,0 +1,41 @@
+.steps-indicator {
+  margin-bottom: 30px;
+}
+
+.panel-bordered {
+  border: solid 1px #E6E6E6;
+}
+
+.app-gl-rules-wizard {
+  .panel {
+    margin-right: 0;
+
+    .panel-body {
+      padding: 20px
+    }
+
+    .panel-commands {
+      padding-top: 20px;
+      margin-top: 20px;
+      border-top: solid 1px #E6E6E6;
+    }
+  }
+
+  .wiz-header {
+    /*display: inline-block;*/
+  }
+
+  .wiz-header li {
+    min-width: 25%;
+  }
+
+  .wiz-header li a {
+    min-width: 100%;
+    text-align: center;
+  }
+  
+  .wiz-header > li:last-child {
+      margin-right: 0;
+      padding-right: 0;
+  }
+}

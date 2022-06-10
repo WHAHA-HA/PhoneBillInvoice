@@ -1,0 +1,125 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">{{user.first_name}} {{user.last_name}}</h4>
+  </div>
+  <div class="modal-body">
+    <form name="UserForm" class="form-horizontal form-cozy" id="UserForm">
+
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">User Info</div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <div class="col-sm-3">
+
+              <div class="avatar-container text-center">
+                <div ng-show="(!showCropImage || !picFile) && !user.avatar" class="default-avatar-circle">
+                  <span class="initials">{{getInitialLetters()}}</span>
+                </div>
+                <div class="text-center">
+                  <img ng-show="!showCropImage && user.avatar" class="user_avatar" data-ng-src="{{user.avatar}}" style="width: 100px;"/>
+                </div>
+                <div ng-show="showCropImage && picFile" ngf-drop ng-model="picFile" ngf-pattern="image/*"
+                     class="cropArea">
+                  <img-crop image="picFile | ngfDataUrl"
+                            result-image="avatar_temp">
+                  </img-crop>
+                </div>
+                <button ngf-select ng-click="EditPicture()" ng-model="picFile" ng-disabled="!globalAvatarUpdateAllowed"
+                        style="margin-bottom: 5px;" class="btn btn-link btn-change-avatar" accept="image/*">
+                  Change Avatar
+                </button>
+              </div>
+            </div>
+
+            <div class="col-sm-9">
+              <lcma-form-layout columns="2">
+                <lcma-form-group>
+                  <lcma-form-label>First Name</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" name="first_name" placeholder="" type="text" class="form-control"
+                           ng-model="user.first_name">
+                    <div ng-messages="UserForm.first_name.$error" ng-show="UserForm.first_name.$touched" role="alert">
+                      <div ng-message="required">Please provide first name.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+                <lcma-form-group>
+                  <lcma-form-label>Last Name</lcma-form-label>
+                  <lcma-control-container>
+
+                    <input ng-required="true" name="last_name" placeholder="" type="text" class="form-control"
+                           ng-model="user.last_name">
+                    <div ng-messages="UserForm.last_name.$error" ng-show="UserForm.last_name.$touched" role="alert">
+                      <div ng-message="required">Please provide last name.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                  <lcma-form-label>Email</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" name="email" type="email" placeholder="" class="form-control"
+                           ng-model="user.email">
+                    <div ng-messages="UserForm.email.$error" ng-show="UserForm.email.$touched" role="alert">
+                      <div ng-message="required">You didn't enter valid email.</div>
+                      <div ng-message="email">You didn't enter valid email.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                  <lcma-form-label>Mobile Number</lcma-form-label>
+                  <lcma-control-container>
+
+                    <input ng-required="false" name="mobile_number" placeholder="" type="text"
+                           class="form-control"
+                           ng-model="user.mobile_number">
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                  <lcma-form-label>Username</lcma-form-label>
+                  <lcma-control-container>
+                    <input ng-required="true" name="username" ng-model="user.username" type="text"
+                           class="form-control" disabled>
+                    <div ng-messages="UserForm.username.$error" ng-show="UserForm.username.$touched" role="alert">
+                      <div ng-message="required">You didn't enter valid username.</div>
+                    </div>
+                  </lcma-control-container>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                  <lcma-form-label>Status</lcma-form-label>
+                  <lcma-control-container>
+                    <toggle-switch ng-if="user" on-label="Active" off-label="Inactive" ng-model="user.is_active" default-option="defaultOption" name="is_active" id="is_active"></toggle-switch>
+                  </lcma-control-container>
+                </lcma-form-group>
+              </lcma-form-layout>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Roles</div>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-6 form-group" ng-repeat="role in roles">
+            <label class="col-sm-4 custom-control-label">{{role.name}}</label>
+            <div class="col-sm-8">
+              <toggle-switch on-label="On" off-label="Off" ng-model="selectedRoles[role.id]" name="role_{{role.id}}" id="role_{{role.id}}"></toggle-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="update(UserForm)">Update</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

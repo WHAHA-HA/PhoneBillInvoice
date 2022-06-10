@@ -1,0 +1,64 @@
+<div class="modal-header app-modal-width">
+  <h4 class="modal-title">Create New Audit Rate</h4>
+</div>
+<div class="modal-body app-modal-width">
+  <form name="AuditRateNewForm" class="form-horizontal form-cozy mar-b add-form">
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Audit Rate Table Name</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="name" ng-model="auditRate.name" type="text"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Charge Class</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="chg_class" ng-model="auditRate.chg_class" type="text"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 textarea-control-label">Description</label>
+      <div class="col-sm-8">
+        <textarea class="form-control"
+                  ng-model="auditRate.chg_description1"
+                  name="description"
+                  ng-required="true">
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 textarea-control-label">Description2</label>
+      <div class="col-sm-8">
+        <textarea class="form-control"
+                  ng-model="auditRate.chg_description2"
+                  name="description2"
+                  ng-required="false">
+        </textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">FAC_BW_KB</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="fac" ng-model="auditRate.fac_bw_kb" type="number"
+               class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Audit Rate</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="rate" ng-model="auditRate.rate" type="number"
+               class="form-control">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer app-modal-width">
+  <button class="btn btn-primary" type="button" ng-click="create(AuditRateNewForm)">Create</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

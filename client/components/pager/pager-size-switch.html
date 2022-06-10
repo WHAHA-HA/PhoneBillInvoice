@@ -1,0 +1,15 @@
+<div class="btn-group pull-right">
+        <span class="btn btn-default" uib-dropdown>
+          <span uib-dropdown-toggle="">
+            <span class="text-muted">Show</span>
+            {{pager.size}}
+          </span>
+          <ul class="dropdown-menu">
+            <li ng-click="pager.setSize(1)"><a>1</a></li>
+            <li ng-click="pager.setSize(10)"><a>10</a></li>
+            <li ng-click="pager.setSize(20)"><a>20</a></li>
+            <li ng-click="pager.setSize(50)"><a>50</a></li>
+            <li ng-click="pager.setSize(100)"><a>100</a></li>
+          </ul>
+        </span>
+</div>

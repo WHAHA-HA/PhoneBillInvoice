@@ -1,0 +1,25 @@
+<form name="InventoryForm" class="inventory-form form-horizontal form-cozy mar-b add-form">
+  <div class="app-body-content app-body-with-toolbar">
+    <div class="app-toolbar">
+      <div class="pull-right">
+        <button class="btn btn-primary" type="submit" ng-click="ctx.createInventory(InventoryForm)">Create Inventory
+        </button>
+        <button class="btn btn-default" type="submit" ng-click="ctx.cancelInventory()">Cancel</button>
+      </div>
+    </div>
+
+    <div class="app-data app-data-space order-facepage">
+
+      <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+          <h2>
+            Toll Free Number
+          </h2>
+        </div>
+        <div class="panel-body">
+          <ng-include src="'app/inventories/forms/inventory-toll-free-number-form.html'"></ng-include>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

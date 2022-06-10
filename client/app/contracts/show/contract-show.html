@@ -1,0 +1,211 @@
+<div class="app-body-content  app-body-with-toolbar">
+    <div class="app-toolbar">
+
+        <div class="pull-right">
+
+            <div ng-if="ctx.contract.document_id">
+                <a target="_blank" class="btn btn-default"
+                   href="" ng-click="ctx.readDocument(ctx.contract.document, true)">
+                    <i class="fa fa-file"></i>
+                    View Document
+                </a>
+                <a target="_blank" class="btn btn-default"
+                   href="" ng-click="ctx.readDocument(ctx.contract.document)">
+                    <i class="fa fa-download"></i>
+                </a>
+                <button class="btn btn-default"
+                        type="button" ng-click="ctx.removeContractDocument(ctx.contract)">
+                    <i class="fa fa-trash"></i>
+                </button>
+                <!--            <button class="btn btn-link" ng-click="ctx.setDocument()">
+                              Change
+                            </button>-->
+            </div>
+
+
+            <div ng-if="!ctx.contract.document_id">
+                <span class="text-warning">No document defined</span>
+                <button class="btn btn-primary" ng-click="ctx.setDocument()">
+                    Upload Document
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="app-data app-data-space contract-facepage">
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Contract Header Info</h2>
+                <div class="btn-group panel-ctrls">
+                    <button type="button"
+                            ng-click="ctx.editContract()"
+                            class="btn btn-default">
+                        <i class="fa fa-pencil"></i>
+                        Edit
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row mar-b">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Vendor</div>
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.vendor.name}}</span></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Term</div>
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.term_months}} months</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Contract ID</div>
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.id}}</span></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Contract Type</div>
+                                    <!-- TODO: This should be a filter-->
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.typeEntity.value}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Effective Date</div>
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.effective_date | lcmaDate}}</span></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Status</div>
+                                    <div class="col-sm-6 value-box"><span>{{ ctx.contract.status || 'Active'}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Termination Date</div>
+                                    <div class="col-sm-6 value-box danger"><span>{{ ctx.contract.termination_date | lcmaDate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="mar-b-sm clearfix">
+                                    <div class="col-sm-6">Committed Value</div>
+                                    <div class="col-sm-6 value-box success text-right">
+                                        <span>{{ ctx.contract.committed_value | currency}}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mar-t">
+                    <div class="col-sm-3 text-right">
+                        <label class="control-label">
+                            Contract Summary
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea class="form-control transparent"
+                                  ng-model="ctx.contract.description"
+                                  name="description"
+                                  rows="6"
+                                  readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading clearfix">
+                <h2>Key Contact Details</h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <button type="button" style="margin-left: 10px;"
+                            ng-click="ctx.addContractSection()"
+                            class="btn btn-default">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <a class="btn btn-default pull-right" style="margin-right: 10px;" ng-disabled="ctx.gridApi.selection.getSelectedRows().length == 0" ng-click="removeContractSection()" title="Delete Selected">
+                        <i class="fa fa-trash"></i></a>
+                </div>
+                <div class="row">
+                    <div  class="grid app-data-grid  mar-all" ui-grid="ctx.sectionsGrid" ui-grid-selection  lcma-no-data-message></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default panel-related">
+            <div class="panel-heading clearfix">
+                <h2>Related Items</h2>
+            </div>
+            <div class="panel-body">
+                <uib-tabset>
+                    <uib-tab heading="Documents"
+                             active="ctx.relatedTabs.active === 'documents'"
+                             ng-click="ctx.activateRelatedTab('documents')">
+                        <lcma-document-grid folder='contracts' parent='contract' entity="ctx.contract"></lcma-document-grid>
+                    </uib-tab>
+                    <uib-tab heading="Inventory"
+                             active="ctx.relatedTabs.active === 'inventory'"
+                             ng-click="ctx.activateRelatedTab('inventory')">
+                      <div class="row">
+                        <div ng-if="ctx.relatedTabs.active === 'inventory'" class="grid app-data-grid  mar-all" ui-grid="ctx.inventoriesGrid" ui-grid-selection lcma-no-data-message></div>
+                      </div>
+
+                    </uib-tab>
+                    <uib-tab heading="Notes"
+                             active="ctx.relatedTabs.active === 'comments'"
+                             ng-click="ctx.activateRelatedTab('comments')">
+                        <div class=" clearfix">
+                            <button type="button"
+                                    class="btn btn-default pull-right"
+                                    ng-click="ctx.addNote()">Add Note
+                            </button>
+                        </div>
+                        <div ng-repeat="note in ctx.notes"
+                             class="mar-t"
+                             id="note_{{note.id}}"
+                             lcma-focus-on="note_{{note.id}}">
+
+                            <lcma-note-list ng-model="note" on-reply="ctx.onNoteReply(note)">
+
+                            </lcma-note-list>
+
+                        </div>
+
+                        <div class="text-center mar-all" ng-if="!ctx.notes.length">No notes added for this invoice.</div>
+
+                    </uib-tab>
+                    <uib-tab heading="History"
+                             active="ctx.relatedTabs.active === 'history'"
+                             ng-click="ctx.activateRelatedTab('history')">
+
+                        <lcma-history entity_type="contract@{{ctx.contract.id}}"></lcma-history>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>

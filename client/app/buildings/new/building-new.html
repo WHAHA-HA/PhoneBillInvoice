@@ -1,0 +1,102 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Create New Building</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+    <form name="BuildingForm" class="form-horizontal form-cozy" id="BuildingForm">
+
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Building Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="2">
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Name</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="name" type="text" class="form-control"
+                       ng-model="building.name">
+                <div ng-messages="BuildingForm.name.$error" ng-show="BuildingForm.name.$touched" role="alert">
+                  <div ng-message="required">Please provide Building Name</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Address 1</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="addr_1" type="text" class="form-control"
+                       ng-model="building.addr_1">
+                <div ng-messages="BuildingForm.addr_1.$error" ng-show="BuildingForm.addr_1.$touched" role="alert">
+                  <div ng-message="required">Please provide Address 1.</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Address 2</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="false" name="addr_2" type="text" class="form-control"
+                       ng-model="building.addr_2">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Address 3</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="false" name="addr_3" type="text" class="form-control"
+                       ng-model="building.addr_3">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>City</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" placeholder="City" name="addr_city" type="text" class="form-control"
+                       ng-model="building.addr_city">
+                <div ng-messages="BuildingForm.addr_state.$error" ng-show="BuildingForm.addr_state.$touched"
+                     role="alert">
+                  <div ng-message="required">Required</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>State</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" placeholder="State" name="addr_state" type="text" class="form-control"
+                       ng-model="building.addr_state">
+                <div ng-messages="BuildingForm.addr_state.$error" ng-show="BuildingForm.addr_state.$touched"
+                     role="alert">
+                  <div ng-message="required">Required</div>
+                </div>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Zip</lcma-form-label>
+              <lcma-control-container>
+                <input placeholder="Zip" name="addr_zip" type="text" class="form-control"
+                       ng-model="building.addr_zip">
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group label-size="3">
+              <lcma-form-label>Geocode</lcma-form-label>
+              <lcma-control-container>
+                <input placeholder="Geocode" name="geocode" type="number" class="form-control"
+                       ng-model="building.geocode">
+              </lcma-control-container>
+            </lcma-form-group>
+
+          </lcma-form-layout>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="create(BuildingForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel(BuildingForm)">Cancel</button>
+  </div>
+</div>

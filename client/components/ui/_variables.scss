@@ -1,0 +1,50 @@
+
+$font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+$content-primary-color: #000000;
+
+// Branding
+$brand-logo-min-url: '/assets/img/cloudage/logo_min.png';
+$brand-logo-url: '/assets/img/cloudage/logo.png';
+$brand-logo-lg-url: '/assets/img/cloudage/logo_lg.png';
+$brand-client-logo-url: "../components/ui/cloudage/client-logo.jpeg";
+$brand-primary-color: #45778c;
+$brand-dark-color: #0B1B2E;
+$brand-dark-secondary-color: #102743;
+$brand-neutral-color: #f9f9f9;
+$brand-lite-color: #ECF8FC;
+$brand-superlite-color: #ECF8FC;
+$brand-content-bg-color: #FFFFFF;
+$brand-content-navigation-color: #FFFFFF;
+
+// Brand neutral colors
+$brand-gray-dark: #444444;
+$brand-gray-light: #FCFCFC;
+$brand-gray-neutral: #e9e9e9;
+$brand-gray-alternate: #e9e9e9;
+
+$default-padding: 10px;
+$default-margin: 10px;
+$small-padding: 5px;
+$small-margin: 5px;
+$color-danger: #CD2C2E;
+$color-success: #169C20;
+
+// Layout
+$app-sidebar-width: 240px;
+$app-sidebar-min-width: 50px;
+$app-sidebar-bg-color: $brand-dark-color;
+$app-sidebar-color: $brand-neutral-color;
+
+$app-topbar-height: 58px;
+$app-topbar-bg-color: #FFFFFF;
+
+$app-titlebar-height: 0;
+$app-titlebar-bg-color: $brand-gray-light;
+
+$app-toolbar-height: 50px;
+$app-toolbar-bg-color:  $brand-gray-light;
+
+$app-body-bg-color: $brand-content-bg-color;
+
+$app-toolbar-min-width: 900px;
+$app-body-min-width: 900px;

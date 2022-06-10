@@ -1,0 +1,10 @@
+<ul class="nav nav-pills navbar-bottom" role="tablist" style="padding: 0; margin: 0;">
+    <li><a ng-click="applyQuickFilterFn(-1)" style="background-color: #1a3f6d;color:white;" class="quick-filter-item"
+           ng-class="{'quick-filter-item-active': quickFilter.length !== 0}">All</a></li>
+    <li role="presentation" ng-repeat="item in schema">
+        <a aria-controls="home" role="tab" data-toggle="tab" title="{{item.value}}" 
+           style="background-color: {{item.color.background}};color:{{item.color.color}};"
+           ng-class="{'quick-filter-item-active': quickFilter.indexOf(item.id) < 0}"
+           class="quick-filter-item" ng-click="applyQuickFilterFn(item.id)">{{item.abbreviation || item.value}}</a>
+    </li>
+</ul>

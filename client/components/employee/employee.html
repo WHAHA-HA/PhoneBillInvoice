@@ -1,0 +1,27 @@
+<div>
+  <!--
+<div style="min-height: 24px;padding: 4px;">
+  <ui-select ng-model="selection.value"
+             on-select="onSelect($item, $model)">
+    <ui-select-match>
+      <span ng-bind="$select.selected.full_name"></span>
+    </ui-select-match>
+    <ui-select-choices repeat="employee in (employees | filter: $select.search) track by employee.id">
+      <span ng-bind="employee.full_name"></span>
+    </ui-select-choices>
+  </ui-select>
+</div>
+-->
+
+  <ol id="dynamic-options" class="nya-bs-select" ng-model="selection"  data-live-search="true"  data-size="8" title="Select ...">
+    <li nya-bs-option="employee in employees" data-value="employee.id">
+      <a>{{ employee.full_name }}</a>
+    </li> 
+    <li class="btn-group btn-group-justified custom-picker-options-space"></li>
+    <li class="btn-group btn-group-justified custom-picker-options">
+        <a class="btn btn-default" ng-click="addItem()" lcma-check-permissions="Create@employee"><i class="fa fa-plus"></i></a>
+        <a class="btn btn-default disabled" ng-click="searchItem()"><i class="fa fa-search"></i></a>
+    </li>
+  </ol>
+
+</div>

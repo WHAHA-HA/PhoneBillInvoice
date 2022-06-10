@@ -1,0 +1,198 @@
+<lcma-form-layout columns="3">
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Int Trunk ID</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="int_trunk_id" ng-model="ctx.inventory.int_trunk_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Trunk Grp Id</lcma-form-label>
+    <lcma-control-container>
+      <input ng-required="true" name="trunk_grp_id" ng-model="ctx.inventory.trunk_grp_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Vendor</lcma-form-label>
+    <lcma-control-container>
+      <lcma-vendor-picker ng-model="ctx.inventory.vendor_id"></lcma-vendor-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Status</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-trunk-status' name="status" ng-model="ctx.inventory.status_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Trunk Type</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-trunk-type' name="trunk_type" ng-model="ctx.inventory.trunk_type_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Mems/CC Qty</lcma-form-label>
+    <lcma-control-container>
+      <input name="mems_cc_qty" ng-model="ctx.inventory.mems_cc_qty" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>A Site</lcma-form-label>
+    <lcma-control-container>
+      <lcma-site-picker name="site_a" site-id="ctx.inventory.site_a_id"></lcma-site-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Z Site</lcma-form-label>
+    <lcma-control-container>
+      <lcma-site-picker name="site_z" site-id="ctx.inventory.site_z_id"></lcma-site-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Direction</lcma-form-label>
+    <lcma-control-container>
+      <lcma-dictionary-picker type-key='inventory-trunk-direction' name="direction"
+                              ng-model="ctx.inventory.direction_id"
+        ></lcma-dictionary-picker>
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <div style="clear:both"></div>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SIP Domain</lcma-form-label>
+    <lcma-control-container>
+      <input name="sip_domain" ng-model="ctx.inventory.sip_domain" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>GW IP Addr</lcma-form-label>
+    <lcma-control-container>
+      <input name="gw_ip_addr" ng-model="ctx.inventory.gw_ip_addr" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>GW ID</lcma-form-label>
+    <lcma-control-container>
+      <input name="gw_id" ng-model="ctx.inventory.gw_id" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>RTP Ports</lcma-form-label>
+    <lcma-control-container>
+      <input name="rtp_ports" ng-model="ctx.inventory.rtp_ports" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>RTP Port Ring</lcma-form-label>
+    <lcma-control-container>
+      <input name="rtp_port_ring" ng-model="ctx.inventory.rtp_port_ring" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>DNS IP</lcma-form-label>
+    <lcma-control-container>
+      <input name="dns_ip" ng-model="ctx.inventory.dns_ip" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Reg IP Host</lcma-form-label>
+    <lcma-control-container>
+      <input name="reg_ip_host" ng-model="ctx.inventory.reg_ip_host" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Cust IP Host</lcma-form-label>
+    <lcma-control-container>
+      <input name="cust_ip_host" ng-model="ctx.inventory.cust_ip_host" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Cust Port</lcma-form-label>
+    <lcma-control-container>
+      <input name="cust_port" ng-model="ctx.inventory.cust_port" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Proxy IP Host</lcma-form-label>
+    <lcma-control-container>
+      <input name="proxy_ip_host" ng-model="ctx.inventory.proxy_ip_host" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>2nd Proxy IP</lcma-form-label>
+    <lcma-control-container>
+      <input name="second_proxy_ip" ng-model="ctx.inventory.second_proxy_ip" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>2nd Proxy Port</lcma-form-label>
+    <lcma-control-container>
+      <input name="second_proxy_port" ng-model="ctx.inventory.second_proxy_port" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>OB Proxy IP</lcma-form-label>
+    <lcma-control-container>
+      <input name="ob_proxy_ip" ng-model="ctx.inventory.ob_proxy_ip" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>OB Proxy Port</lcma-form-label>
+    <lcma-control-container>
+      <input name="ob_proxy_port" ng-model="ctx.inventory.ob_proxy_port" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Fax protocol</lcma-form-label>
+    <lcma-control-container>
+      <input name="fax_protocol" ng-model="ctx.inventory.fax_protocol" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>Cust CODEC</lcma-form-label>
+    <lcma-control-container>
+      <input name="cust_codec" ng-model="ctx.inventory.cust_codec" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP CODEC</lcma-form-label>
+    <lcma-control-container>
+      <input name="sp_codec" ng-model="ctx.inventory.sp_codec" type="text" class="form-control">
+    </lcma-control-container>
+  </lcma-form-group>
+
+  <lcma-form-group label-size="4">
+    <lcma-form-label>SP ID</lcma-form-label>
+    <lcma-control-container>
+      <input type="text" ng-model="ctx.inventory.sp_svc_id" required="required" class="form-control"/>
+    </lcma-control-container>
+  </lcma-form-group>
+
+</lcma-form-layout>

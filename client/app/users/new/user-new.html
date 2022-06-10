@@ -1,0 +1,117 @@
+<div>
+  <div class="modal-header">
+    <div class="pull-right">
+      <toggle-switch on-label="Active" off-label="Inactive" ng-model="user.is_active"></toggle-switch>
+    </div>
+    <h4 class="modal-title">Create New User</h4>
+  </div>
+  <div class="modal-body">
+    <form name="UserForm" class="form-horizontal form-cozy" id="UserForm">
+
+      <div class="panel panel-alternate">
+
+        <div class="panel-heading">
+          <div class="panel-title">User Info</div>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-3 text-center">
+            <div class="avatar-container">
+              <img ng-show="!showCropImage" class="user_avatar" data-ng-src="{{user.avatar}}"/>
+              <div ng-show="showCropImage" ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                <img-crop image="picFile | ngfDataUrl"
+                          result-image="avatar_temp">
+                </img-crop>
+              </div>
+            </div>
+            <button ngf-select ng-click="EditPicture()" ng-model="picFile"
+                    style="margin-bottom: 5px;"
+                    ng-disabled="!globalAvatarUpdateAllowed"
+                    class="btn btn-default" accept="image/*">
+              Add Picture
+            </button>
+          </div>
+          <div class="col-sm-9">
+            <lcma-form-layout columns="2">
+              <lcma-form-group>
+                <lcma-form-label>Full Name</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="true" name="first_name" placeholder="" type="text" class="form-control"
+                         ng-model="user.first_name">
+                </lcma-control-container>
+              </lcma-form-group>
+              <lcma-form-group>
+                <lcma-form-label>Last Name</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="true" name="last_name" placeholder="" type="text" class="form-control"
+                         ng-model="user.last_name">
+                </lcma-control-container>
+              </lcma-form-group>
+
+              <lcma-form-group>
+                <lcma-form-label>Email</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="true" name="email" type="email" placeholder="" class="form-control"
+                         ng-model="user.email">
+                </lcma-control-container>
+              </lcma-form-group>
+
+              <lcma-form-group>
+                <lcma-form-label>Username</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="true" name="username" placeholder="" ng-model="user.username" type="text"
+                         class="form-control">
+                  <div lcma-validation-messages="ctx.$errors.username"></div>
+                </lcma-control-container>
+              </lcma-form-group>
+
+              <lcma-form-group>
+                <lcma-form-label>Password</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="true" name="password" placeholder="" type="password" class="form-control"
+                         ng-model="user.password">
+                </lcma-control-container>
+              </lcma-form-group>
+
+              <lcma-form-group>
+                <lcma-form-label>Password Confirm</lcma-form-label>
+                <lcma-control-container>
+                  <input type="password" ng-required="true" name="password_confirm" placeholder=""
+                         class="form-control"
+                         ng-model="user.password_confirm">
+                </lcma-control-container>
+              </lcma-form-group>
+
+
+              <lcma-form-group>
+                <lcma-form-label>Mobile</lcma-form-label>
+                <lcma-control-container>
+                  <input ng-required="false" name="mobile_number" placeholder="" type="text"
+                         class="form-control"
+                         ng-model="user.mobile_number">
+                </lcma-control-container>
+              </lcma-form-group>
+            </lcma-form-layout>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Roles</div>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-6 form-group" ng-repeat="role in roles">
+            <label class="col-sm-4 custom-control-label">{{role.name}}</label>
+            <div class="col-sm-8">
+              <toggle-switch on-label="On" off-label="Off" ng-model="selectedRoles[role.id]"></toggle-switch>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create(UserForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

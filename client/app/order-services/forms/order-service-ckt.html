@@ -1,0 +1,191 @@
+<div class="panel-body">
+    <ng-include src="'app/order-services/forms/order-service-common.html'"></ng-include>
+    <lcma-form-layout columns="1">
+        <div class="order-service-subtitle">
+            <h5 class="text-left">Financial / Contract Section</h5>
+        </div>
+        <lcma-container>
+            <lcma-container-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Contract ID</label>
+                    <div class="col-sm-8">
+                        <lcma-contract-picker ng-model="ctx.inventory.contract_id"></lcma-contract-picker>
+                    </div>
+                </lcma-form-group><lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Term</label>
+                    <div class="col-sm-8">
+                        <input name="term" ng-model="ctx.inventory.term" type="text" class="form-control">
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Exp Date</label>
+                    <div class="col-sm-8">
+                        <input
+                            uib-datepicker-popup="MM/dd/yyyy"
+                            ng-model="ctx.inventory.exp_date"
+                            name="exp_date"
+                            class="form-control input-sm"
+                            is-open="ctx.exp_date_ui.opened"
+                            ng-click="ctx.exp_date_ui.opened = true">
+                    </div>
+                </lcma-form-group>
+            </lcma-container-group>
+            <lcma-container-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">MRC</label>
+                    <div class="col-sm-8">
+                        <input name="est_mrc" ng-model="ctx.inventory.est_mrc" type="text" class="form-control" ng-required="true">
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">NRC</label>
+                    <div class="col-sm-8">
+                        <input name="est_mrc" ng-model="ctx.inventory.est_nrc" type="text" class="form-control" ng-required="true">
+                    </div>
+                </lcma-form-group>
+            </lcma-container-group>
+        </lcma-container>
+        <div class="order-service-subtitle">
+            <h5 class="text-left">Circuit Configuration</h5>
+        </div>
+        <lcma-container>
+            <lcma-container-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Topology</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-topology' name="topology" ng-model="ctx.inventory.topology_id"
+                                          ng-change="ctx.findTopology()"></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Circuit Type</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-ckt-type' name="ckt_type" ng-model="ctx.inventory.ckt_type_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Technology</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-technology' name="technology"
+                                                ng-model="ctx.inventory.technology_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+            </lcma-container-group>
+            <lcma-container-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">CIR BW</label>
+                    <div class="col-sm-8">
+                        <input name="cir_bw" ng-model="ctx.inventory.cir_bw" type="text" class="form-control">
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">BW Max</label>
+                    <div class="col-sm-8">
+                        <input name="bw_max" ng-model="ctx.inventory.bw_max" type="text" class="form-control">
+                    </div>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">BW Model</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-bw-model' name="bw_model" ng-model="ctx.inventory.bw_model_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+            </lcma-container-group>
+            <lcma-container-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Circuit Usage</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-ckt-usage' name="ckt_usage"
+                                                ng-model="ctx.inventory.ckt_usage_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Protected?</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-protected' name="protected"
+                                                ng-model="ctx.inventory.protected_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+                <lcma-form-group>
+                    <label class="col-sm-4 custom-control-label">Prim/Failover</label>
+                    <div class="col-sm-8">
+                        <lcma-dictionary-picker type-key='inventory-prim-failover' name="prim_failover"
+                                                ng-model="ctx.inventory.prim_failover_id"
+                                                ></lcma-dictionary-picker>
+                    </div>
+                </lcma-form-group>
+                <!-- <lcma-form-group>
+                   <label class="col-sm-4 custom-control-label">Foil Rel Ckt</label>
+                   <div class="col-sm-8">
+                     {{ctx.inventory.foil_rel_ckt || 'N/A'}}
+                   </div>
+                 </lcma-form-group>-->
+
+
+            </lcma-container-group>
+        </lcma-container>
+        <div ng-if="ctx.inventory.topology.custom_key === 'P2P'" style="clear:both;">
+
+            <div class="order-service-subtitle">
+                <h5>Selected A-Z Sites</h5>
+            </div>
+
+            <lcma-container columns="[6,6]">
+
+                <lcma-container-group>
+                    <lcma-form-group>
+                        <h5 class="text-center">Site A</h5>
+                        <div class="col-sm-12">
+                            <div lcma-site-detail preview="true" site-id="ctx.inventory.site_a_id" equipment-id="ctx.inventory.equipment_a_id"
+                                 equipment-interface-id="ctx.inventory.equipment_interface_a_id" class="site-detail" editing="true"></div>
+                        </div>
+                    </lcma-form-group>
+                </lcma-container-group>
+                <lcma-container-group>
+                    <lcma-form-group>
+                        <h5 class="text-center">Site Z</h5>
+                        <div class="col-sm-12">
+                            <div lcma-site-detail preview="true" site-id="ctx.inventory.site_z_id" equipment-id="ctx.inventory.equipment_z_id"
+                                 equipment-interface-id="ctx.inventory.equipment_interface_z_id" class="site-detail" editing="true"></div>
+                        </div>
+                    </lcma-form-group>
+                </lcma-container-group>
+            </lcma-container>
+        </div>
+
+        <div ng-if="ctx.inventory.topology.custom_key === 'RNG'" style="clear:both;">
+
+            <div class="order-service-subtitle">
+                <h5>Selected Sites</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <div lcma-site-detail site="selectedRingSite" class="site-detail" editing="true"></div>
+                </div>
+                <div class="col-sm-4 text-left" style="padding-left: 0px;">
+                    <button class="btn btn-primary btn-sm" ng-click="ctx.addInventorySite(selectedRingSite)">Add Selected Site
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="col-sm-12 text-right">
+                <a class="btn btn-default" ng-disabled="ctx.sitesGridApi.selection.getSelectedRows().length == 0" ng-click="ctx.removeSite()" title="Delete Selected"><i class="fa fa-trash"></i></a>
+            </div>
+            <div class="col-sm-12">
+
+                <div class="grid mar-all" ui-grid="ctx.inventorySitesGrid" ui-grid-selection>></div>
+
+            </div>
+        </div>
+
+    </lcma-form-layout>
+
+</div>

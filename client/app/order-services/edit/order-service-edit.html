@@ -1,0 +1,111 @@
+<div class="modal-header">
+  <h4 class="modal-title">Update Order</h4>
+</div>
+<div class="modal-body">
+  <form name="OrderForm" class="clearfix">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Unique ID</label>
+        <input class="form-control"
+               ng-model="order.id"
+               name="order_id"
+               ng-required="true">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Vendor Alias</label>
+        <input type="text"
+               class="form-control"
+               ng-model="order.vendor_alias"
+               name="vendor_alias"
+               ng-required="false">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Vendor</label>
+        <input class="form-control"
+               ng-model="order.vendor"
+               name="vendor"
+               ng-required="true">
+        <div ng-messages="OrderForm.vendor.$error" ng-show="OrderForm.vendor.$touched" role="alert">
+          <div ng-message="required">You didn't enter vendor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>AP Vendor ID</label>
+        <input class="form-control"
+               ng-model="order.ap_vendor_id"
+               name="ap_vendor_id"
+               ng-required="false">
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Order</label>
+        <input class="form-control"
+               ng-model="order.order_no"
+               name="order_no"
+               ng-required="true">
+
+        <div ng-messages="OrderForm.order_no.$error" ng-show="OrderForm.order_no.$touched" role="alert">
+          <div ng-message="required">You didn't enter order number.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Billing Cycle</label>
+        <input type="text"
+               class="form-control"
+               ng-model="order.billing_cycle"
+               name="billing_cycle"
+               ng-required="true">
+        <div ng-messages="OrderForm.billing_cycle.$error" ng-show="OrderForm.billing_cycle.$touched" role="alert">
+          <div ng-message="required">You didn't enter billing cycle.</div>
+          <div ng-message="number">Please enter valid billing cycle.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Status</label>
+
+        <select class="form-control" name="status"
+                ng-options="status.key as status.value for status in statuses"
+                ng-model="order.status_id" ng-required="true">
+        </select>
+        <div ng-messages="OrderForm.status.$error" ng-show="OrderForm.status.$touched" role="alert">
+          <div ng-message="required">You didn't select status.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label>Late Bill Log Days</label>
+        <input type="text"
+               class="form-control"
+               ng-model="order.late_bill_log_days"
+               name="late_bill_log_days"
+               ng-required="false">
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="update(OrderForm)">Update</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>
+
+
+

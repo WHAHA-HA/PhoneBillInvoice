@@ -1,0 +1,27 @@
+<div class="app-body-content app-body-with-toolbar container-fluid">
+    <div class="app-toolbar row">
+        <div class="row-split" style="width: 4%;">
+             <a class="btn btn-default" ng-click="ctx.newOrder()"><i class="fa fa-plus"></i></a>
+        </div>
+        <div class="row-split" style="width: 2%;"></div>
+        <div class="row-split" style="max-width: 55%;">
+            <lcma-quick-filter schema = "ctx.orderTypes" query="ctx.orderQuery" column="'type_id'"></lcma-quick-filter>
+        </div>
+
+        <div style="float:right;" class="row-split">
+            <a class="btn btn-default" ng-click="ctx.exportToCSV()" title="Export to CSV"><i class="fa fa-download"></i></a>
+            <a class="btn btn-default" ng-click="ctx.refresh()" title="Refresh"><i class="fa fa-refresh"></i></a>
+            <a class="btn btn-default" ng-click="ctx.clearFilters()" title="Clear Filter"><i class="icon-filter-clear"></i></a>
+            <a href lcma-grid-settings-link name="orders.list.grid" on-apply="onSettingsUpdate"></a>
+
+            <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+            <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+            <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+        </div>
+
+
+        </div>
+
+    <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+    <div class="grid app-data app-data-grid mar-all" ui-grid="ctx.ordersGrid" ui-grid-selection ui-grid-exporter ui-grid-pinning ui-grid-resize-columns lcma-no-data-message="{{onlyNew?0:1000}}"></div>
+</div>

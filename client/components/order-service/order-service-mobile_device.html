@@ -1,0 +1,190 @@
+<ng-form name="ServiceForm">
+
+  <div class="mar-b text-center">
+    <lcma-flow style="display: inline-block" current-step="ctx.service.state" on-action="onFlowAction(item, action, data)" scheme="serviceFlowScheme"></lcma-flow>
+  </div>
+
+  <ng-include src="'app/order-services/forms/order-service-common.html'"></ng-include>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Int Dev ID</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="int_dev_id" ng-model="ctx.inventory.int_dev_id" type="text" class="form-control">
+        <div ng-messages="ServiceForm.int_dev_id.$error" ng-show="ServiceForm.int_dev_id.$touched" role="alert">
+          <div ng-message="required">You didn't enter Int Dev ID</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">SP Dev ID</label>
+      <div class="col-sm-8">
+        <input name="sp_dev_id" ng-model="ctx.inventory.sp_dev_id" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Mobile Nbr</label>
+      <div class="col-sm-8">
+        <input name="mobile_nbr" ng-model="ctx.inventory.mobile_nbr" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Emp ID</label>
+      <div class="col-sm-8">
+        <lcma-employee-picker ng-model="ctx.inventory.emp_id"></lcma-employee-picker>
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">User Name</label>
+      <div class="col-sm-8">
+        <input name="username" ng-model="ctx.inventory.username" type="text" class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Acq Date</label>
+      <div class="col-sm-8">
+        <input
+          uib-datepicker-popup="MM/dd/yyyy"
+          ng-model="ctx.inventory.acq_date"
+          name="acq_date"
+          placeholder="Acq Date"
+          class="form-control input-sm"
+          is-open="ctx.acq_date_ui.opened"
+          ng-click="ctx.acq_date_ui.opened=true"
+          >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Acq Cost</label>
+      <div class="col-sm-8">
+        <input name="acq_cost" ng-model="ctx.inventory.acq_cost" type="number" class="form-control" string-to-number>
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Rel Plan ID</label>
+      <div class="col-sm-8">
+        <input name="rel_plan_id" ng-model="ctx.inventory.rel_plan_id" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Upgrade Date</label>
+      <div class="col-sm-8">
+        <input
+          uib-datepicker-popup="MM/dd/yyyy"
+          ng-model="ctx.inventory.upgrade_date"
+          name="upgrade_date"
+          placeholder="Upgrade Date"
+          class="form-control input-sm"
+          is-open="ctx.upgrade_date_ui.opened"
+          ng-click="ctx.upgrade_date_ui.opened=true"
+          >
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">BYOD</label>
+      <div class="col-sm-8">
+        <input name="byod" ng-model="ctx.inventory.byod" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Maker</label>
+      <div class="col-sm-8">
+        <input name="maker" ng-model="ctx.inventory.maker" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Device Type</label>
+      <div class="col-sm-8">
+        <lcma-dictionary-picker type-key='inventory-mobile_device-type' name="type" ng-model="ctx.inventory.mobile_device_type_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Model No</label>
+      <div class="col-sm-8">
+        <input name="model_no" ng-model="ctx.inventory.model_no" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Device Name</label>
+      <div class="col-sm-8">
+        <input name="device_name" ng-model="ctx.inventory.device_name" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Technology</label>
+      <div class="col-sm-8">
+        <lcma-dictionary-picker type-key='inventory-mobile_device-technology' name="technology" ng-model="ctx.inventory.technology_id"
+          ></lcma-dictionary-picker>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">MDM Vendor</label>
+      <div class="col-sm-8">
+        <input name="mdm_vendor" ng-model="ctx.inventory.mdm_vendor" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">MDM Contract</label>
+      <div class="col-sm-8">
+        <input name="mdm_contract" ng-model="ctx.inventory.mdm_contract" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Ins Vendor</label>
+      <div class="col-sm-8">
+        <input name="ins_vendor" ng-model="ctx.inventory.ins_vendor" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Ins Contract</label>
+      <div class="col-sm-8">
+        <input name="ins_contract" ng-model="ctx.inventory.ins_contract" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-lg-4">
+      <label class="col-sm-4 custom-control-label">Ins Mo Fee</label>
+      <div class="col-sm-8">
+        <input name="ins_mo_fee" ng-model="ctx.inventory.ins_mo_fee" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 text-center">
+          <button class="btn btn-primary" type="button" ng-click="saveService(ServiceForm)">Save</button>
+      </div>
+      <div class="col-sm-4 text-right" >
+          <button type="button" style="margin-left: 5px"
+                  class="btn btn-primary"
+                  ng-click="ctx.removeService(service)">
+              <span ng-if="order.state < 206">Remove</span>
+              <span ng-if="order.state === 206">Cancel</span>
+          </button>
+      </div>
+  </div>
+
+</ng-form>

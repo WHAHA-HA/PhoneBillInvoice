@@ -1,0 +1,17 @@
+<div>
+  <ol id="dynamic-options" class="nya-bs-select " ng-model="selection"  data-live-search="true"  data-size="8" title="Select ...">
+    <li nya-bs-option="customer in customers" data-value="customer.id">
+      <a>{{ customer.company }}</a>
+    </li>
+     <li class="btn-group btn-group-justified custom-picker-options-space-double"></li>
+    <li class="btn-group btn-group-justified custom-picker-options-double">
+      <a class="btn btn-default" ng-click="addItem()"><i class="fa fa-plus"></i></a>
+      <a class="btn btn-default disabled" ng-click="searchItem()"><i class="fa fa-search"></i></a>
+    </li>
+    <li class="btn-group btn-group-justified custom-picker-options">
+      <a class="btn btn-default" ng-click="clearItem()">Clear</a>
+    </li>
+  </ol>
+  <p class="text-danger" ng-show="required">Please select at least one option</p>
+
+</div>

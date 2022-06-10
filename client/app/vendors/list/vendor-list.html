@@ -1,0 +1,59 @@
+<div class="app-body-content app-body-with-toolbar layout-split">
+  <div class="app-toolbar row">
+    <div class="col-sm-4">
+
+      <div class="btn-group">
+        <a class="btn btn-default" ng-click="ctx.newVendor()"><i class="fa fa-plus"></i></a>
+      </div>
+      <div class="btn-group">
+        <a class="btn btn-default" ng-click="ctx.refresh()" title="Refresh"><i class="fa fa-refresh"></i></a>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div style="float:right;" class="row-split">
+        <lcma-pager class="pull-right" ng-model="ctx.pager"></lcma-pager>
+        <lcma-pager-size-switch class="pull-right" ng-model="ctx.pager"></lcma-pager-size-switch>
+        <lcma-pager-info class="pull-right" ng-model="ctx.pager"></lcma-pager-info>
+      </div>
+
+      <div class="row-split pull-right">
+         <a class="btn btn-default" ng-disabled="ctx.gridApi.selection.getSelectedRows().length==0" ng-click="ctx.removeVendor()" title="Delete Selected"><i class="fa fa-trash"></i></a>
+        <a class="btn btn-default" ng-click="ctx.exportToCSV()" title="Export to CSV"><i class="fa fa-download"></i></a>
+        <a class="btn btn-default" ng-click="ctx.clearFilters()" title="Clear Filter"><i class="icon-filter-clear"></i></a>
+        <div class="btn-group" uib-dropdown on-toggle="toggled(open)">
+          <a href uib-dropdown-toggle class="btn btn-default" title="Settings">
+            <i class="fa fa-cog"></i>
+          </a>
+          <ul uib-dropdown-menu aria-labelledby="simple-dropdown" class="inventory-list-types">
+            <li>
+              <a href on-apply="ctx.onSettingsUpdate" lcma-grid-settings-href="vendor.list.grid">Grid Settings</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a href ng-click="ctx.layout.orientation = 'vertical'">Top-Bottom</a>
+            </li>
+            <li>
+              <a href ng-click="ctx.layout.orientation = 'horizontal'">Left-Right</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <span class="ui-grid-exporter-csv-link">&nbsp;</span>
+  <lcma-layout orientation="{{ctx.layout.orientation}}" settings-key="vendor.list.layout">
+    <lcma-layout-pane size="{{ctx.layout.list.size}}" min-size="30" max-size="80">
+      <div class="app-data app-data-grid" ui-grid="ctx.vendorsGrid" ui-grid-selection ui-grid-exporter lcma-no-data-message
+           ui-grid-resize-columns></div>
+    </lcma-layout-pane>
+    <lcma-layout-pane size="{{ctx.layout.details.size}}" class="panel-details" min-size="30" max-size="80">
+      <lcma-wrapper ng-if="ctx.currentSelection===null" template-url="app/vendors/new/vendor-new.html"
+                    resolve="ctx.resolvesNew" on-change="ctx.onChange(data, create)" on-dismiss="ctx.onDismiss(create)"
+                    controller="VendorNewCtrl"></lcma-wrapper>
+      <lcma-wrapper ng-if="ctx.currentSelection.id" template-url="app/vendors/edit/vendor-edit.html"
+                    resolve="ctx.resolvesEdit" on-change="ctx.onChange(data, create)" on-dismiss="ctx.onDismiss()"
+                    controller="VendorEditCtrl"></lcma-wrapper>
+      </lcma-layout-pane>
+  </lcma-layout>
+</div>

@@ -1,0 +1,72 @@
+<div class="media note">
+  <div class="media-left text-center">
+    <!--<div class="avatar"></div>
+    <div class="text-muted">{{note.user.username | date}}</div>-->
+    <div class="calendar-day">
+      <span class="sec text-muted">
+        {{note.created_at| date: "MMM yyyy"}}
+      </span>
+      <span class="prim">
+        {{note.created_at| date: 'd'}}
+      </span>
+    </div>
+    <!--<div class="fa fa-calendar" style="font-size:1.5em;"></div>
+    <div class="text-muted">{{note.created_at| date}}</div>-->
+  </div>
+  <div class="media-body">
+    <div class="note-content clearfix media">
+      <div class="media-left">
+        <div class="text-center">
+          <img class="avatar avatar-xs" ng-src="{{note.user.avatar}}" ng-show="note.user.avatar">
+          <div ng-show="!note.user.avatar" class="default-avatar-circle-xs float-center">
+            <span class="initials initials-xs">{{getInitialLetters(note.user)}}</span>
+          </div>
+          <div class="text-muted">{{note.user.first_name}}</div>
+        </div>
+      </div>
+      <div class="media-body mar-t">
+        <div class="media-heading">
+          <a class="pull-right" ng-if="note.charges.length" ng-click="viewNoteCharges()">View charges <span
+            class="badge">{{note.charges.length}}</span>
+          </a>
+          <div ng-bind-html="note.content | noHTML | newlines"></div>
+        </div>
+
+        <div ng-repeat="child in note.notes | orderBy: 'created_at'" class="clearfix note-reply media mar-b">
+          <div class="media-left">
+            <div class="text-center">
+              <img class="avatar avatar-xs" ng-src="{{note.user.avatar}}" ng-show="note.user.avatar">
+              <div ng-show="!note.user.avatar" class="default-avatar-circle-xs float-center">
+                <span class="initials initials-xs">{{getInitialLetters(note.user)}}</span>
+              </div>
+              <div class="text-muted">{{child.user.first_name}}</div>
+            </div>
+          </div>
+
+          <div class="media-body">
+            <div ng-bind-html="child.content | noHTML | newlines"></div>
+            <div class="text-muted">{{child.created_at | date}}</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="new-reply">
+      <ng-form name="noteReplyForm">
+        <div class="input-group">
+          <textarea placeholder="Type to reply ..."
+                    class="form-control"
+                    ng-model="note.$reply.content"
+                    style="height: 30px"
+
+                    ng-required="true"></textarea>
+
+          <span class="input-group-btn">
+            <button class="btn btn-info btn-sm" type="button" ng-click="replyToNote(note, noteReplyForm )">Reply</button>
+          </span>
+        </div>
+      </ng-form>
+    </div>
+  </div>
+</div>

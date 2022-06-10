@@ -1,0 +1,67 @@
+<div>
+  <div class="modal-header app-modal-width">
+    <h4 class="modal-title">Create New Route</h4>
+  </div>
+  <div class="modal-body app-modal-width">
+    <form name="RouteForm" class="form-horizontal form-cozy mar-b add-form">
+
+      <lcma-form-layout columns="1">
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>LATA</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="lata" ng-model="route.lata" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>State</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="state" ng-model="route.state" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>NPA</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="npa" ng-model="route.npa" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>NXX</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="nxx" ng-model="route.nxx" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>CIC Code</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="cic_code" ng-model="route.cic_code" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+        <lcma-form-group label-size="3">
+          <lcma-form-label>Carrier</lcma-form-label>
+          <lcma-control-container>
+            <input ng-required="true" name="npa" ng-model="route.carrier" type="text"
+                   class="form-control">
+          </lcma-control-container>
+        </lcma-form-group>
+
+      </lcma-form-layout>
+
+    </form>
+  </div>
+  <div class="modal-footer app-modal-width">
+    <button class="btn btn-primary" type="button" ng-click="create(RouteForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+
+</div>

@@ -1,0 +1,80 @@
+<div class="modal-header app-modal-width">
+  <h4 class="modal-title">Update Audit Rate</h4>
+</div>
+<div class="modal-body app-modal-width">
+  <form name="AuditRateEditForm" class="form-horizontal form-cozy mar-b add-form">
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Audit Rate Table Name</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="name" ng-model="auditRate.name" type="text"
+               class="form-control">
+        <div ng-messages="AuditRateEditForm.name.$error" ng-show="AuditRateEditForm.name.$touched" role="alert">
+          <div ng-message="required">You didn't enter Audit Rate Table Name.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Charge Class</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="chg_class" ng-model="auditRate.chg_class" type="text"
+               class="form-control">
+        <div ng-messages="AuditRateEditForm.chg_class.$error" ng-show="AuditRateEditForm.chg_class.$touched" role="alert">
+          <div ng-message="required">You didn't enter Charge Class.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 textarea-control-label">Description</label>
+      <div class="col-sm-8">
+        <textarea class="form-control"
+                  ng-model="auditRate.chg_description1"
+                  name="description"
+                  ng-required="true"></textarea>
+        <div ng-messages="AuditRateEditForm.description.$error" ng-show="AuditRateEditForm.description.$touched" role="alert">
+          <div ng-message="required">You didn't enter Description.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 textarea-control-label">Description2</label>
+      <div class="col-sm-8">
+        <textarea class="form-control"
+                  ng-model="auditRate.chg_description2"
+                  name="description2"
+                  ng-required="true"></textarea>
+        <div ng-messages="AuditRateEditForm.description2.$error" ng-show="AuditRateEditForm.description2.$touched" role="alert">
+          <div ng-message="required">You didn't enter Description2.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">FAC_BW_KB</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="fac" ng-model="auditRate.fac_bw_kb" type="number"
+               class="form-control">
+        <div ng-messages="AuditRateEditForm.fac.$error" ng-show="AuditRateEditForm.fac.$touched" role="alert">
+          <div ng-message="required">You didn't enter FAC_BW_KB.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-4 custom-control-label">Audit Rate</label>
+      <div class="col-sm-8">
+        <input ng-required="true" name="rate" ng-model="auditRate.rate" type="number"
+               class="form-control">
+        <div ng-messages="AuditRateEditForm.rate.$error" ng-show="AuditRateEditForm.rate.$touched" role="alert">
+          <div ng-message="required">You didn't enter Audit Rate.</div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer app-modal-width">
+  <button class="btn btn-primary" type="button" ng-click="update(AuditRateEditForm)">Update</button>
+  <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+</div>

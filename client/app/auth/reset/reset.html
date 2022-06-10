@@ -1,0 +1,42 @@
+<div class="container form">
+  <h1>Reset Password</h1>
+
+  <div class="form-content">
+    <form name="ResetForm">
+      <p>
+        Enter token provided in email and type in your new password.
+      </p>
+
+      <div class="alert alert-danger" ng-if="ctx.error">
+        {{ctx.error.msg}}
+      </div>
+      <div class="alert alert-success" ng-if="ctx.success">
+        You password has been successfully changed. Use new password for next
+        <a ui-sref="anonymous.login">Login</a>
+      </div>
+      <div class="form-group">
+        <input placeholder="Token" type="text" name="token" ng-model="ctx.auth.token" ng-required="true"
+               class="form-control">
+
+        <div ng-messages="ResetForm.token.$error" ng-show="ResetForm.token.$touched" role="alert">
+          <div ng-message="required">You didn't enter valid token.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input placeholder="New Password" type="password" name="password" ng-model="ctx.auth.password"
+               ng-required="true" ng-minlength="8" class="form-control">
+
+        <div ng-messages="ResetForm.password.$error" ng-show="ResetForm.password.$touched" role="alert">
+          <div ng-message="required">You didn't enter valid password.</div>
+          <div ng-message="minlength">Your password needs to be at least 8 characters long.</div>
+        </div>
+      </div>
+      <div class="form-group text-center">
+        <button class="btn btn-primary btn-block" type="button" ng-click="ctx.resetPassword(ResetForm)">Reset Password</button>
+        <p>or</p>
+        <a ui-sref="anonymous.login">Back to Login page</a>
+      </div>
+    </form>
+
+  </div>
+</div>

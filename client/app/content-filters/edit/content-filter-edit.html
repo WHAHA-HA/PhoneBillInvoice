@@ -1,0 +1,47 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Update Content Filter</h4>
+  </div>
+  <div class="modal-body">
+
+    <form name="FilterForm" class="form-horizontal form-cozy" id="FilterForm">
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Filter Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="2">
+            <lcma-form-group>
+              <lcma-form-label>Module</lcma-form-label>
+              <lcma-control-container>
+                <input type="text" ng-model="filter.module.title" class="form-control" ng-required="true" readonly>
+              </lcma-control-container>
+            </lcma-form-group>
+
+            <lcma-form-group>
+              <lcma-form-label>Title</lcma-form-label>
+              <lcma-control-container>
+                <input type="text" ng-model="filter.title" class="form-control" ng-required="true" name="title">
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+        </div>
+      </div>
+
+      <div class="panel panel-alternate" ng-if="filter.module">
+        <div class="panel-heading">
+          <div class="panel-title">Filter Setup</div>
+        </div>
+        <div class="panel-body form-inline">
+          <lcma-advanced-filter properties ng-model="filterContext"></lcma-advanced-filter>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button ng-disabled="!FilterForm.$valid" class="btn btn-primary" type="button" ng-click="update(FilterForm)">Update
+      Filter
+    </button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

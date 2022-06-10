@@ -1,0 +1,29 @@
+<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Create New Role</h4>
+  </div>
+  <div class="modal-body">
+    <form name="RoleForm" class="form-horizontal form-cozy" id="RoleForm">
+      <div class="panel panel-alternate">
+        <div class="panel-heading">
+          <div class="panel-title">Role Info</div>
+        </div>
+        <div class="panel-body">
+          <lcma-form-layout columns="1">
+            <lcma-form-group label-size="2">
+              <lcma-form-label>Name</lcma-form-label>
+              <lcma-control-container>
+                <input ng-required="true" name="name" ng-model="role.name" type="text"
+                       class="form-control col-xs-3">
+              </lcma-control-container>
+            </lcma-form-group>
+          </lcma-form-layout>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="create(RoleForm)">Create</button>
+    <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+  </div>
+</div>

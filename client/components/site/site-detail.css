@@ -1,0 +1,22 @@
+.site-detail .city {
+  width: 40%;
+  display: inline-block;
+}
+
+.site-detail .state {
+  width: 20%;
+  display: inline-block;
+}
+
+.site-detail .zip {
+  width: 20%;
+  display: inline-block;
+}
+
+.site-search-modal .modal-content {
+  height:600px;
+  width: 800px;
+  padding-top: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}

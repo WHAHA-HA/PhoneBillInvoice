@@ -1,0 +1,145 @@
+<lcma-form-layout columns="1">
+    <lcma-container columns="[4,4,4]">
+        <lcma-container-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">SP Ckt ID</label>
+                <div class="col-sm-8">
+                    <input name="sp_ckt_id" ng-model="ctx.inventory.sp_ckt_id" type="text" class="form-control">
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">BAN</label>
+                <div class="col-sm-8">
+                   <lcma-account-picker ng-model="ctx.inventory.ban" vendor-ids="[order.vendor_id]"></lcma-account-picker>
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">Client</label>
+                <div class="col-sm-8">
+                    <lcma-customer-picker ng-model="ctx.inventory.client"></lcma-customer-picker>
+                </div>
+            </lcma-form-group>
+
+        </lcma-container-group>
+        <lcma-container-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">Desired Due Date</label>
+                <div class="col-sm-8">
+                    <input
+                        uib-datepicker-popup="MM/dd/yyyy"
+                        ng-model="ctx.service.des_due_date"
+                        name="des_due_date"
+                        class="form-control input-sm"
+                        is-open="ctx.des_due_date_ui.opened"
+                        ng-click="ctx.des_due_date_ui.opened = true">
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">
+                    <a href="" ng-click="showDateHistory('FOC', false, 'foc_date_history')">FOC
+                        Receive
+                        Date</a>
+                </label>
+                <div class="col-sm-8">
+                    <input
+                        uib-datepicker-popup="MM/dd/yyyy"
+                        ng-model="ctx.service.foc_rec_date"
+                        name="foc_rec_date"
+                        class="form-control input-sm"
+                        is-open="ctx.foc_rec_date_ui.opened"
+                        ng-click="ctx.foc_rec_date_ui.opened = true" disabled>
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label"><a href=""
+                                                                ng-click="showDateHistory('FOC', false, 'foc_date_history')">FOC
+                        Date</a></label>
+                <div class="col-sm-8">
+                    <input
+                        uib-datepicker-popup="MM/dd/yyyy"
+                        ng-model="ctx.service.foc_date"
+                        name="foc_date"
+                        class="form-control input-sm" disabled
+                        is-open="ctx.foc_date_ui.opened"
+                        ng-click="ctx.foc_date_ui.opened = true"
+                        >
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">&nbsp;</label>
+                <div class="col-sm-8">
+                    <input type="checkbox" ng-model="ctx.service.expedited_order"> Expedited Order
+                </div>
+            </lcma-form-group>
+
+
+        </lcma-container-group>
+        <lcma-container-group>
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">Install Date</label>
+                <div class="col-sm-8">
+                    <input
+                        uib-datepicker-popup="MM/dd/yyyy"
+                        ng-model="ctx.service.install_date"
+                        name="install_date" disabled
+                        class="form-control input-sm"
+                        is-open="ctx.install_date_ui.opened"
+                        ng-click="ctx.install_date_ui.opened = true">
+                </div>
+            </lcma-form-group>
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label"><a href=""
+                                                                ng-click="showDateHistory('Accept', 'test', 'accept_date_history')">Test
+                        Date</a></label>
+                <div class="col-sm-8">
+                    <input
+                        uib-datepicker-popup="MM/dd/yyyy"
+                        ng-model="ctx.service.accept_date"
+                        name="accept_date"
+                        class="form-control input-sm" disabled
+                        is-open="ctx.accept_date_ui.opened"
+                        ng-click="ctx.accept_date_ui.opened = true">
+                </div>
+            </lcma-form-group>
+
+
+            <lcma-form-group>
+                <label class="col-sm-4 custom-control-label">Accepted By</label>
+                <div class="col-sm-8">
+                    <input type="text"
+                           class="form-control"
+                           value="{{ctx.service.accepted_by_user.first_name + ' ' + ctx.service.accepted_by_user.last_name}}"
+                           name="accepted_by" readonly>
+                </div>
+            </lcma-form-group>
+
+
+        </lcma-container-group>
+    </lcma-container>
+
+    <lcma-container columns="[12]">
+
+        <lcma-container-group>
+            <br>
+            <br>
+            <lcma-form-group label-size="2">
+                <lcma-form-label style="text-align:right">Description</lcma-form-label>
+                <lcma-control-container>
+                    <textarea class="form-control" ng-model="ctx.service.description" ng-required="true"
+                              name="description"></textarea>
+                </lcma-control-container>
+            </lcma-form-group>
+        </lcma-container-group>
+    </lcma-container>
+
+</lcma-form-layout>
+
+

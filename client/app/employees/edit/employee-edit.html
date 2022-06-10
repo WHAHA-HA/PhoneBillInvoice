@@ -1,0 +1,156 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Update Employee</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+        <form name="EmployeeForm" class="form-horizontal form-cozy" id="EmployeeForm">
+
+            <div class="panel panel-alternate">
+                <div class="panel-heading">
+                    <div class="panel-title">Employee Info</div>
+                </div>
+                <div class="panel-body">
+                    <lcma-form-layout columns="2">
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>First Name</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="first_name" placeholder="First Name" ng-model="employee.first_name" type="text"
+                                       class="form-control">
+                                <div ng-messages="EmployeeForm.first_name.$error" ng-show="EmployeeForm.first_name.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter First Name.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Last Name</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="last_name" placeholder="Last Name" ng-model="employee.last_name" type="text"
+                                       class="form-control">
+                                <div ng-messages="EmployeeForm.last_name.$error" ng-show="EmployeeForm.last_name.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Last Name.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Home Site</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="home_site" ng-model="employee.home_site" type="text"
+                                       class="form-control">
+                                <div ng-messages="EmployeeForm.home_site.$error" ng-show="EmployeeForm.home_site.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Home Site.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Mobile Number</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="mobile_number" placeholder="Mobile Number" ng-model="employee.mobile_number" type="number"
+                                       class="form-control">
+                                <div ng-messages="EmployeeForm.mobile_number.$error" ng-show="EmployeeForm.mobile_number.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter Mobile Number.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Office Number</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="office_number" placeholder="Office Number" ng-model="employee.office_number" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>Status</lcma-form-label>
+                            <lcma-control-container>
+                                <select class="form-control" name="status"
+                                        ng-options="status.key as status.value for status in statuses"
+                                        ng-model="employee.status_id" ng-required="true">
+                                </select>
+                                <div ng-messages="EmployeeForm.status.$error" ng-show="EmployeeForm.status.$touched" role="alert">
+                                    <div ng-message="required">You didn't select Status.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code1</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="true" name="gl_code1" ng-model="employee.gl_code1" type="number"
+                                       class="form-control">
+                                <div ng-messages="EmployeeForm.gl_code1.$error" ng-show="EmployeeForm.gl_code1.$touched" role="alert">
+                                    <div ng-message="required">You didn't enter GL Code1.</div>
+                                </div>
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code2</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code2" ng-model="employee.gl_code2" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code3</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code3" ng-model="employee.gl_code3" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code4</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code4" ng-model="employee.gl_code4" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code5</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code5" ng-model="employee.gl_code5" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code6</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code6" ng-model="employee.gl_code6" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code7</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code7" ng-model="employee.gl_code7" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                            <lcma-form-label>GL Code8</lcma-form-label>
+                            <lcma-control-container>
+                                <input ng-required="false" name="gl_code8" ng-model="employee.gl_code8" type="number"
+                                       class="form-control">
+                            </lcma-control-container>
+                        </lcma-form-group>
+
+                    </lcma-form-layout>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="update(EmployeeForm)">Update</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

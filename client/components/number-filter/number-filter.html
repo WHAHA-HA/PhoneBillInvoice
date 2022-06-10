@@ -1,0 +1,24 @@
+<div>
+
+    <div ng-click="close()" style="float:right;margin-top: -35px;"><i class=" fa fa-close"></i></div>
+    <div class="form-group">
+        <select ng-model="filter.operator" class="form-control input-sm">
+            <option value="==">Equal</option>
+            <option value="!=">Different than</option>
+            <option value=">">Greater than</option>
+            <option value="<">Less than</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <input type="number"
+               placeholder="Enter number value ..."
+               class="form-control input-sm"
+               ng-model="filter.value">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-info" type="button" ng-click="applyFilter()">Apply</button>
+        <button class="btn btn-default" type="button" ng-click="clearFilter()">Clear</button>
+    </div>
+</div>

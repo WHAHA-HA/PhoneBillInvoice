@@ -1,0 +1,21 @@
+//.color-button-changed {
+//    border: 3px solid lightblue !important;
+//}
+//
+//.toggle-switch-changed {
+//    border: 3px solid lightblue !important;
+//}
+
+form input.show-changed.ng-modified {
+    background-color: lightblue;
+}
+
+form select.show-changed.ng-modified {
+    background-color: lightblue;
+}
+
+// picker control
+form div.show-changed.ng-modified button {
+    background-color: lightblue;
+}
+

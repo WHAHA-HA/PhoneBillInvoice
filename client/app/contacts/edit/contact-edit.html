@@ -1,0 +1,185 @@
+<div>
+    <div class="modal-header app-modal-width">
+        <h4 class="modal-title">Update Contact</h4>
+    </div>
+    <div class="modal-body app-modal-width">
+        <form name="ContactForm" class="form-horizontal form-cozy" id="ContactForm">
+            <div class="panel panel-alternate">
+                <div class="panel-heading">
+                    <div class="panel-title">Contact Info</div>
+                </div>
+                <div class="panel-body">
+                    <lcma-form-layout columns="2">
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>First Name</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="first_name" placeholder="First Name" ng-model="contact.first_name"
+                                   type="text"
+                                   class="form-control">
+                            <div ng-messages="ContactForm.first_name.$error" ng-show="ContactForm.first_name.$touched" role="alert">
+                              <div ng-message="required">You didn't enter First Name.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Last Name</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="last_name" placeholder="Last Name" ng-model="contact.last_name"
+                                   type="text"
+                                   class="form-control">
+                            <div ng-messages="ContactForm.last_name.$error" ng-show="ContactForm.last_name.$touched" role="alert">
+                              <div ng-message="required">You didn't enter Last Name.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Company</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="company" ng-model="contact.company" type="text"
+                                   class="form-control">
+                            <div ng-messages="ContactForm.company.$error" ng-show="ContactForm.company.$touched" role="alert">
+                              <div ng-message="required">You didn't enter Company.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Title</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="title" placeholder="Title" ng-model="contact.title" type="text"
+                                   class="form-control">
+                            <div ng-messages="ContactForm.title.$error" ng-show="ContactForm.title.$touched" role="alert">
+                              <div ng-message="required">You didn't enter Contact Title.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Function</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="function" placeholder="Function" ng-model="contact.function" type="text"
+                                   class="form-control">
+                            <div ng-messages="ContactForm.function.$error" ng-show="ContactForm.function.$touched" role="alert">
+                              <div ng-message="required">You didn't enter Function role of Contact.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Vendor</lcma-form-label>
+                          <lcma-control-container>
+                            <lcma-vendor-picker name="vendor_id" ng-model="contact.vendor_id" id="vendor_id"></lcma-vendor-picker>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Site ID</lcma-form-label>
+                          <lcma-control-container>
+                            <lcma-site-picker name="site_id" site-id="contact.site_id" id="site_id"
+                                              ng-model="contact.site_id"></lcma-site-picker>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Email</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="email" type="email" class="form-control" ng-model="contact.email">
+                            <div ng-messages="ContactForm.email.$error" ng-show="ContactForm.email.$touched" role="alert">
+                              <div ng-message="required">You didn't enter valid email.</div>
+                              <div ng-message="email">You didn't enter valid email.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Office Phone</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="false" name="office_phone" placeholder="Office Number" type="text"
+                                   class="form-control"
+                                   ng-model="contact.office_phone">
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Mobile Phone</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="false" name="mobile_number" placeholder="Mobile Number" type="text"
+                                   class="form-control"
+                                   ng-model="contact.mobile_number">
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Address 1</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" name="address1" type="text" class="form-control"
+                                   ng-model="contact.address1">
+                            <div ng-messages="ContactForm.address1.$error" ng-show="ContactForm.address1.$touched" role="alert">
+                              <div ng-message="required">Please provide Address 1.</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Address 2</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="false" name="address2" type="text" class="form-control"
+                                   ng-model="contact.address2">
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Address 3</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="false" name="address3" type="text" class="form-control"
+                                   ng-model="contact.address3">
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>City</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" placeholder="City" name="city" type="text" class="form-control"
+                                   ng-model="contact.city">
+                            <div ng-messages="ContactForm.city.$error" ng-show="ContactForm.city.$touched" role="alert">
+                              <div ng-message="required">Required</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>State</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" placeholder="State" name="state" type="text" class="form-control"
+                                   ng-model="contact.state">
+                            <div ng-messages="ContactForm.state.$error" ng-show="ContactForm.state.$touched" role="alert">
+                              <div ng-message="required">Required</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                        <lcma-form-group label-size="3">
+                          <lcma-form-label>Zip</lcma-form-label>
+                          <lcma-control-container>
+                            <input ng-required="true" placeholder="Zip" name="zip" type="text" class="form-control"
+                                   ng-model="contact.zip">
+                            <div ng-messages="ContactForm.zip.$error" ng-show="ContactForm.zip.$touched" role="alert">
+                              <div ng-message="required">Required</div>
+                            </div>
+                          </lcma-control-container>
+                        </lcma-form-group>
+
+                    </lcma-form-layout>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="modal-footer app-modal-width">
+        <button class="btn btn-primary" type="button" ng-click="update(ContactForm)">Update</button>
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>

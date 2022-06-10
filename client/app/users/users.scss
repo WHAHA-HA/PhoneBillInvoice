@@ -1,0 +1,66 @@
+.cropArea {
+  background: #FFFFFF;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.user_avatar {
+  width: 100%;
+  max-height: 250px;
+  overflow-y: hidden;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+@mixin default-avatar($size) {
+  width: $size;
+  height: $size;
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-color: #337ab7;
+
+  .initials {
+    position: relative;
+    top: $size*0.25;
+    font-size: $size*0.5;
+    line-height: $size*0.5;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .initials-xs {
+    top: $size*0.125;
+  }
+
+  .initials-sm {
+    top: $size*0.250;
+  }
+}
+
+.default-avatar-circle {
+  @include default-avatar(100px);
+  display: inline-block;
+}
+
+/*.avatar-container {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+
+  .btn-change-avatar {
+    position: absolute;
+    margin-left: 33%;
+    margin-top: -60%;
+    display: none;
+  }
+
+  &:hover {
+    .btn-change-avatar {
+      display: block;
+    }
+  }
+}*/

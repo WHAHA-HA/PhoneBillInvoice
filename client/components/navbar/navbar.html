@@ -1,0 +1,31 @@
+<div ng-controller="NavbarCtrl" ng-mouseover="onMouseEnter()" ng-mouseleave="onMouseLeave()" class="main-navbar">
+  <div class="panel panel-default navigation">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a ui-sref="app.main" tabindex="0" class="accordion-toggle">
+          <div class="ng-binding ng-scope">
+            <i class="fa fa-dashboard sidebar-icon module-icon"></i>
+            <span class="caption">Dashboard</span>
+          </div>
+        </a>
+      </h4>
+    </div>
+  </div>
+  <uib-accordion close-others="false" class="navigation">
+    <uib-accordion-group is-open="accordionArray[$index]" ng-repeat="menu in menu" ng-if="menu.url !== '/'" class="navigation-menu-padding">
+      <uib-accordion-heading>
+        <div>
+          <i class="{{menu.icon}} sidebar-icon module-icon"></i>
+          <span class="caption">{{menu.name}}</span>
+        </div>
+      </uib-accordion-heading>
+      <ul class="nav nav-sub animate-show sidebar-submenu" ng-if="menu.submenu">
+        <li ng-repeat="submenu in menu.submenu">
+          <a href="{{submenu.url}}">{{submenu.name}}
+            <span ng-if="submenu.badge" class="label badge label-success pull-right">{{submenu.badge}}</span>
+          </a>
+        </li>
+      </ul>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>
