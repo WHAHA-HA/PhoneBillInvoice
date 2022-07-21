@@ -17,12 +17,5 @@
 ### Clone Repository
 
 ```
-git clone https://github.com/BohdanFiliuk/PhoneBillInvoice.git
+git clone https://github.com/kingsman-fullstackdev/PhoneBillInvoice.git
 ```
-
-## Author
-
-<blockquote>
-Contact me
-Email: filiukbohdan123@gmail.com
-</blockquote>
