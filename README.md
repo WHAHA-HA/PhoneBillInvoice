@@ -13,9 +13,3 @@
 - Angular js
 - JavaScript
 - Node js
-
-### Clone Repository
-
-```
-git clone https://github.com/kingsman-fullstackdev/PhoneBillInvoice.git
-```
